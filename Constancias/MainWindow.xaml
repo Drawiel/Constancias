@@ -4,9 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Constancias"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "1*"/>
+            <RowDefinition Height = "9*"/>
+            <RowDefinition Height = "1*"/>
+        </Grid.RowDefinitions>
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <materialDesign:Flipper 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+                <materialDesign:Flipper.FrontContent>
+                    <Viewbox>
+                        <StackPanel>
+                            <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
+                                       TextWrapping="Wrap" FontSize="35" FontWeight="Bold" Text="Iniciar Sesion" 
+                                       Foreground="White" VerticalAlignment="Top" Height="60" Width="350"/>
+
+                            <Viewbox
+                                Width="100"
+                                Height="100">
+                                <Image Source="Recursos/feiuv.png" />
+                            </Viewbox>
+
+
+                            <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxUsernameLogIn" Width="250" Foreground="White"
+                                     FontSize="15" materialDesign:HintAssist.Hint="Nombre de usuario"
+                                     BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                        
+                            <PasswordBox Margin="20 10" HorizontalAlignment="Center" x:Name="passwordBoxPasswordLogIn" Width="250" Foreground="White"
+                                FontSize="15" materialDesign:HintAssist.Hint="Contraseña"
+                                BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                        
+                            <Button Margin="20 10" x:Name="btnLogin" Content="Iniciar sesión" Foreground="White"                     
+                                    FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"                    
+                                    Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="BtnClickLogIn"/>
+
+                            <Button Margin="20 10 20 30" x:Name="btnSignIn" Content="Cambiar a registro de cuenta" Foreground="White"                             
+                                    FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"           
+                                    Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Command="{x:Static materialDesign:Flipper.FlipCommand}"/>
+
+                        </StackPanel>
+                    </Viewbox>
+                </materialDesign:Flipper.FrontContent>
+
+                <materialDesign:Flipper.BackContent>
+                    <Viewbox>
+                        <StackPanel>
+                            <TextBlock Margin="20 10" HorizontalAlignment="Stretch" TextAlignment="Center" 
+                                TextWrapping="Wrap" FontSize="35" FontWeight="Bold" Text="Crear cuenta" 
+                                Foreground="White" VerticalAlignment="Top" Height="60" Width="350"/> 
+
+                            <Viewbox
+                                Width="100"
+                                Height="100">
+                                <Image Source="Recursos/feiuv.png" />
+                            </Viewbox>
+
+
+                            <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxUsernameSignIn" Width="250" Foreground="White"
+                                 FontSize="15" materialDesign:HintAssist.Hint="Nombre de usuario"
+                                 BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+
+                            <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxUsernameEmail" Width="250" Foreground="White"
+                                FontSize="15" materialDesign:HintAssist.Hint="Correo"
+                                BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                            
+                            <PasswordBox Margin="20 10" HorizontalAlignment="Center" x:Name="passwordBoxPasswordSignIn" Width="250" Foreground="White"
+                                FontSize="15" materialDesign:HintAssist.Hint="Contraseña"
+                                BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+
+                            <Button Margin="20 10" x:Name="btnSignin" Content="Crear cuenta" Foreground="White"                     
+                                FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"                    
+                                Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Click="BtnClickLogIn"/>
+
+                            <Button Margin="20 10 20 30" x:Name="btnLogIn" Content="Cambiar a inicio de sesion" Foreground="White"                             
+                                FontSize="15" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.Darken="True"           
+                                Height="50" Width="250" materialDesign:ButtonAssist.CornerRadius="10" Command="{x:Static materialDesign:Flipper.FlipCommand}"/>
+
+                        </StackPanel>
+                    </Viewbox>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </Viewbox>
     </Grid>
 </Window>

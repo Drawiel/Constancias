@@ -21,5 +21,7 @@ namespace Constancias {
         public MainWindow() {
             InitializeComponent();
         }
+
+        public void BtnClickLogIn(object sender, RoutedEventArgs e) { }
     }
 }
