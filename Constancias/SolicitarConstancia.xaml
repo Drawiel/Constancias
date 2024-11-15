@@ -1,0 +1,36 @@
+﻿<Window x:Class="Constancias.SolicitarConstancia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Constancias"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="SolicitarConstancia" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Viewbox>
+        <Grid Margin="150 250" Background="{DynamicResource MaterialDesign.Brush.Primary.Dark}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50">
+                <WrapPanel>
+                    <materialDesign:PackIcon Kind="AccountCircleOutline" Height="100" Width="100" VerticalAlignment="Center"/>
+                    <TextBlock Text="Nombre de solicitante" FontSize="80" FontWeight="DemiBold" Margin="0 50" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
+                </WrapPanel>
+
+                <TextBlock Text="Tipo de constancia:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
+                <ComboBox Name="comboBoxConstancias" Margin="0,0,0,20" FontSize="20" Width="800">
+                    <ComboBoxItem Content="Constancia de experiencia docente"/>
+                    <ComboBoxItem Content="Constancia de generación de producto académico"/>
+                    <ComboBoxItem Content="Constancia de participación en procesos de actualización de programas de estudio"/>
+                    <ComboBoxItem Content="Constancia de participación en procesos de certificación de programas de estudio"/>
+                    <ComboBoxItem Content="Constancia de participación en trabajos recepcionales"/>
+                    <ComboBoxItem Content="Constancia de participación en proyecto de campo y/o gestión académica o artística"/>
+                </ComboBox>
+                <TextBlock Text="Periodo:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
+                <TextBox Name="textBoxPeriodo" Margin="0,0,0,20" FontSize="20" Width="800"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                    <Button Content="Solicitar" Width="250" Height="50" FontSize="20" Margin="0,0,10,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                    <Button Content="Cancelar" Width="250" Height="50" FontSize="20" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

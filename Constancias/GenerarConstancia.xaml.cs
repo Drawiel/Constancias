@@ -10,22 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Constancias {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GenerarConstancia.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class GenerarConstancia : Window {
+        public GenerarConstancia() {
             InitializeComponent();
-        }
-
-        public void BtnClickLogIn(object sender, RoutedEventArgs e) { 
-            var solicitarConstancia = new GenerarConstancia();
-            solicitarConstancia.Show();
-            this.Close();
         }
     }
 }

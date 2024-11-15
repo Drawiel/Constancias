@@ -37,7 +37,7 @@
                             <Viewbox
                                 Width="100"
                                 Height="100">
-                                <Image Source="Recursos/feiuv.png" />
+                                <Image Source="Recursos/logoUV.png" />
                             </Viewbox>
 
 
@@ -71,7 +71,7 @@
                             <Viewbox
                                 Width="100"
                                 Height="100">
-                                <Image Source="Recursos/feiuv.png" />
+                                <Image Source="Recursos/logoUV.png" />
                             </Viewbox>
 
 
