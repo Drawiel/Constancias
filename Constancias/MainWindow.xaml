@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Constancias"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Background="#555859"
         Title="MainWindow" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +27,8 @@
             VerticalAlignment="Stretch">
             <materialDesign:Flipper 
                 HorizontalAlignment="Center" 
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Background="#2a2e2f">
                 <materialDesign:Flipper.FrontContent>
                     <Viewbox>
                         <StackPanel>

@@ -6,19 +6,20 @@
         xmlns:local="clr-namespace:Constancias"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Background="#555859"
         Title="GenerarConstancia" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
-    <Grid Margin="100">
+    <Grid Margin="100" Background="#2a2e2f">
         <!-- Barra de búsqueda -->
-        <Viewbox VerticalAlignment="Top" Height="150">
+        <Viewbox VerticalAlignment="Top" Height="150" Margin="50">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,20">
-                <TextBox Width="1200" FontSize="25" Margin="0,0,10,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox Width="1200" FontSize="20" Margin="0,0,10,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignOutlinedTextBox}" Background="White" Foreground="Black"/>
                 <Button Content="Buscar" Width="200" Height="50" FontSize="18" Style="{StaticResource MaterialDesignRaisedButton}"/>
             </StackPanel>
         </Viewbox>
 
         <!-- Lista de resultados -->
-        <Viewbox VerticalAlignment="Center">
+        <Viewbox VerticalAlignment="Center" Margin="50 0">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Width="1500">
                 <StackPanel Margin="0,0,0,10">
                     <Border Background="#E0E0E0" CornerRadius="5" Padding="10" Margin="0,0,0,10">
@@ -91,7 +92,7 @@
         </Viewbox>
 
         <!-- Botones de acción -->
-        <Viewbox VerticalAlignment="Bottom" Height="60" HorizontalAlignment="Right">
+        <Viewbox VerticalAlignment="Bottom" Height="60" HorizontalAlignment="Right" Margin="50">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,0,0">
                 <Button Content="Aceptar y generar constancia" Width="350" Height="50" FontSize="18" Margin="0,0,10,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
                 <Button Content="Cancelar" Width="150" Height="50" FontSize="18" Style="{StaticResource MaterialDesignRaisedButton}"/>
