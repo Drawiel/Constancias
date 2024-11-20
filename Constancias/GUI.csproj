@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adicionales\ManejadorDeSesion.cs" />
+    <Compile Include="Adicionales\ValidadorCampos.cs" />
+    <Compile Include="Adicionales\SesionDeUsuario.cs" />
     <Compile Include="GenerarConstancia.xaml.cs">
       <DependentUpon>GenerarConstancia.xaml</DependentUpon>
     </Compile>

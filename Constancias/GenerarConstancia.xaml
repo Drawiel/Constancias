@@ -43,7 +43,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Víctor Rafael Zúñiga Pimentel" FontSize="16"/>
+                            <TextBlock Text="Daniel Uriel Alejandre Alvarado" FontSize="16"/>
                             <TextBlock Text="Planta" FontSize="16" Grid.Column="1"/>
                             <TextBlock Text="Constancia de experiencia Docente" FontSize="16" Grid.Column="2"/>
                         </Grid>
@@ -69,7 +69,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Víctor Rafael Zúñiga Pimentel" FontSize="16"/>
+                            <TextBlock Text="Jorge Alberto Alejandre Rosas" FontSize="16"/>
                             <TextBlock Text="Suplente" FontSize="16" Grid.Column="1"/>
                             <TextBlock Text="Constancia de experiencia Docente" FontSize="16" Grid.Column="2"/>
                         </Grid>
@@ -82,7 +82,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Víctor Rafael Zúñiga Pimentel" FontSize="16"/>
+                            <TextBlock Text="Alejandra Alvarado Mavil" FontSize="16"/>
                             <TextBlock Text="Interino por plaza" FontSize="16" Grid.Column="1"/>
                             <TextBlock Text="Constancia de generación de producto académico" FontSize="16" Grid.Column="2"/>
                         </Grid>
