@@ -94,8 +94,8 @@
         <!-- Botones de acción -->
         <Viewbox VerticalAlignment="Bottom" Height="60" HorizontalAlignment="Right" Margin="50">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,0,0">
-                <Button Content="Aceptar y generar constancia" Width="350" Height="50" FontSize="18" Margin="0,0,10,0" Style="{StaticResource MaterialDesignRaisedButton}"/>
-                <Button Content="Cancelar" Width="150" Height="50" FontSize="18" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                <Button Content="Aceptar y generar constancia" Width="350" Height="50" FontSize="18" Margin="0,0,10,0" Style="{StaticResource MaterialDesignRaisedButton}" Click="ClickAceptar"/>
+                <Button Content="Cancelar" Width="150" Height="50" FontSize="18" Style="{StaticResource MaterialDesignRaisedButton}" Click="ClickCancelar"/>
             </StackPanel>
         </Viewbox>
     </Grid>

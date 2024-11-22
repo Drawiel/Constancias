@@ -20,5 +20,15 @@ namespace Constancias {
         public GenerarConstancia() {
             InitializeComponent();
         }
+
+        private void ClickCancelar(object sender, RoutedEventArgs e) {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void ClickAceptar(object sender, RoutedEventArgs e) {
+            MessageBox.Show("Se ha aceptado la constancia");
+        }
     }
 }
