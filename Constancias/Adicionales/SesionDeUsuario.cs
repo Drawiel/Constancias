@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Constancias.Adicionales {
     public class SesionDeUsuario {
         private string nombreUsuario;
-        private string correo;
+        private string numeroPersonal;
 
         public string NombreUsuario { get { return nombreUsuario; } set { nombreUsuario = value; } }
-        public string Correo { get { return correo;  } set { correo = value;  } }
+        public string NumeroPersonal { get { return numeroPersonal;  } set { numeroPersonal = value;  } }
     }
 }

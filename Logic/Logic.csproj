@@ -43,6 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Academico.cs" />
+    <Compile Include="Clases\AreaAcademica.cs" />
+    <Compile Include="Clases\Constancia.cs" />
+    <Compile Include="Clases\ExperienciaEducativa.cs" />
+    <Compile Include="Clases\Participacion.cs" />
+    <Compile Include="Clases\ProductoAcademico.cs" />
+    <Compile Include="Clases\ProgramaEducativo.cs" />
+    <Compile Include="Clases\ProyectoDeCampo.cs" />
+    <Compile Include="Clases\TrabajoRecepcional.cs" />
+    <Compile Include="DAO\AcademicoDAO.cs" />
+    <Compile Include="DAO\AreaAcademicaDAO.cs" />
+    <Compile Include="DAO\ConstanciaDAO.cs" />
+    <Compile Include="DAO\ExperienciaEducativaDAO.cs" />
+    <Compile Include="DAO\ParticipacionDAO.cs" />
+    <Compile Include="DAO\ProductoAcademicoDAO.cs" />
+    <Compile Include="DAO\ProgramaEducativoDAO.cs" />
+    <Compile Include="DAO\ProyectoDeCampoDAO.cs" />
+    <Compile Include="DAO\TrabajoRecepcionalDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

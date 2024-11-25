@@ -87,6 +87,9 @@
     <Compile Include="GenerarConstancia.xaml.cs">
       <DependentUpon>GenerarConstancia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InicioAdministrativo.xaml.cs">
+      <DependentUpon>InicioAdministrativo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarProfesor.xaml.cs">
       <DependentUpon>RegistrarProfesor.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GenerarConstancia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InicioAdministrativo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
