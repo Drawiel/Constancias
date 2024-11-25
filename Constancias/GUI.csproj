@@ -69,12 +69,50 @@
     <Compile Include="Adicionales\ManejadorDeSesion.cs" />
     <Compile Include="Adicionales\ValidadorCampos.cs" />
     <Compile Include="Adicionales\SesionDeUsuario.cs" />
+    <Compile Include="ControlUsuarios\CertificacionProgramasControl.xaml.cs">
+      <DependentUpon>CertificacionProgramasControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuarios\GeneracionProductoControl.xaml.cs">
+      <DependentUpon>GeneracionProductoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuarios\ProgramasEducativosControl.xaml.cs">
+      <DependentUpon>ProgramasEducativosControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuarios\ProyectoCampoControl.xaml.cs">
+      <DependentUpon>ProyectoCampoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuarios\TrabajoRecepcionalControl.xaml.cs">
+      <DependentUpon>TrabajoRecepcionalControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerarConstancia.xaml.cs">
       <DependentUpon>GenerarConstancia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProfesor.xaml.cs">
+      <DependentUpon>RegistrarProfesor.xaml</DependentUpon>
     </Compile>
     <Compile Include="SolicitarConstancia.xaml.cs">
       <DependentUpon>SolicitarConstancia.xaml</DependentUpon>
     </Compile>
+    <Page Include="ControlUsuarios\CertificacionProgramasControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlUsuarios\GeneracionProductoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlUsuarios\ProgramasEducativosControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlUsuarios\ProyectoCampoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlUsuarios\TrabajoRecepcionalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GenerarConstancia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +129,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RegistrarProfesor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SolicitarConstancia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
