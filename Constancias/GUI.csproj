@@ -66,13 +66,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adicionales\ManejadorDeSesion.cs" />
+    <Compile Include="Adicionales\ValidadorCampos.cs" />
+    <Compile Include="Adicionales\SesionDeUsuario.cs" />
     <Compile Include="GenerarConstancia.xaml.cs">
       <DependentUpon>GenerarConstancia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InicioAdministrativo.xaml.cs">
+      <DependentUpon>InicioAdministrativo.xaml</DependentUpon>
     </Compile>
     <Compile Include="SolicitarConstancia.xaml.cs">
       <DependentUpon>SolicitarConstancia.xaml</DependentUpon>
     </Compile>
     <Page Include="GenerarConstancia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InicioAdministrativo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
