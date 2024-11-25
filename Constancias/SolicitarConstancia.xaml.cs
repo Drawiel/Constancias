@@ -35,5 +35,41 @@ namespace Constancias {
         private void ClickSolicitar(object sender, RoutedEventArgs e) {
             MessageBox.Show("Constancia Solicitada");
         }
+
+        private void SetComboBoxOpciones(object sender, SelectionChangedEventArgs e) {
+            switch (comboBoxConstancias.SelectedIndex) {
+                case 0:
+                    comboBoxOpcionesParticipacion.Items.Clear();
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para producto académico");
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 2 para producto académico");
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 3 para producto académico");
+                    break;
+                case 1:
+                    comboBoxOpcionesParticipacion.Items.Clear();
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para actualización programa de estudio");
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 2 para actualización programa de estudio");
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 3 para actualización programa de estudio");
+
+                    break;
+                case 2:
+                    comboBoxOpcionesParticipacion.Items.Clear();
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para certificación programa de estudio");
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 2 para certificación programa de estudio");
+
+                    break;
+                case 3:
+                    comboBoxOpcionesParticipacion.Items.Clear();
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para participación trabajos recepcionales");
+
+                    break;
+
+                case 4:
+                    comboBoxOpcionesParticipacion.Items.Clear();
+                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para participación proyecto de campo");
+
+                    break;
+            }
+            
+        }
     }
 }
