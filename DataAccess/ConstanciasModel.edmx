@@ -585,8 +585,7 @@
           <Property Name="nombre" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="participacions" Relationship="Self.FK_participacion_periodo" FromRole="periodo" ToRole="participacion" />
           <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_periodo" FromRole="periodo" ToRole="proyectocampo" />
-          <NavigationProperty Name="trabajorecepcional" Relationship="gestionconstanciasModel.periodotrabajorecepcional" FromRole="periodo" ToRole="trabajorecepcional" />
-          <NavigationProperty Name="productoacademico" Relationship="gestionconstanciasModel.periodoproductoacademico" FromRole="periodo" ToRole="productoacademico" />
+          <NavigationProperty Name="productoacademicoes" Relationship="gestionconstanciasModel.FK_periodo_productoAcademico" FromRole="periodo" ToRole="productoacademico" />
         </EntityType>
         <EntityType Name="productoacademico">
           <Key>
@@ -601,7 +600,8 @@
           <NavigationProperty Name="academico" Relationship="Self.FK_producto_academico" FromRole="productoacademico" ToRole="academico" />
           <NavigationProperty Name="tipoproducto" Relationship="Self.FK_producto_tipoproducto" FromRole="productoacademico" ToRole="tipoproducto" />
           <NavigationProperty Name="tipopublicacion" Relationship="Self.FK_producto_tipopublicacion" FromRole="productoacademico" ToRole="tipopublicacion" />
-          <NavigationProperty Name="periodo" Relationship="gestionconstanciasModel.periodoproductoacademico" FromRole="productoacademico" ToRole="periodo" />
+          <NavigationProperty Name="periodo" Relationship="gestionconstanciasModel.FK_periodo_productoAcademico" FromRole="productoacademico" ToRole="periodo" />
+          <Property Name="idPeriodo" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="programaeducativo">
           <Key>
@@ -636,6 +636,7 @@
           <Property Name="idRolAcademico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_rol" FromRole="rolacademico" ToRole="proyectocampo" />
+          <NavigationProperty Name="trabajorecepcionals" Relationship="gestionconstanciasModel.FK_rolacademico_trabajorecepcional" FromRole="rolacademico" ToRole="trabajorecepcional" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -707,7 +708,9 @@
           <Property Name="idTipoTrabajo" Type="Int32" />
           <NavigationProperty Name="academico" Relationship="Self.FK_trabajorecepcional_academico" FromRole="trabajorecepcional" ToRole="academico" />
           <NavigationProperty Name="tipotrabajo" Relationship="Self.FK_trabajorecepcional_tipo" FromRole="trabajorecepcional" ToRole="tipotrabajo" />
-          <NavigationProperty Name="periodo" Relationship="gestionconstanciasModel.periodotrabajorecepcional" FromRole="trabajorecepcional" ToRole="periodo" />
+          <NavigationProperty Name="rolacademico" Relationship="gestionconstanciasModel.FK_rolacademico_trabajorecepcional" FromRole="trabajorecepcional" ToRole="rolacademico" />
+          <Property Name="idRolAcademico" Type="Int32" Nullable="true" />
+          <Property Name="fechaPublicacion" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK_academico_area">
           <End Role="areaacademica" Type="Self.areaacademica" Multiplicity="0..1">
@@ -1050,22 +1053,38 @@
             <End Role="tipotrabajo" EntitySet="tipotrabajoes" />
             <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
           </AssociationSet>
-          <AssociationSet Name="periodotrabajorecepcional" Association="gestionconstanciasModel.periodotrabajorecepcional">
-            <End Role="periodo" EntitySet="periodoes" />
-            <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
-          </AssociationSet>
-          <AssociationSet Name="periodoproductoacademico" Association="gestionconstanciasModel.periodoproductoacademico">
+          <AssociationSet Name="FK_periodo_productoAcademico" Association="gestionconstanciasModel.FK_periodo_productoAcademico">
             <End Role="periodo" EntitySet="periodoes" />
             <End Role="productoacademico" EntitySet="productoacademicoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_rolacademico_trabajorecepcional" Association="gestionconstanciasModel.FK_rolacademico_trabajorecepcional">
+            <End Role="rolacademico" EntitySet="rolacademicoes" />
+            <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+          </AssociationSet>
         </EntityContainer>
-        <Association Name="periodotrabajorecepcional">
+        <Association Name="FK_periodo_productoAcademico">
           <End Type="gestionconstanciasModel.periodo" Role="periodo" Multiplicity="0..1" />
-          <End Type="gestionconstanciasModel.trabajorecepcional" Role="trabajorecepcional" Multiplicity="0..1" />
+          <End Type="gestionconstanciasModel.productoacademico" Role="productoacademico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="productoacademico">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="periodoproductoacademico">
-          <End Type="gestionconstanciasModel.periodo" Role="periodo" Multiplicity="0..1" />
-          <End Type="gestionconstanciasModel.productoacademico" Role="productoacademico" Multiplicity="0..1" />
+        <Association Name="FK_rolacademico_trabajorecepcional">
+          <End Type="gestionconstanciasModel.rolacademico" Role="rolacademico" Multiplicity="0..1" />
+          <End Type="gestionconstanciasModel.trabajorecepcional" Role="trabajorecepcional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolacademico">
+              <PropertyRef Name="idRolAcademico" />
+            </Principal>
+            <Dependent Role="trabajorecepcional">
+              <PropertyRef Name="idRolAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>

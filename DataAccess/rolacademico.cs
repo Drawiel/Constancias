@@ -18,6 +18,7 @@ namespace DataAccess
         public rolacademico()
         {
             this.proyectocampoes = new HashSet<proyectocampo>();
+            this.trabajorecepcionals = new HashSet<trabajorecepcional>();
         }
     
         public int idRolAcademico { get; set; }
@@ -25,5 +26,7 @@ namespace DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proyectocampo> proyectocampoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<trabajorecepcional> trabajorecepcionals { get; set; }
     }
 }

@@ -20,8 +20,11 @@ namespace DataAccess
         public string infraestructuraOpcional { get; set; }
         public Nullable<int> idAcademico { get; set; }
         public Nullable<int> idTipoTrabajo { get; set; }
+        public Nullable<int> idRolAcademico { get; set; }
+        public string fechaPublicacion { get; set; }
     
         public virtual academico academico { get; set; }
         public virtual tipotrabajo tipotrabajo { get; set; }
+        public virtual rolacademico rolacademico { get; set; }
     }
 }

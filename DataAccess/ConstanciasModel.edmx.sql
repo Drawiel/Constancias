@@ -289,8 +289,10 @@ CREATE TABLE [dbo].[trabajorecepcionals] (
     [nombreEstudiante] varchar(50)  NULL,
     [titulo] varchar(25)  NULL,
     [infraestructuraOpcional] varchar(30)  NULL,
+    [fechaPublicacion] varchar(50) NULL,
     [idAcademico] int  NULL,
-    [idTipoTrabajo] int  NULL
+    [idTipoTrabajo] int  NULL,
+    [idRolAcademico] int NULL
 );
 GO
 
@@ -551,6 +553,15 @@ ADD CONSTRAINT [FK_experienciaeducativa_programaeducativo]
     FOREIGN KEY ([idProgramaEducativo])
     REFERENCES [dbo].[programaeducativoes]
         ([idProgramaEducativo])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+--Creating foreign key on [idRolAcademico] in table 'trabajoRecepcional'
+ALTER TABLE [dbo].[trabajorecepcionals]
+ADD CONSTRAINT [FK_rolAcademico_trabajorecepcional]
+    FOREIGN KEY ([idRolAcademico])
+    REFERENCES [dbo].[rolAcademicoes]
+        ([idRolAcademico])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 

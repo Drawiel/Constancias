@@ -12,10 +12,10 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class academico
+    public partial class Academico
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public academico()
+        public Academico()
         {
             this.constancias = new HashSet<constancia>();
             this.participacions = new HashSet<participacion>();

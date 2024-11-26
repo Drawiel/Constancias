@@ -20,9 +20,11 @@ namespace DataAccess
         public Nullable<int> idTipoProducto { get; set; }
         public Nullable<int> idTipoPublicacion { get; set; }
         public Nullable<int> idAcademico { get; set; }
+        public Nullable<int> idPeriodo { get; set; }
     
         public virtual academico academico { get; set; }
         public virtual tipoproducto tipoproducto { get; set; }
         public virtual tipopublicacion tipopublicacion { get; set; }
+        public virtual periodo periodo { get; set; }
     }
 }

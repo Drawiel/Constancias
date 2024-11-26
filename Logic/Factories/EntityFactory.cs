@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logic.Clases {
-    public class Academico {
-
+namespace Logic.Factories
+{
+    internal class EntityFactory
+    {
     }
 }

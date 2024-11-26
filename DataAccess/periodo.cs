@@ -19,6 +19,7 @@ namespace DataAccess
         {
             this.participacions = new HashSet<participacion>();
             this.proyectocampoes = new HashSet<proyectocampo>();
+            this.productoacademicoes = new HashSet<productoacademico>();
         }
     
         public int idPeriodo { get; set; }
@@ -28,5 +29,7 @@ namespace DataAccess
         public virtual ICollection<participacion> participacions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proyectocampo> proyectocampoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<productoacademico> productoacademicoes { get; set; }
     }
 }
