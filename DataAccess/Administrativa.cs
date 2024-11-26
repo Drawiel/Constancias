@@ -12,15 +12,10 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class TrabajoRecepcional
+    public partial class Administrativa
     {
-        public int IdTrabajoRecepcional { get; set; }
-        public string Titulo { get; set; }
-        public string NombreEstudiante { get; set; }
-        public string FechaPresentacion { get; set; }
-        public string TipoTrabajo { get; set; }
-        public int IdAcademico { get; set; }
-    
-        public virtual Academico Academico { get; set; }
+        public int IdAdministrativo { get; set; }
+        public string Nombre { get; set; }
+        public string ProgramaEducativo { get; set; }
     }
 }
