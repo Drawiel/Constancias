@@ -1,0 +1,199 @@
+﻿<Window x:Class="Constancias.RegistrarProfesor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Constancias.ControlUsuarios"
+         Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            
+                <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,10"/>
+
+                <StackPanel Margin="50,100,50,0">
+                    <TextBlock Text="Nombre:" Margin="0,10,0,0"/>
+                    <TextBox Text="Víctor Rafael Zúñiga Pimentel"/>
+
+                    <TextBlock Text="Tipo de contratación:" Margin="0,10,0,0"/>
+                    <ComboBox SelectedIndex="0">
+                        <ComboBoxItem Content="Planta"/>
+                        <ComboBoxItem Content="Temporal"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Número de personal:" Margin="0,10,0,0"/>
+                    <TextBox Text="227698"/>
+
+                    <TextBlock Text="Área:" Margin="0,10,0,0"/>
+                    <ComboBox SelectedIndex="0">
+                        <ComboBoxItem Content="Económico - Administrativa"/>
+                        <ComboBoxItem Content="Técnica"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Fecha de contratación:" Margin="0,10,0,0"/>
+                    <DatePicker SelectedDate="2018-10-21"/>
+
+                    <TextBlock Text="Asignaturas impartidas:" Margin="0,10,0,0"/>
+                    <TextBox Text="Introducción a la programación, Programación, Desarrollo web, Matemáticas discretas"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <Label Content="Programas educativos actualizados" Margin="0,0,5,0"/>
+                        <Button Content="Agregar"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Certificación de programas de estudios" Margin="0,0,5,0"/>
+                        <Button Content="Agregar"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Trabajos recepcionales" Margin="0,0,5,0"/>
+                        <Button Content="Agregar"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Proyecto de campo, gestión académicos y/o artística" Margin="0,0,5,0"/>
+                        <Button Content="Agregar"/>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Content="Generación de Producto académico"/>
+                    <Button Content="Agregar"/>
+
+                </StackPanel>   
+
+                <Button Content="Registrar" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+                </StackPanel>
+
+            <StackPanel x:Name="stackPannelProgramasEducativosActualizados" Margin="10" Grid.Row="0" Grid.Column="1"  Visibility="Hidden">
+                <Label Content="Programas educativos actualizados" FontWeight="Bold" FontSize="30"/>
+                <!-- Nombre del programa -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Nombre del programa:"/>
+                    <TextBox Text="Ingeniería de Software"/>
+                </StackPanel>
+
+                <!-- Rol del académico -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Rol del académico:"/>
+                    <TextBox Text="Participante"/>
+                </StackPanel>
+
+                <!-- Periodo de actualización -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Periodo de actualización:"/>
+                    <StackPanel Orientation="Horizontal">
+                        <DatePicker x:Name="actualzacionYearPicker" Loaded="DatePicker_Loaded"/>
+                        <DatePicker x:Name="actualizaciónAnotherYear" Loaded="DatePicker_Loaded"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Botón Aceptar -->
+                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel x:Name="stackPanelCertificacion" Margin="20" Grid.Column="1" Grid.Row="0" Visibility="Hidden">
+                <Label Content="Certificación de programas de estudios" FontWeight="Bold" FontSize="30"/>
+                <!-- Nombre del programa -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Nombre del programa:"/>
+                    <TextBox Text="Ingeniería de Software"/>
+                </StackPanel>
+
+                <!-- Rol del académico -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Rol del académico:"/>
+                    <TextBox Text="Participante"/>
+                </StackPanel>
+
+                <!-- Periodo de certificación -->
+                <StackPanel Margin="5">
+                    <TextBlock Text="Período de certificación:"/>
+                    <StackPanel Orientation="Horizontal">
+                        <DatePicker x:Name="certificacionYearPicker" Loaded="DatePicker_Loaded"/>
+                        <DatePicker x:Name="certificacionAnotherYear" Loaded="DatePicker_Loaded"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Botón Aceptar -->
+                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
+                <Label Content="Generación de producto académico" FontWeight="Bold" FontSize="30"/>
+                <TextBlock Text="Título del producto:" Margin="5"/>
+                <TextBox Text="El Impacto de la Inteligencia Artificial en la Revolución Tecnológica del Siglo XXI" Margin="5"/>
+
+                <TextBlock Text="Tipo de producto:" Margin="5"/>
+                <ComboBox SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Artículo"/>
+                    <ComboBoxItem Content="Libro"/>
+                    <ComboBoxItem Content="Tesis"/>
+                </ComboBox>
+
+                <TextBlock Text="Fecha de publicación:" Margin="5"/>
+                <DatePicker SelectedDate="2023-09-25" Margin="5"/>
+
+                <TextBlock Text="Seleccione el tipo de publicación:" Margin="5"/>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <RadioButton GroupName="PublicationType" Content="Revista" IsChecked="True" Margin="0,0,10,0"/>
+                    <RadioButton GroupName="PublicationType" Content="Editorial"/>
+                </StackPanel>
+
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel x:Name="stackPanelTrabajoRecepcional" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
+                <Label Content="Trabajo recepcional" FontWeight="Bold" FontSize="30"/>
+                <TextBlock Text="Tipo de trabajo:" Margin="5"/>
+                <ComboBox SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Tesis"/>
+                    <ComboBoxItem Content="Tesina"/>
+                    <ComboBoxItem Content="Informe de proyecto"/>
+                </ComboBox>
+
+                <TextBlock Text="Título:" Margin="5"/>
+                <TextBox Text="Desarrollo e Implementación de Soluciones Basadas en Inteligencia Artificial para la Optimización de Procesos en Entornos Tecnológicos" Margin="5"/>
+
+                <TextBlock Text="Rol del académico:" Margin="5"/>
+                <TextBox Text="Asesor" Margin="5"/>
+
+                <TextBlock Text="Nombre del estudiante:" Margin="5"/>
+                <TextBox Text="Mariana García Méndez" Margin="5"/>
+
+                <TextBlock Text="Fecha de presentación:" Margin="5"/>
+                <DatePicker SelectedDate="2023-07-29" Margin="5"/>
+
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel x:Name="stackPanelProyectoCampo" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
+                <Label Content="Proyecto de campo y/o gestión académica o artística" FontWeight="Bold" FontSize="30"/>
+                <TextBlock Text="Nombre del proyecto:" Margin="5"/>
+                <TextBox Text="Impacto de la Innovación Tecnológica en la Gestión Académica y Artística: Un Proyecto de Campo para la Modernización de Procesos Educativos y Creativos" Margin="5"/>
+
+                <TextBlock Text="Rol:" Margin="5"/>
+                <ComboBox SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Coordinador"/>
+                    <ComboBoxItem Content="Asesor"/>
+                    <ComboBoxItem Content="Participante"/>
+                </ComboBox>
+
+                <TextBlock Text="Período de realización:" Margin="5"/>
+                <ComboBox SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="2022"/>
+                    <ComboBoxItem Content="2023"/>
+                    <ComboBoxItem Content="2024"/>
+                </ComboBox>
+
+                <TextBlock Text="Lugar de realización:" Margin="5"/>
+                <TextBox Text="Orizaba" Margin="5"/>
+
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Window>

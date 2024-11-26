@@ -12,17 +12,15 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class productoacademico
+    public partial class ProductoAcademico
     {
-        public int idProducto { get; set; }
-        public string fechaPublicacion { get; set; }
-        public string titulo { get; set; }
-        public Nullable<int> idTipoProducto { get; set; }
-        public Nullable<int> idTipoPublicacion { get; set; }
-        public Nullable<int> idAcademico { get; set; }
+        public int IdProducto { get; set; }
+        public string Titulo { get; set; }
+        public string Tipo { get; set; }
+        public string TipoPublicacion { get; set; }
+        public string FechaPublicacion { get; set; }
+        public Nullable<int> IdAcademico { get; set; }
     
-        public virtual academico academico { get; set; }
-        public virtual tipoproducto tipoproducto { get; set; }
-        public virtual tipopublicacion tipopublicacion { get; set; }
+        public virtual Academico Academico { get; set; }
     }
 }

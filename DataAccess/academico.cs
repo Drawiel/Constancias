@@ -12,36 +12,38 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class academico
+    public partial class Academico
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public academico()
+        public Academico()
         {
-            this.constancias = new HashSet<constancia>();
-            this.participacions = new HashSet<participacion>();
-            this.productoacademicoes = new HashSet<productoacademico>();
-            this.proyectocampoes = new HashSet<proyectocampo>();
-            this.trabajorecepcionals = new HashSet<trabajorecepcional>();
+            this.Constancia = new HashSet<Constancia>();
+            this.Participacion = new HashSet<Participacion>();
+            this.ProductoAcademico = new HashSet<ProductoAcademico>();
+            this.ProyectoCampo = new HashSet<ProyectoCampo>();
+            this.TrabajoRecepcional = new HashSet<TrabajoRecepcional>();
+            this.ExperienciaEducativa = new HashSet<ExperienciaEducativa>();
         }
     
-        public int idAcademico { get; set; }
-        public string nombre { get; set; }
-        public string numeroPersonal { get; set; }
-        public string fechaContratacion { get; set; }
-        public Nullable<int> idAreaAcademica { get; set; }
-        public Nullable<int> idTipoPersonal { get; set; }
+        public int IdAcademico { get; set; }
+        public string Nombre { get; set; }
+        public string NumeroPersonal { get; set; }
+        public string FechaContratacion { get; set; }
+        public string TipoContratacion { get; set; }
+        public int IdPrograma { get; set; }
     
-        public virtual areaacademica areaacademica { get; set; }
-        public virtual tipopersonal tipopersonal { get; set; }
+        public virtual ProgramaEducativo ProgramaEducativo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<constancia> constancias { get; set; }
+        public virtual ICollection<Constancia> Constancia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<participacion> participacions { get; set; }
+        public virtual ICollection<Participacion> Participacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productoacademico> productoacademicoes { get; set; }
+        public virtual ICollection<ProductoAcademico> ProductoAcademico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<proyectocampo> proyectocampoes { get; set; }
+        public virtual ICollection<ProyectoCampo> ProyectoCampo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<trabajorecepcional> trabajorecepcionals { get; set; }
+        public virtual ICollection<TrabajoRecepcional> TrabajoRecepcional { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExperienciaEducativa> ExperienciaEducativa { get; set; }
     }
 }

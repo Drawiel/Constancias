@@ -12,15 +12,14 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class constancia
+    public partial class Constancia
     {
-        public int idConstancia { get; set; }
-        public string fechaExpedicion { get; set; }
-        public Nullable<int> idTipoConstancia { get; set; }
-        public Nullable<int> idAcademico { get; set; }
-        public string firmaElectronica { get; set; }
+        public int IdConstancia { get; set; }
+        public string Tipo { get; set; }
+        public string FechaExpedicion { get; set; }
+        public string Solicitante { get; set; }
+        public Nullable<int> IdAcademico { get; set; }
     
-        public virtual academico academico { get; set; }
-        public virtual tipoconstancia tipoconstancia { get; set; }
+        public virtual Academico Academico { get; set; }
     }
 }

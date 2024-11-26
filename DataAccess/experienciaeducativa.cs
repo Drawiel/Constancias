@@ -12,16 +12,24 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class experienciaeducativa
+    public partial class ExperienciaEducativa
     {
-        public int idExperienciaEducativa { get; set; }
-        public string nombre { get; set; }
-        public string sec { get; set; }
-        public Nullable<int> creditos { get; set; }
-        public Nullable<int> horasPracticas { get; set; }
-        public Nullable<int> horasTeoricas { get; set; }
-        public Nullable<int> idProgramaEducativo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ExperienciaEducativa()
+        {
+            this.Academico = new HashSet<Academico>();
+            this.ProgramaEducativo2 = new HashSet<ProgramaEducativo>();
+        }
     
-        public virtual programaeducativo programaeducativo { get; set; }
+        public int IdExperienciaEducativa { get; set; }
+        public string Nombre { get; set; }
+        public string ProgramaEducativo { get; set; }
+        public Nullable<int> IdPrograma { get; set; }
+    
+        public virtual ProgramaEducativo ProgramaEducativo1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Academico> Academico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProgramaEducativo> ProgramaEducativo2 { get; set; }
     }
 }

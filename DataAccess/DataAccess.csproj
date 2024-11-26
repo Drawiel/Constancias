@@ -42,11 +42,19 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.0.3\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,86 +63,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="academico.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="Academico.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="areaacademica.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="Administrativa.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="constancia.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="Constancia.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConstanciasModel.Context.cs">
+    <Compile Include="Constancias.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConstanciasModel.Context.tt</DependentUpon>
+      <DependentUpon>Constancias.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConstanciasModel.cs">
+    <Compile Include="Constancias.cs" />
+    <Compile Include="Constancias.Designer.cs">
+      <DependentUpon>Constancias.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConstanciasModel.Designer.cs">
+    <Compile Include="Constancias1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConstanciasModel.edmx</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="experienciaeducativa.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="ExperienciaEducativa.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="participacion.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="Participacion.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="periodo.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="productoacademico.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="ProductoAcademico.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="programaeducativo.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="ProgramaEducativo.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="proyectocampo.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="ProyectoCampo.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="rolacademico.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipoconstancia.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipoparticipacion.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipopersonal.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipoproducto.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipopublicacion.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tipotrabajo.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="trabajorecepcional.cs">
-      <DependentUpon>ConstanciasModel.tt</DependentUpon>
+    <Compile Include="TrabajoRecepcional.cs">
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ConstanciasModel.edmx">
+    <EntityDeploy Include="Constancias.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConstanciasModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Constancias.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ConstanciasModel.edmx.diagram">
-      <DependentUpon>ConstanciasModel.edmx</DependentUpon>
+    <None Include="Constancias.edmx.diagram">
+      <DependentUpon>Constancias.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -142,15 +124,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConstanciasModel.Context.tt">
+    <Content Include="Constancias.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConstanciasModel.edmx</DependentUpon>
-      <LastGenOutput>ConstanciasModel.Context.cs</LastGenOutput>
+      <DependentUpon>Constancias.edmx</DependentUpon>
+      <LastGenOutput>Constancias.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ConstanciasModel.tt">
+    <Content Include="Constancias.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConstanciasModel.edmx</DependentUpon>
-      <LastGenOutput>ConstanciasModel.cs</LastGenOutput>
+      <DependentUpon>Constancias.edmx</DependentUpon>
+      <LastGenOutput>Constancias1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

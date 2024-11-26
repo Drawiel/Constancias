@@ -12,24 +12,29 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class programaeducativo
+    public partial class ProgramaEducativo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public programaeducativo()
+        public ProgramaEducativo()
         {
-            this.experienciaeducativas = new HashSet<experienciaeducativa>();
-            this.participacions = new HashSet<participacion>();
+            this.Academico = new HashSet<Academico>();
+            this.ExperienciaEducativa = new HashSet<ExperienciaEducativa>();
+            this.Participacion = new HashSet<Participacion>();
+            this.ExperienciaEducativa1 = new HashSet<ExperienciaEducativa>();
         }
     
-        public int idProgramaEducativo { get; set; }
-        public string nombre { get; set; }
-        public string fecha { get; set; }
-        public Nullable<int> idAreaAcademica { get; set; }
+        public int IdPrograma { get; set; }
+        public string Nombre { get; set; }
+        public string Año { get; set; }
+        public string AreaAcademica { get; set; }
     
-        public virtual areaacademica areaacademica { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<experienciaeducativa> experienciaeducativas { get; set; }
+        public virtual ICollection<Academico> Academico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<participacion> participacions { get; set; }
+        public virtual ICollection<ExperienciaEducativa> ExperienciaEducativa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Participacion> Participacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExperienciaEducativa> ExperienciaEducativa1 { get; set; }
     }
 }

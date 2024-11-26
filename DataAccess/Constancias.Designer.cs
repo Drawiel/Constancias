@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\ConstanciasAdmin\DataAccess\ConstanciasModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\daur0\source\repos\Constancias\DataAccess\Constancias.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

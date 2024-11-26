@@ -12,17 +12,15 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class proyectocampo
+    public partial class ProyectoCampo
     {
-        public int idProyectoCampo { get; set; }
-        public string nombre { get; set; }
-        public string lugarRealizacion { get; set; }
-        public Nullable<int> idPeriodo { get; set; }
-        public Nullable<int> idRolAcademico { get; set; }
-        public Nullable<int> idAcademico { get; set; }
+        public int IdProyectoCampo { get; set; }
+        public string NombreProyecto { get; set; }
+        public string LugarRealizacion { get; set; }
+        public string Periodo { get; set; }
+        public string RolAcademico { get; set; }
+        public Nullable<int> IdAcademico { get; set; }
     
-        public virtual academico academico { get; set; }
-        public virtual periodo periodo { get; set; }
-        public virtual rolacademico rolacademico { get; set; }
+        public virtual Academico Academico { get; set; }
     }
 }
