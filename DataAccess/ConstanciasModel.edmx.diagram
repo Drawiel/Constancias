@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="83e3152cfc044405b4d9d0eb17f3ffdb" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="83e3152cfc044405b4d9d0eb17f3ffdb" Name="Diagram1" ZoomLevel="60">
         <EntityTypeShape EntityType="gestionconstanciasModel.academico" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="gestionconstanciasModel.areaacademica" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gestionconstanciasModel.constancia" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
@@ -43,6 +43,7 @@
         <AssociationConnector Association="gestionconstanciasModel.FK_trabajorecepcional_tipo" ManuallyRouted="false" />
         <AssociationConnector Association="gestionconstanciasModel.FK_periodo_productoAcademico" />
         <AssociationConnector Association="gestionconstanciasModel.FK_rolacademico_trabajorecepcional" />
+        <AssociationConnector Association="gestionconstanciasModel.FK_experienciaeducativa_academico" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

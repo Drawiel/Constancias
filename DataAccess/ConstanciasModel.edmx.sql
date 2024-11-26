@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/25/2024 08:00:07
+-- Date Created: 11/26/2024 09:07:29
 -- Generated from EDMX file: C:\Users\marla\Constancias\DataAccess\ConstanciasModel.edmx
 -- --------------------------------------------------
 
@@ -18,117 +18,132 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_academico_area]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[academico] DROP CONSTRAINT [FK_academico_area];
+    ALTER TABLE [dbo].[academicoes] DROP CONSTRAINT [FK_academico_area];
 GO
 IF OBJECT_ID(N'[dbo].[FK_academico_tipoPersonal]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[academico] DROP CONSTRAINT [FK_academico_tipoPersonal];
+    ALTER TABLE [dbo].[academicoes] DROP CONSTRAINT [FK_academico_tipoPersonal];
 GO
 IF OBJECT_ID(N'[dbo].[FK_constancia_academico]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[constancia] DROP CONSTRAINT [FK_constancia_academico];
-GO
-IF OBJECT_ID(N'[dbo].[FK_constancia_tipo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[constancia] DROP CONSTRAINT [FK_constancia_tipo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_experienciaeducativa_programaeducativo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[experienciaeducativa] DROP CONSTRAINT [FK_experienciaeducativa_programaeducativo];
+    ALTER TABLE [dbo].[constancias] DROP CONSTRAINT [FK_constancia_academico];
 GO
 IF OBJECT_ID(N'[dbo].[FK_participacion_academico]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[participacion] DROP CONSTRAINT [FK_participacion_academico];
-GO
-IF OBJECT_ID(N'[dbo].[FK_participacion_periodo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[participacion] DROP CONSTRAINT [FK_participacion_periodo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_participacion_programa]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[participacion] DROP CONSTRAINT [FK_participacion_programa];
-GO
-IF OBJECT_ID(N'[dbo].[FK_participacion_tipo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[participacion] DROP CONSTRAINT [FK_participacion_tipo];
+    ALTER TABLE [dbo].[participacions] DROP CONSTRAINT [FK_participacion_academico];
 GO
 IF OBJECT_ID(N'[dbo].[FK_producto_academico]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[productoacademico] DROP CONSTRAINT [FK_producto_academico];
-GO
-IF OBJECT_ID(N'[dbo].[FK_producto_tipoproducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[productoacademico] DROP CONSTRAINT [FK_producto_tipoproducto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_producto_tipopublicacion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[productoacademico] DROP CONSTRAINT [FK_producto_tipopublicacion];
-GO
-IF OBJECT_ID(N'[dbo].[FK_programaeducativo_area]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[programaeducativo] DROP CONSTRAINT [FK_programaeducativo_area];
+    ALTER TABLE [dbo].[productoacademicoes] DROP CONSTRAINT [FK_producto_academico];
 GO
 IF OBJECT_ID(N'[dbo].[FK_proyectoc_academico]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[proyectocampo] DROP CONSTRAINT [FK_proyectoc_academico];
-GO
-IF OBJECT_ID(N'[dbo].[FK_proyectoc_periodo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[proyectocampo] DROP CONSTRAINT [FK_proyectoc_periodo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_proyectoc_rol]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[proyectocampo] DROP CONSTRAINT [FK_proyectoc_rol];
+    ALTER TABLE [dbo].[proyectocampoes] DROP CONSTRAINT [FK_proyectoc_academico];
 GO
 IF OBJECT_ID(N'[dbo].[FK_trabajorecepcional_academico]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[trabajorecepcional] DROP CONSTRAINT [FK_trabajorecepcional_academico];
+    ALTER TABLE [dbo].[trabajorecepcionals] DROP CONSTRAINT [FK_trabajorecepcional_academico];
+GO
+IF OBJECT_ID(N'[dbo].[FK_programaeducativo_area]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[programaeducativoes] DROP CONSTRAINT [FK_programaeducativo_area];
+GO
+IF OBJECT_ID(N'[dbo].[FK_constancia_tipo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[constancias] DROP CONSTRAINT [FK_constancia_tipo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_experienciaeducativa_programaeducativo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[experienciaeducativas] DROP CONSTRAINT [FK_experienciaeducativa_programaeducativo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_participacion_periodo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[participacions] DROP CONSTRAINT [FK_participacion_periodo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_participacion_programa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[participacions] DROP CONSTRAINT [FK_participacion_programa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_participacion_tipo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[participacions] DROP CONSTRAINT [FK_participacion_tipo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_proyectoc_periodo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[proyectocampoes] DROP CONSTRAINT [FK_proyectoc_periodo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_producto_tipoproducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[productoacademicoes] DROP CONSTRAINT [FK_producto_tipoproducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_producto_tipopublicacion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[productoacademicoes] DROP CONSTRAINT [FK_producto_tipopublicacion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_proyectoc_rol]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[proyectocampoes] DROP CONSTRAINT [FK_proyectoc_rol];
 GO
 IF OBJECT_ID(N'[dbo].[FK_trabajorecepcional_tipo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[trabajorecepcional] DROP CONSTRAINT [FK_trabajorecepcional_tipo];
+    ALTER TABLE [dbo].[trabajorecepcionals] DROP CONSTRAINT [FK_trabajorecepcional_tipo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_periodo_productoAcademico]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[productoacademicoes] DROP CONSTRAINT [FK_periodo_productoAcademico];
+GO
+IF OBJECT_ID(N'[dbo].[FK_rolacademico_trabajorecepcional]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[trabajorecepcionals] DROP CONSTRAINT [FK_rolacademico_trabajorecepcional];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FK_experienciaeducativa_academico_experienciaeducativa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_experienciaeducativa_academico] DROP CONSTRAINT [FK_FK_experienciaeducativa_academico_experienciaeducativa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FK_experienciaeducativa_academico_academico]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FK_experienciaeducativa_academico] DROP CONSTRAINT [FK_FK_experienciaeducativa_academico_academico];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[academico]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[academico];
+IF OBJECT_ID(N'[dbo].[academicoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[academicoes];
 GO
-IF OBJECT_ID(N'[dbo].[areaacademica]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[areaacademica];
+IF OBJECT_ID(N'[dbo].[areaacademicas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[areaacademicas];
 GO
-IF OBJECT_ID(N'[dbo].[constancia]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[constancia];
+IF OBJECT_ID(N'[dbo].[constancias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[constancias];
 GO
-IF OBJECT_ID(N'[dbo].[experienciaeducativa]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[experienciaeducativa];
+IF OBJECT_ID(N'[dbo].[experienciaeducativas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[experienciaeducativas];
 GO
-IF OBJECT_ID(N'[dbo].[participacion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[participacion];
+IF OBJECT_ID(N'[dbo].[participacions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[participacions];
 GO
-IF OBJECT_ID(N'[dbo].[periodo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[periodo];
+IF OBJECT_ID(N'[dbo].[periodoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[periodoes];
 GO
-IF OBJECT_ID(N'[dbo].[productoacademico]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[productoacademico];
+IF OBJECT_ID(N'[dbo].[productoacademicoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[productoacademicoes];
 GO
-IF OBJECT_ID(N'[dbo].[programaeducativo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[programaeducativo];
+IF OBJECT_ID(N'[dbo].[programaeducativoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[programaeducativoes];
 GO
-IF OBJECT_ID(N'[dbo].[proyectocampo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[proyectocampo];
+IF OBJECT_ID(N'[dbo].[proyectocampoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[proyectocampoes];
 GO
-IF OBJECT_ID(N'[dbo].[rolacademico]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[rolacademico];
+IF OBJECT_ID(N'[dbo].[rolacademicoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[rolacademicoes];
 GO
 IF OBJECT_ID(N'[dbo].[sysdiagrams]', 'U') IS NOT NULL
     DROP TABLE [dbo].[sysdiagrams];
 GO
-IF OBJECT_ID(N'[dbo].[tipoconstancia]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipoconstancia];
+IF OBJECT_ID(N'[dbo].[tipoconstancias]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipoconstancias];
 GO
-IF OBJECT_ID(N'[dbo].[tipoparticipacion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipoparticipacion];
+IF OBJECT_ID(N'[dbo].[tipoparticipacions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipoparticipacions];
 GO
-IF OBJECT_ID(N'[dbo].[tipopersonal]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipopersonal];
+IF OBJECT_ID(N'[dbo].[tipopersonals]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipopersonals];
 GO
-IF OBJECT_ID(N'[dbo].[tipoproducto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipoproducto];
+IF OBJECT_ID(N'[dbo].[tipoproductoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipoproductoes];
 GO
-IF OBJECT_ID(N'[dbo].[tipopublicacion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipopublicacion];
+IF OBJECT_ID(N'[dbo].[tipopublicacions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipopublicacions];
 GO
-IF OBJECT_ID(N'[dbo].[tipotrabajo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tipotrabajo];
+IF OBJECT_ID(N'[dbo].[tipotrabajoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipotrabajoes];
 GO
-IF OBJECT_ID(N'[dbo].[trabajorecepcional]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[trabajorecepcional];
+IF OBJECT_ID(N'[dbo].[trabajorecepcionals]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[trabajorecepcionals];
+GO
+IF OBJECT_ID(N'[dbo].[FK_experienciaeducativa_academico]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FK_experienciaeducativa_academico];
 GO
 
 -- --------------------------------------------------
@@ -200,7 +215,8 @@ CREATE TABLE [dbo].[productoacademicoes] (
     [titulo] varchar(25)  NULL,
     [idTipoProducto] int  NULL,
     [idTipoPublicacion] int  NULL,
-    [idAcademico] int  NULL
+    [idAcademico] int  NULL,
+    [idPeriodo] int  NULL
 );
 GO
 
@@ -289,10 +305,17 @@ CREATE TABLE [dbo].[trabajorecepcionals] (
     [nombreEstudiante] varchar(50)  NULL,
     [titulo] varchar(25)  NULL,
     [infraestructuraOpcional] varchar(30)  NULL,
-    [fechaPublicacion] varchar(50) NULL,
     [idAcademico] int  NULL,
     [idTipoTrabajo] int  NULL,
-    [idRolAcademico] int NULL
+    [idRolAcademico] int  NULL,
+    [fechaPublicacion] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'FK_experienciaeducativa_academico'
+CREATE TABLE [dbo].[FK_experienciaeducativa_academico] (
+    [experienciaeducativas_idExperienciaEducativa] int  NOT NULL,
+    [academicoes_idAcademico] int  NOT NULL
 );
 GO
 
@@ -406,6 +429,12 @@ GO
 ALTER TABLE [dbo].[trabajorecepcionals]
 ADD CONSTRAINT [PK_trabajorecepcionals]
     PRIMARY KEY CLUSTERED ([idTrabajoRecepcional] ASC);
+GO
+
+-- Creating primary key on [experienciaeducativas_idExperienciaEducativa], [academicoes_idAcademico] in table 'FK_experienciaeducativa_academico'
+ALTER TABLE [dbo].[FK_experienciaeducativa_academico]
+ADD CONSTRAINT [PK_FK_experienciaeducativa_academico]
+    PRIMARY KEY CLUSTERED ([experienciaeducativas_idExperienciaEducativa], [academicoes_idAcademico] ASC);
 GO
 
 -- --------------------------------------------------
@@ -556,15 +585,6 @@ ADD CONSTRAINT [FK_experienciaeducativa_programaeducativo]
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
---Creating foreign key on [idRolAcademico] in table 'trabajoRecepcional'
-ALTER TABLE [dbo].[trabajorecepcionals]
-ADD CONSTRAINT [FK_rolAcademico_trabajorecepcional]
-    FOREIGN KEY ([idRolAcademico])
-    REFERENCES [dbo].[rolAcademicoes]
-        ([idRolAcademico])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
-GO
-
 -- Creating non-clustered index for FOREIGN KEY 'FK_experienciaeducativa_programaeducativo'
 CREATE INDEX [IX_FK_experienciaeducativa_programaeducativo]
 ON [dbo].[experienciaeducativas]
@@ -689,6 +709,60 @@ GO
 CREATE INDEX [IX_FK_trabajorecepcional_tipo]
 ON [dbo].[trabajorecepcionals]
     ([idTipoTrabajo]);
+GO
+
+-- Creating foreign key on [idPeriodo] in table 'productoacademicoes'
+ALTER TABLE [dbo].[productoacademicoes]
+ADD CONSTRAINT [FK_periodo_productoAcademico]
+    FOREIGN KEY ([idPeriodo])
+    REFERENCES [dbo].[periodoes]
+        ([idPeriodo])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_periodo_productoAcademico'
+CREATE INDEX [IX_FK_periodo_productoAcademico]
+ON [dbo].[productoacademicoes]
+    ([idPeriodo]);
+GO
+
+-- Creating foreign key on [idRolAcademico] in table 'trabajorecepcionals'
+ALTER TABLE [dbo].[trabajorecepcionals]
+ADD CONSTRAINT [FK_rolacademico_trabajorecepcional]
+    FOREIGN KEY ([idRolAcademico])
+    REFERENCES [dbo].[rolacademicoes]
+        ([idRolAcademico])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_rolacademico_trabajorecepcional'
+CREATE INDEX [IX_FK_rolacademico_trabajorecepcional]
+ON [dbo].[trabajorecepcionals]
+    ([idRolAcademico]);
+GO
+
+-- Creating foreign key on [experienciaeducativas_idExperienciaEducativa] in table 'FK_experienciaeducativa_academico'
+ALTER TABLE [dbo].[FK_experienciaeducativa_academico]
+ADD CONSTRAINT [FK_FK_experienciaeducativa_academico_experienciaeducativa]
+    FOREIGN KEY ([experienciaeducativas_idExperienciaEducativa])
+    REFERENCES [dbo].[experienciaeducativas]
+        ([idExperienciaEducativa])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [academicoes_idAcademico] in table 'FK_experienciaeducativa_academico'
+ALTER TABLE [dbo].[FK_experienciaeducativa_academico]
+ADD CONSTRAINT [FK_FK_experienciaeducativa_academico_academico]
+    FOREIGN KEY ([academicoes_idAcademico])
+    REFERENCES [dbo].[academicoes]
+        ([idAcademico])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FK_experienciaeducativa_academico_academico'
+CREATE INDEX [IX_FK_FK_experienciaeducativa_academico_academico]
+ON [dbo].[FK_experienciaeducativa_academico]
+    ([academicoes_idAcademico]);
 GO
 
 -- --------------------------------------------------

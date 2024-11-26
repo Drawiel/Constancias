@@ -12,14 +12,14 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Academico
+    public partial class academico
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Academico()
+        public academico()
         {
             this.constancias = new HashSet<constancia>();
             this.participacions = new HashSet<participacion>();
-            this.productoacademicoes = new HashSet<productoacademico>();
+            this.productoacademicoes = new HashSet<ProductoAcademico>();
             this.proyectocampoes = new HashSet<proyectocampo>();
             this.trabajorecepcionals = new HashSet<trabajorecepcional>();
         }
@@ -38,7 +38,7 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<participacion> participacions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<productoacademico> productoacademicoes { get; set; }
+        public virtual ICollection<ProductoAcademico> productoacademicoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proyectocampo> proyectocampoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

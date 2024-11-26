@@ -54,15 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Academico.cs" />
-    <Compile Include="Clases\AreaAcademica.cs" />
-    <Compile Include="Clases\Constancia.cs" />
-    <Compile Include="Clases\ExperienciaEducativa.cs" />
-    <Compile Include="Clases\Participacion.cs" />
-    <Compile Include="Clases\ProductoAcademico.cs" />
-    <Compile Include="Clases\ProgramaEducativo.cs" />
-    <Compile Include="Clases\ProyectoDeCampo.cs" />
-    <Compile Include="Clases\TrabajoRecepcional.cs" />
+    <Compile Include="Clases\AcademicoDTO.cs" />
+    <Compile Include="Clases\AreaAcademicaDTO.cs" />
+    <Compile Include="Clases\ConstanciaDTO.cs" />
+    <Compile Include="Clases\ExperienciaEducativaDTO.cs" />
+    <Compile Include="Clases\ParticipacionDTO.cs" />
+    <Compile Include="Clases\ProductoAcademicoDTO.cs" />
+    <Compile Include="Clases\ProgramaEducativoDTO.cs" />
+    <Compile Include="Clases\ProyectoDeCampoDTO.cs" />
+    <Compile Include="Clases\TrabajoRecepcionalDTO.cs" />
     <Compile Include="DAO\AcademicoDAO.cs" />
     <Compile Include="DAO\AreaAcademicaDAO.cs" />
     <Compile Include="DAO\ConstanciaDAO.cs" />

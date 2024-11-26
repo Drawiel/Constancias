@@ -24,6 +24,7 @@
     <EntitySet Name="tipopublicacions" EntityType="gestionconstanciasModel.Store.tipopublicacions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tipotrabajoes" EntityType="gestionconstanciasModel.Store.tipotrabajoes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="trabajorecepcionals" EntityType="gestionconstanciasModel.Store.trabajorecepcionals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_experienciaeducativa_academico" EntityType="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_academico_area" Association="gestionconstanciasModel.Store.FK_academico_area">
       <End Role="areaacademica" EntitySet="areaacademicas" />
       <End Role="academico" EntitySet="academicoes" />
@@ -96,6 +97,22 @@
       <End Role="tipotrabajo" EntitySet="tipotrabajoes" />
       <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
     </AssociationSet>
+    <AssociationSet Name="FK_periodo_productoAcademico" Association="gestionconstanciasModel.Store.FK_periodo_productoAcademico">
+      <End Role="periodo" EntitySet="periodoes" />
+      <End Role="productoacademico" EntitySet="productoacademicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rolacademico_trabajorecepcional" Association="gestionconstanciasModel.Store.FK_rolacademico_trabajorecepcional">
+      <End Role="rolacademico" EntitySet="rolacademicoes" />
+      <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_experienciaeducativa_academico_experienciaeducativa" Association="gestionconstanciasModel.Store.FK_FK_experienciaeducativa_academico_experienciaeducativa">
+      <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+      <End Role="FK_experienciaeducativa_academico" EntitySet="FK_experienciaeducativa_academico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_experienciaeducativa_academico_academico" Association="gestionconstanciasModel.Store.FK_FK_experienciaeducativa_academico_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="FK_experienciaeducativa_academico" EntitySet="FK_experienciaeducativa_academico" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="academicoes">
     <Key>
@@ -165,6 +182,7 @@
     <Property Name="idTipoProducto" Type="int" Nullable="true" />
     <Property Name="idTipoPublicacion" Type="int" Nullable="true" />
     <Property Name="idAcademico" Type="int" Nullable="true" />
+    <Property Name="idPeriodo" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="programaeducativoes">
     <Key>
@@ -255,6 +273,16 @@
     <Property Name="infraestructuraOpcional" Type="varchar" Nullable="true" MaxLength="30" />
     <Property Name="idAcademico" Type="int" Nullable="true" />
     <Property Name="idTipoTrabajo" Type="int" Nullable="true" />
+    <Property Name="idRolAcademico" Type="int" Nullable="true" />
+    <Property Name="fechaPublicacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_experienciaeducativa_academico">
+    <Key>
+      <PropertyRef Name="experienciaeducativas_idExperienciaEducativa" />
+      <PropertyRef Name="academicoes_idAcademico" />
+    </Key>
+    <Property Name="experienciaeducativas_idExperienciaEducativa" Type="int" Nullable="false" />
+    <Property Name="academicoes_idAcademico" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_academico_area">
     <End Role="areaacademica" Type="gestionconstanciasModel.Store.areaacademicas" Multiplicity="0..1">
@@ -506,6 +534,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_periodo_productoAcademico">
+    <End Role="periodo" Type="gestionconstanciasModel.Store.periodoes" Multiplicity="0..1" />
+    <End Role="productoacademico" Type="gestionconstanciasModel.Store.productoacademicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodo">
+        <PropertyRef Name="idPeriodo" />
+      </Principal>
+      <Dependent Role="productoacademico">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rolacademico_trabajorecepcional">
+    <End Role="rolacademico" Type="gestionconstanciasModel.Store.rolacademicoes" Multiplicity="0..1" />
+    <End Role="trabajorecepcional" Type="gestionconstanciasModel.Store.trabajorecepcionals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolacademico">
+        <PropertyRef Name="idRolAcademico" />
+      </Principal>
+      <Dependent Role="trabajorecepcional">
+        <PropertyRef Name="idRolAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_experienciaeducativa_academico_experienciaeducativa">
+    <End Role="experienciaeducativa" Type="gestionconstanciasModel.Store.experienciaeducativas" Multiplicity="1" />
+    <End Role="FK_experienciaeducativa_academico" Type="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="experienciaeducativa">
+        <PropertyRef Name="idExperienciaEducativa" />
+      </Principal>
+      <Dependent Role="FK_experienciaeducativa_academico">
+        <PropertyRef Name="experienciaeducativas_idExperienciaEducativa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_experienciaeducativa_academico_academico">
+    <End Role="FK_experienciaeducativa_academico" Type="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" Multiplicity="*" />
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="FK_experienciaeducativa_academico">
+        <PropertyRef Name="academicoes_idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -527,6 +603,7 @@
           <NavigationProperty Name="productoacademicoes" Relationship="Self.FK_producto_academico" FromRole="academico" ToRole="productoacademico" />
           <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_academico" FromRole="academico" ToRole="proyectocampo" />
           <NavigationProperty Name="trabajorecepcionals" Relationship="Self.FK_trabajorecepcional_academico" FromRole="academico" ToRole="trabajorecepcional" />
+          <NavigationProperty Name="experienciaeducativas" Relationship="gestionconstanciasModel.FK_experienciaeducativa_academico" FromRole="academico" ToRole="experienciaeducativa" />
         </EntityType>
         <EntityType Name="areaacademica">
           <Key>
@@ -555,12 +632,13 @@
           </Key>
           <Property Name="idExperienciaEducativa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="sec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="creditos" Type="Int32" />
-          <Property Name="horasPracticas" Type="Int32" />
-          <Property Name="horasTeoricas" Type="Int32" />
+          <Property Name="sec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="creditos" Type="Int32" Nullable="true" />
+          <Property Name="horasPracticas" Type="Int32" Nullable="true" />
+          <Property Name="horasTeoricas" Type="Int32" Nullable="true" />
           <Property Name="idProgramaEducativo" Type="Int32" />
           <NavigationProperty Name="programaeducativo" Relationship="Self.FK_experienciaeducativa_programaeducativo" FromRole="experienciaeducativa" ToRole="programaeducativo" />
+          <NavigationProperty Name="academicoes" Relationship="gestionconstanciasModel.FK_experienciaeducativa_academico" FromRole="experienciaeducativa" ToRole="academico" />
         </EntityType>
         <EntityType Name="participacion">
           <Key>
@@ -1061,6 +1139,10 @@
             <End Role="rolacademico" EntitySet="rolacademicoes" />
             <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
           </AssociationSet>
+          <AssociationSet Name="FK_experienciaeducativa_academico" Association="gestionconstanciasModel.FK_experienciaeducativa_academico">
+            <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+            <End Role="academico" EntitySet="academicoes" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_periodo_productoAcademico">
           <End Type="gestionconstanciasModel.periodo" Role="periodo" Multiplicity="0..1" />
@@ -1085,6 +1167,10 @@
               <PropertyRef Name="idRolAcademico" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_experienciaeducativa_academico">
+          <End Type="gestionconstanciasModel.experienciaeducativa" Role="experienciaeducativa" Multiplicity="*" />
+          <End Type="gestionconstanciasModel.academico" Role="academico" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1165,6 +1251,7 @@
           <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
           <ScalarProperty Name="idTipoPublicacion" ColumnName="idTipoPublicacion" />
           <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1266,9 +1353,19 @@
           <ScalarProperty Name="infraestructuraOpcional" ColumnName="infraestructuraOpcional" />
           <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
           <ScalarProperty Name="idTipoTrabajo" ColumnName="idTipoTrabajo" />
+          <ScalarProperty Name="idRolAcademico" ColumnName="idRolAcademico" />
+          <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="FK_experienciaeducativa_academico" TypeName="gestionconstanciasModel.FK_experienciaeducativa_academico" StoreEntitySet="FK_experienciaeducativa_academico">
+      <EndProperty Name="experienciaeducativa">
+        <ScalarProperty Name="idExperienciaEducativa" ColumnName="experienciaeducativas_idExperienciaEducativa" />
+      </EndProperty>
+      <EndProperty Name="academico">
+        <ScalarProperty Name="idAcademico" ColumnName="academicoes_idAcademico" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
