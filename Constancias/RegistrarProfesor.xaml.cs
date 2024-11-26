@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Constancias.Adicionales;
+using Logic.Clases;
+using Logic.DAO;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,38 +32,38 @@ namespace Constancias
 
         private void ToggleEducationVisibility(object sender, RoutedEventArgs e)
         {
-            ToggleVisibility(EducationPanel);
+            ToggleVisibility(stackPannelProgramasEducativosActualizados);
         }
 
         private void ToggleCertificationVisibility(object sender, RoutedEventArgs e)
         {
-            ToggleVisibility(CertificationPanel);
+            ToggleVisibility(stackPanelCertificacion);
         }
 
         private void ToggleProductVisibility(object sender, RoutedEventArgs e)
         {
-            ToggleVisibility(ProductPanel);
+            ToggleVisibility(stackPanelProductoAcademico);
         }
 
         private void ToggleProjectVisibility(object sender, RoutedEventArgs e)
         {
-            ToggleVisibility(ProjectPanel);
+            ToggleVisibility(stackPanelProyectoCampo);
         }
 
         private void ToggleThesisVisibility(object sender, RoutedEventArgs e)
         {
-            ToggleVisibility(ThesisPanel);
+            ToggleVisibility(stackPanelTrabajoRecepcional);
         }
 
         // Helper method to toggle visibility and collapse others
         private void ToggleVisibility(StackPanel panel)
         {
             // Collapse all panels first
-            EducationPanel.Visibility = Visibility.Collapsed;
-            CertificationPanel.Visibility = Visibility.Collapsed;
-            ProductPanel.Visibility = Visibility.Collapsed;
-            ProjectPanel.Visibility = Visibility.Collapsed;
-            ThesisPanel.Visibility = Visibility.Collapsed;
+            stackPannelProgramasEducativosActualizados.Visibility = Visibility.Collapsed;
+            stackPanelCertificacion.Visibility = Visibility.Collapsed;
+            stackPanelProductoAcademico.Visibility = Visibility.Collapsed;
+            stackPanelProyectoCampo.Visibility = Visibility.Collapsed;
+            stackPanelTrabajoRecepcional.Visibility = Visibility.Collapsed;
 
             // Toggle visibility of the selected panel
             panel.Visibility = panel.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
@@ -103,6 +108,35 @@ namespace Constancias
             }
         }
 
+        private void RegistrarAcademico(object sender, RoutedEventArgs e)
+        {
+            string nombreAcademico = textBoxNombreAcademico.Text;
+            string tipoContratacion = comboBoxTipoContratacion.SelectedItem.ToString();
+            string areaAcademica = comboBoxArea.SelectedItem.ToString();
+            string fechaContratacion = datePickerFechaContratacion.SelectedDate.ToString();
+            
+            if(!ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion))
+            {
+                DataContext = this;
+                AcademicoDTO academicoDTO = new AcademicoDTO();
+                academicoDTO.AreaAcademica = areaAcademica;
+                academicoDTO.Nombre = nombreAcademico;  
+                academicoDTO.TipoContratacion = tipoContratacion;
+
+                ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
+                var idProgramaEducativo = programaEducativoDAO.ObtenerIdProgramaPorNombre(comboBoxPrograma.SelectedItem.ToString());
+
+                academicoDTO.IdPrograma = idProgramaEducativo;
+                AcademicoDAO academicoDAO = new AcademicoDAO();
+
+                
+
+            }
+
+
+
+
+        }
 
 
         }

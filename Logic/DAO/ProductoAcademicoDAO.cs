@@ -10,36 +10,32 @@ using System.Threading.Tasks;
 
 namespace Logic.DAO {
     public class ProductoAcademicoDAO {
-        private readonly gestionconstanciasEntities _context;
+        private readonly ConstanciasEntities _context;
 
-        public ProductoAcademicoDAO(gestionconstanciasEntities context) {
-            _context = context;
-        }
+       
 
-        public void AgregarProductoAcademico(ProductoAcademicoDTO producto)
+        public int AgregarProductoAcademico(ProductoAcademicoDTO producto)
         {
                 var productoAcademicoDB = EntityFactory.CrearProductoAcademico(producto);
-                _context.productoacademicoes.Add(productoAcademicoDB);
-                _context.SaveChanges();
+                _context.ProductoAcademico.Add(productoAcademicoDB);
+            int registrosAfectados = _context.SaveChanges();
+
+            // Retornar 1 si se registra correctamente
+            return registrosAfectados > 0 ? 1 : 0;
         }
 
-        public int? ObtenerIdParticipacionPorNombre(string nombre)
+        public  int? ObtenerUltimoIdProductoAcademico()
         {
-            var tipo = _context.tipoparticipacions
-                                .FirstOrDefault(tp => tp.nombre == nombre);
+            
+                // Recupera el último producto académico basado en el orden descendente de IdProducto
+                var ultimoProducto = _context.ProductoAcademico
+                                            .OrderByDescending(p => p.IdProducto)
+                                            .FirstOrDefault();
 
-            return tipo?.idTipoParticipacion;
+                return ultimoProducto?.IdProducto; // Devuelve null si no hay productos académicos registrados
+            
         }
 
-        public int? ObtenerIdProductoPorNombre(string nombre)
-        {
-            var tipoProducto = _context.tipoproductoes
-                                       .Where(tp => tp.nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase))
-                                       .Select(tp => tp.idTipoProducto)
-                                       .FirstOrDefault();
-
-            return tipoProducto;
-        }
 
 
 

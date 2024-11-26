@@ -11,16 +11,30 @@ using System.Threading.Tasks;
 namespace Logic.DAO {
     public class ProyectoDeCampoDAO {
 
-        private readonly gestionconstanciasEntities _context;
-        public ProyectoDeCampoDAO(gestionconstanciasEntities context) {
-            _context = context;
-        }
+        private readonly ConstanciasEntities _context;
+        
 
-        public void AgregarProyectoCampo(ProyectoDeCampoDTO nuevoProyecto)
+        public int AgregarProyectoCampo(ProyectoDeCampoDTO nuevoProyecto)
         {
             var proyectoDB = EntityFactory.CrearProyectoCampo(nuevoProyecto);
-            _context.proyectocampoes.Add(proyectoDB);
-            _context.SaveChanges();
+            _context.ProyectoCampo.Add(proyectoDB);
+            int registrosAfectados = _context.SaveChanges();
+
+            // Retornar 1 si se registra correctamente
+            return registrosAfectados > 0 ? 1 : 0;
         }
+
+        public  int? ObtenerUltimoIdProyectoCampo()
+        {
+            
+                // Recupera el último proyecto de campo basado en el orden descendente de IdProyectoCampo
+                var ultimoProyecto = _context.ProyectoCampo
+                                             .OrderByDescending(p => p.IdProyectoCampo)
+                                             .FirstOrDefault();
+
+                return ultimoProyecto?.IdProyectoCampo; // Devuelve null si no hay proyectos de campo registrados
+            
+        }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using DataAccess;
+using Logic.Clases;
+using Logic.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +10,44 @@ using System.Threading.Tasks;
 
 namespace Logic.DAO {
     public class ExperienciaEducativaDAO {
-        private readonly gestionconstanciasEntities _context;
+        private readonly ConstanciasEntities _context;
 
-        public ExperienciaEducativaDAO(gestionconstanciasEntities context) {
-            _context = context;
-            
+        public int AgregarExperiencia(ExperienciaEducativaDTO experienciaEducativa)
+        {
+            var experienciaDB = EntityFactory.CrearExperienciaEducativa(experienciaEducativa);
+
+            _context.ExperienciaEducativa.Add(experienciaDB);
+            int registrosAfectados = _context.SaveChanges();
+
+            // Retornar 1 si se registra correctamente
+            return registrosAfectados > 0 ? 1 : 0;
+
         }
+
+
 
         public int? ObtenerIdExperienciaPorNombre(string nombre)
         {
-            var areaAcademica = _context.areaacademicas
-                                         .FirstOrDefault(a => a.nombre == nombre);
+            var experienciaEducativa = _context.ExperienciaEducativa
+                                         .FirstOrDefault(a => a.Nombre == nombre);
 
-            return areaAcademica?.idAreaAcademica;
+            return experienciaEducativa?.IdExperienciaEducativa;
         }
 
-        
+        public  int? ObtenerUltimoIdExperienciaEducativa()
+        {
+            
+                // Recupera la última experiencia educativa basada en el orden descendente de IdExperienciaEducativa
+                var ultimaExperiencia = _context.ExperienciaEducativa
+                                               .OrderByDescending(e => e.IdExperienciaEducativa)
+                                               .FirstOrDefault();
+
+                return ultimaExperiencia?.IdExperienciaEducativa; // Devuelve null si no hay experiencias registradas
+            
+        }
+
+
+
 
 
 

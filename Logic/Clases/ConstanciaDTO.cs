@@ -8,7 +8,7 @@ namespace Logic.Clases {
     public class ConstanciaDTO {
         public int IdConstancia { get; set; }
         public string FechaExpedicion { get; set; }
-        public int IdTipoConstancia { get; set; }
+        public string TipoConstancia { get; set; }
         public int IdAcademico { get; set; }
         public string FirmaElectronica { get; set; }
     }

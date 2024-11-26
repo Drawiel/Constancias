@@ -11,15 +11,17 @@ namespace Logic.Factories
 {
     public class EntityFactory
     {
-        public static academico CrearAcademico(AcademicoDTO academicoDto)
+        public static Academico CrearAcademico(AcademicoDTO academicoDto)
         {
-            return new academico
+            return new Academico
             {
-                nombre = academicoDto.Nombre,
-                idAreaAcademica = academicoDto.IdAreaAcademica,
-                idTipoPersonal = academicoDto.IdTipoPersonal,
-                numeroPersonal = academicoDto.NumeroPersonal,
-                fechaContratacion = academicoDto.FechaContratacion
+                IdAcademico = academicoDto.IdAcademico,
+                Nombre = academicoDto.Nombre,
+                AreaAcademica = academicoDto.AreaAcademica,
+                TipoContratacion = academicoDto.TipoContratacion,
+                NumeroPersonal = academicoDto.NumeroPersonal,
+                FechaContratacion = academicoDto.FechaContratacion,
+                IdPrograma = academicoDto.IdPrograma
             };
         }
 
@@ -27,63 +29,85 @@ namespace Logic.Factories
         {
             return new ProductoAcademico
             {
-                idProducto = productoDto.IdProducto,
-                titulo = productoDto.Titulo,
-                fechaPublicacion = productoDto.FechaPublicacion,
-                idTipoProducto = productoDto.IdTipoProducto,
-                idTipoPublicacion = productoDto.IdTipoPublicacion,
-                idAcademico = productoDto.IdAcademico
+                IdProducto = productoDto.IdProducto,
+                Titulo = productoDto.Titulo,
+                FechaPublicacion = productoDto.FechaPublicacion,
+                Tipo = productoDto.TipoProducto,
+                TipoPublicacion = productoDto.TipoPublicacion,
+                IdAcademico = productoDto.IdAcademico
             };
         }
 
-        public static proyectocampo CrearProyectoCampo(ProyectoDeCampoDTO proyectoDto)
+        public static ProyectoCampo CrearProyectoCampo(ProyectoDeCampoDTO proyectoDto)
         {
-            return new proyectocampo
+            return new ProyectoCampo
             {
-                idProyectoCampo = proyectoDto.IdProyectoCampo,
-                nombre = proyectoDto.Nombre,
-                lugarRealizacion = proyectoDto.LugarRealizacion,
-                idPeriodo = proyectoDto.IdPeriodo,
-                idRolAcademico = proyectoDto.IdRolAcademico,
-                idAcademico = proyectoDto.IdAcademico
+                IdProyectoCampo = proyectoDto.IdProyectoCampo,
+                NombreProyecto = proyectoDto.Nombre,
+                LugarRealizacion = proyectoDto.LugarRealizacion,
+                Periodo = proyectoDto.Periodo,
+                RolAcademico = proyectoDto.RolAcademico,
+                IdAcademico = proyectoDto.IdAcademico
             };
         }
 
-        public static participacion CrearParticipacion(ParticipacionDTO participacionDto)
+        public static Participacion CrearParticipacion(ParticipacionDTO participacionDto)
         {
-            return new participacion
+            return new Participacion
             {
-                idProyectoCampo = participacionDto.IdProyectoCampo,
-                nombre = participacionDto.Nombre,
-                idPeriodo = participacionDto.IdPeriodo,
-                idTipoParticipacion = participacionDto.IdTipoParticipacion,
-                idProgramaEducativo = participacionDto.IdProgramaEducativo,
-                idAcademico = participacionDto.IdAcademico
+                IdParticipacion = participacionDto.IdParticipacion,
+                PeriodoParticipacion = participacionDto.PeriodoParticipacion,
+                TipoParticipacion = participacionDto.TipoParticipacion,
+                IdPrograma = participacionDto.IdProgramaEducativo,
+                IdAcademico = participacionDto.IdAcademico
             };
         }
 
-        public static constancia CrearConstancia(ConstanciaDTO constanciaDto)
+        public static Constancia CrearConstancia(ConstanciaDTO constanciaDto)
         {
-            return new constancia
+            return new Constancia
             {
-                idConstancia = constanciaDto.IdConstancia,
-                fechaExpedicion = constanciaDto.FechaExpedicion,
-                idTipoConstancia = constanciaDto.IdTipoConstancia,
-                idAcademico = constanciaDto.IdAcademico,
-                firmaElectronica = constanciaDto.FirmaElectronica
+                IdConstancia = constanciaDto.IdConstancia,
+                FechaExpedicion = constanciaDto.FechaExpedicion,
+                Tipo = constanciaDto.TipoConstancia,
+                IdAcademico = constanciaDto.IdAcademico,
             };
         }
 
-        public static programaeducativo CrearProgramaEducativo(ProgramaEducativoDTO programaDto)
+        public static ProgramaEducativo CrearProgramaEducativo(ProgramaEducativoDTO programaDto)
         {
-            return new programaeducativo
+            return new ProgramaEducativo
             {
-                idProgramaEducativo = programaDto.IdProgramaEducativo,
-                nombre = programaDto.Nombre,
-                fecha = programaDto.Fecha,
-                idAreaAcademica = programaDto.IdAreaAcademica
+                IdPrograma = programaDto.IdProgramaEducativo,
+                Nombre = programaDto.Nombre,
+                Año = programaDto.Año,
+                AreaAcademica = programaDto.AreaAcademica
             };
         }
+
+        public static ExperienciaEducativa CrearExperienciaEducativa(ExperienciaEducativaDTO experienciaEducativa) 
+        {
+            return new ExperienciaEducativa
+            {
+                IdExperienciaEducativa = experienciaEducativa.IdExperienciaEducativa,
+                Nombre = experienciaEducativa.Nombre,
+                IdPrograma = experienciaEducativa.IdProgramaEducativo
+            };
+        }
+
+
+        public static TrabajoRecepcional CrearTrabajoRecepcional(TrabajoRecepcionalDTO trabajoRecepcional)
+        {
+            return new TrabajoRecepcional
+            {
+                IdTrabajoRecepcional = trabajoRecepcional.IdTrabajoRecepcional,
+                IdAcademico = trabajoRecepcional.IdAcademico,
+                TipoTrabajo = trabajoRecepcional.TipoTrabajo,
+                RolAcademico = trabajoRecepcional.RolAcademico,
+                Titulo = trabajoRecepcional.RolAcademico,
+            };
+        }
+
 
 
 

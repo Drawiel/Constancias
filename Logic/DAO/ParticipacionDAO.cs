@@ -10,27 +10,32 @@ using System.Threading.Tasks;
 
 namespace Logic.DAO {
     public class ParticipacionDAO {
-        private readonly gestionconstanciasEntities _context;
+        private readonly ConstanciasEntities _context;
 
-        public ParticipacionDAO(gestionconstanciasEntities context)
-        {
-            _context = context;
-        }
+       
 
-        public void AgregarParticipacion(ParticipacionDTO nuevaParticipacion)
+        public int AgregarParticipacion(ParticipacionDTO nuevaParticipacion)
         {
             var participacionDb = EntityFactory.CrearParticipacion(nuevaParticipacion);
-            _context.participacions.Add(participacionDb);
-            _context.SaveChanges();
+            _context.Participacion.Add(participacionDb);
+            int registrosAfectados = _context.SaveChanges();
+
+            // Retornar 1 si se registra correctamente
+            return registrosAfectados > 0 ? 1 : 0;
         }
 
-        public int? ObtenerIdPorNombre(string nombre)
+        public  int? ObtenerUltimoIdParticipacion()
         {
-            var tipo = _context.tipoparticipacions
-                                .FirstOrDefault(tp => tp.nombre == nombre);
+            
+                // Recupera la última participación basada en el orden descendente de IdParticipacion
+                var ultimaParticipacion = _context.Participacion
+                                                 .OrderByDescending(p => p.IdParticipacion)
+                                                 .FirstOrDefault();
 
-            return tipo?.idTipoParticipacion;
+                return ultimaParticipacion?.IdParticipacion; // Devuelve null si no hay participaciones registradas
+            
         }
+
 
     }
 }

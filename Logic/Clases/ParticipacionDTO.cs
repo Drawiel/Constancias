@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Clases {
     public class ParticipacionDTO {
-        public int IdProyectoCampo { get; set; }
+        public int IdParticipacion { get; set; }
         public string Nombre { get; set; }
-        public int IdPeriodo { get; set; }
-        public int IdTipoParticipacion { get; set; }
+        public string PeriodoParticipacion { get; set; }
+        public string TipoParticipacion { get; set; }
         public int IdProgramaEducativo { get; set; }
         public int IdAcademico { get; set; }
     }

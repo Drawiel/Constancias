@@ -9,8 +9,8 @@ namespace Logic.Clases {
         public int IdProyectoCampo { get; set; }
         public string Nombre { get; set; }
         public string LugarRealizacion { get; set; }
-        public int IdPeriodo { get; set; }
-        public int IdRolAcademico { get; set; }
+        public string Periodo { get; set; }
+        public string RolAcademico { get; set; }
         public int IdAcademico { get; set; }
     }
 

@@ -8,9 +8,10 @@ namespace Logic.Clases {
     public class TrabajoRecepcionalDTO {
         public int IdTrabajoRecepcional { get; set; }
         public string NombreEstudiante { get; set; }
-        public DateTime FechaPublicacion { get; set; }
+        public string Titulo {  get; set; }
+        public string FechaPublicacion { get; set; }
         public int IdAcademico { get; set; }
-        public int IdTipoTrabajo { get; set; }
-        public int IdRolAcademico { get; set; }
+        public string TipoTrabajo { get; set; }
+        public string RolAcademico { get; set; }
     }
 }

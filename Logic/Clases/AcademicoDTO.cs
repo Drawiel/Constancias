@@ -9,9 +9,10 @@ namespace Logic.Clases {
         public int IdAcademico { get; set; }
         public string Nombre { get; set; }
         public string NumeroPersonal { get; set; }
-        public String FechaContratacion { get; set; }
-        public int IdAreaAcademica { get; set; }
-        public int IdTipoPersonal { get; set; }
+        public string FechaContratacion { get; set; }
+        public string TipoContratacion { get; set; }
+        public string AreaAcademica { get; set; }
+        public int IdPrograma { get; set; }
 
     }
 }

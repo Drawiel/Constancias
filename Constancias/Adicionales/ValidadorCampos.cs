@@ -27,5 +27,17 @@ namespace Constancias.Adicionales {
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, emailPattern);
         }
+
+        public static bool EstanVacios(params string[] fields)
+        {
+            foreach (var field in fields)
+            {
+                if (string.IsNullOrWhiteSpace(field))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

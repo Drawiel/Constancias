@@ -8,7 +8,7 @@ namespace Logic.Clases {
     public class ProgramaEducativoDTO {
         public int IdProgramaEducativo { get; set; }
         public string Nombre { get; set; }
-        public string Fecha { get; set; }
-        public int IdAreaAcademica { get; set; }
+        public string Año { get; set; }
+        public string AreaAcademica { get; set; }
     }
 }

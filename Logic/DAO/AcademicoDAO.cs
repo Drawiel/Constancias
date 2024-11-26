@@ -13,42 +13,50 @@ namespace Logic.DAO {
 
     public class AcademicoDAO
     {
-        private readonly gestionconstanciasEntities _context;
+        private readonly ConstanciasEntities _context;
 
-        public AcademicoDAO(gestionconstanciasEntities context)
+        /*public AcademicoDAO(ConstanciasEntities context)
         {
             _context = context;
         }
+        */
 
 
 
-
-        public void AgregarAcademico(AcademicoDTO academico)
+        public int AgregarAcademico(AcademicoDTO academico)
         {
             var academicoDB = EntityFactory.CrearAcademico(academico);
 
-            _context.academicoes.Add(academicoDB);
-            _context.SaveChanges();
+            _context.Academico.Add(academicoDB);
+            int registrosAfectados = _context.SaveChanges();
+
+            // Retornar 1 si se registra correctamente
+            return registrosAfectados > 0 ? 1 : 0;
 
         }
 
         public int? ObtenerIdAcademicoPorNumeroPersonal(string numeroPersonal)
         {
-            var academico = _context.academicoes
-                                     .FirstOrDefault(a => a.numeroPersonal == numeroPersonal);
+            var academico = _context.Academico
+                                     .FirstOrDefault(a => a.NumeroPersonal == numeroPersonal);
 
-            return academico?.idAcademico;
+            return academico?.IdAcademico;
         }
 
-        public int? ObtenerIdRolPorNombre(string nombre)
+        public  int? ObtenerUltimoIdAcademico()
         {
-            var rol = _context.rolacademicoes
-                               .Where(r => r.nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase))
-                               .Select(r => r.idRolAcademico)
-                               .FirstOrDefault();
+            
+                // Recupera el último académico basado en el orden descendente de IdAcademico
+                var ultimoAcademico = _context.Academico
+                                             .OrderByDescending(a => a.IdAcademico)
+                                             .FirstOrDefault();
 
-            return rol;
+                return ultimoAcademico?.IdAcademico; // Devuelve null si no hay académicos en la tabla
+          
         }
+
+
+
     }
 }
     

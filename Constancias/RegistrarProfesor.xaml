@@ -14,57 +14,87 @@
 
                 <StackPanel Margin="50,100,50,0">
                     <TextBlock Text="Nombre:" Margin="0,10,0,0"/>
-                    <TextBox Text="Víctor Rafael Zúñiga Pimentel"/>
+                    <TextBox x:Name="textBoxNombreAcademico"/>
 
                     <TextBlock Text="Tipo de contratación:" Margin="0,10,0,0"/>
-                    <ComboBox SelectedIndex="0">
-                        <ComboBoxItem Content="Planta"/>
-                        <ComboBoxItem Content="Temporal"/>
-                    </ComboBox>
+                    <ComboBox x:Name="comboBoxTipoContratacion" SelectedIndex="0">
+                    <ComboBoxItem>Planta</ComboBoxItem>
+                    <ComboBoxItem>Interino por plaza</ComboBoxItem>
+                    <ComboBoxItem>Interino por persona</ComboBoxItem>
+                    <ComboBoxItem>Interino por tiempo determinado</ComboBoxItem>
+                    <ComboBoxItem>Interino por obra determinada</ComboBoxItem>
+                    <ComboBoxItem>Suplente o sustituto</ComboBoxItem>
+                    <ComboBoxItem>Trabajos específicos</ComboBoxItem>
+                    <ComboBoxItem>Interino por plaza con plaza</ComboBoxItem>
+                    <ComboBoxItem>Interino por persona con plaza</ComboBoxItem>
+                    <ComboBoxItem>Suplente o sustituto con plaza</ComboBoxItem>
+                    <ComboBoxItem>Eventual</ComboBoxItem>
+                    <ComboBoxItem>Beca trabajo</ComboBoxItem>
+                    <ComboBoxItem>Apoyo</ComboBoxItem>
+                    <ComboBoxItem>Beca subsidio</ComboBoxItem>
+                    <ComboBoxItem>Beca posgrado</ComboBoxItem>
+                    <ComboBoxItem>Beca sistema nacional de investigación</ComboBoxItem>
+                    <ComboBoxItem>Beca profesional</ComboBoxItem>
+                </ComboBox>
 
                     <TextBlock Text="Número de personal:" Margin="0,10,0,0"/>
-                    <TextBox Text="227698"/>
+                    <TextBox x:Name="textBoxNumeroPersonal" Text="227698"/>
 
-                    <TextBlock Text="Área:" Margin="0,10,0,0"/>
-                    <ComboBox SelectedIndex="0">
-                        <ComboBoxItem Content="Económico - Administrativa"/>
-                        <ComboBoxItem Content="Técnica"/>
-                    </ComboBox>
+                <TextBlock Text="Prorgama educativo:"/>
+                <ComboBox x:Name="comboBoxPrograma" SelectedIndex="0">
+                    <ComboBoxItem Content="Ingenería de Software"/>
+                    <ComboBoxItem Content="Estadística"/>
+                    <ComboBoxItem Content="Redes y servicios de computo"/>
+                    <ComboBoxItem Content="Tecnologías computacionales"/>
+                    <ComboBoxItem Content="Ingeniería de Ciberseguridad e Infraestructura de Cómputo"/>
+                    <ComboBoxItem Content="Ingeniería en Ciencia de Datos"/>
+                    <ComboBoxItem Content="Ingeniería en Sistemas y Tecnologías de la Información"/>
+                </ComboBox>
+
+                    
+                <TextBlock Text="Área:" Margin="0,10,0,0"/>
+                    <ComboBox x:Name="comboBoxArea" SelectedIndex="0">
+                    <ComboBoxItem Content="Económico - Administrativa"/>
+                </ComboBox>
 
                     <TextBlock Text="Fecha de contratación:" Margin="0,10,0,0"/>
-                    <DatePicker SelectedDate="2018-10-21"/>
+                    <DatePicker x:Name="datePickerFechaContratacion"/>
 
+                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Asignaturas impartidas:" Margin="0,10,0,0"/>
-                    <TextBox Text="Introducción a la programación, Programación, Desarrollo web, Matemáticas discretas"/>
+                    <Button x:Name="buttonAgregarExperiencia" Content="+"/>
+                </StackPanel>
+                    
+                <ListBox x:Name="listBoxAsignaturas"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                         <Label Content="Programas educativos actualizados" Margin="0,0,5,0"/>
-                        <Button Content="Agregar"/>
+                        <Button Content="Agregar" Click="ToggleEducationVisibility"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Certificación de programas de estudios" Margin="0,0,5,0"/>
-                        <Button Content="Agregar"/>
+                        <Button Content="Agregar" Click="ToggleCertificationVisibility"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Trabajos recepcionales" Margin="0,0,5,0"/>
-                        <Button Content="Agregar"/>
+                        <Button Content="Agregar" Click="ToggleThesisVisibility"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Proyecto de campo, gestión académicos y/o artística" Margin="0,0,5,0"/>
-                        <Button Content="Agregar"/>
+                        <Button Content="Agregar" Click="ToggleProjectVisibility"/>
                     </StackPanel>
 
 
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                         <Label Content="Generación de Producto académico"/>
-                    <Button Content="Agregar"/>
+                    <Button Content="Agregar" Click="ToggleProductVisibility"/>
 
                 </StackPanel>   
 
-                <Button Content="Registrar" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+                <Button Content="Registrar" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,0,0" Click="RegistrarAcademico"/>
                 </StackPanel>
 
             <StackPanel x:Name="stackPannelProgramasEducativosActualizados" Margin="10" Grid.Row="0" Grid.Column="1"  Visibility="Hidden">
@@ -121,7 +151,7 @@
                 <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5"/>
             </StackPanel>
 
-            <StackPanel Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
+            <StackPanel x:Name="stackPanelProductoAcademico" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
                 <Label Content="Generación de producto académico" FontWeight="Bold" FontSize="30"/>
                 <TextBlock Text="Título del producto:" Margin="5"/>
                 <TextBox Text="El Impacto de la Inteligencia Artificial en la Revolución Tecnológica del Siglo XXI" Margin="5"/>
