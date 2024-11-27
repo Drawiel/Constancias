@@ -104,7 +104,8 @@ CREATE TABLE [dbo].[Academico] (
     [FechaContratacion] nvarchar(50)  NULL,
     [TipoContratacion] nvarchar(50)  NULL,
     [IdPrograma] int  NOT NULL,
-    [AreaAcademica] nvarchar(max)  NOT NULL
+    [AreaAcademica] nvarchar(max)  NOT NULL,
+    [Contrasena] nvarchar(256)
 );
 GO
 

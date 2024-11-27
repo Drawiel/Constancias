@@ -116,41 +116,49 @@ namespace Constancias
 
         private void AgregarAcademico()
         {
-            AcademicoDAO academicoDAO = new AcademicoDAO();
             string nombreAcademico = textBoxNombreAcademico.Text;
-            string tipoContratacion = comboBoxTipoContratacion.SelectedItem.ToString();
-            string areaAcademica = comboBoxArea.SelectedItem.ToString();
-            string fechaContratacion = datePickerFechaContratacion.SelectedDate.ToString();
+            string tipoContratacion = comboBoxTipoContratacion.SelectedItem?.ToString();
+            string areaAcademica = comboBoxArea.SelectedItem?.ToString();
+            string fechaContratacion = datePickerFechaContratacion.SelectedDate?.ToString("yyyy-MM-dd");
 
-            if (!ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion))
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion))
             {
-                int idAcademico = (int)academicoDAO.ObtenerUltimoIdAcademico() + 1;
-                AcademicoDTO academicoDTO = new AcademicoDTO();
-                academicoDTO.IdAcademico = idAcademico;
-                academicoDTO.AreaAcademica = areaAcademica;
-                academicoDTO.Nombre = nombreAcademico;
-                academicoDTO.TipoContratacion = tipoContratacion;
-
-                ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
-                var idProgramaEducativo = programaEducativoDAO.ObtenerIdProgramaPorNombre(comboBoxPrograma.SelectedItem.ToString());
-
-                academicoDTO.IdPrograma = (int)idProgramaEducativo;
-                int resultado = academicoDAO.ValidarYRegistrarAcademico(academicoDTO);
-                MensajesError mensajesError = new MensajesError();
-                mensajesError.ObtenerMensajeErrorAcademico(resultado);
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-        }
 
+            AcademicoDTO academicoDTO = new AcademicoDTO
+            {
+                Nombre = nombreAcademico,
+                NumeroPersonal = textBoxNumeroPersonal.Text,
+                TipoContratacion = tipoContratacion,
+                FechaContratacion = fechaContratacion,
+                AreaAcademica = areaAcademica
+            };
+
+            AcademicoDAO academicoDAO = new AcademicoDAO();
+            int resultado = academicoDAO.ValidarYRegistrarAcademico(academicoDTO);
+
+            MensajesError mensajesError = new MensajesError();
+            mensajesError.ObtenerMensajeErrorAcademico(resultado);
+        }
 
         private void AgregarAsignatura(object sender, RoutedEventArgs e)
         {
+            string nombreEE = NombreAsignaturaTextBox.Text;
+            string nombrePrograma = comboBoxProgramaEducativo.SelectedItem?.ToString();
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(nombreEE, nombrePrograma))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             ExperienciaEducativaDAO eeDAO = new ExperienciaEducativaDAO();
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
 
-            string nombreEE = NombreAsignaturaTextBox.Text;
-            string nombrePrograma = comboBoxProgramaEducativo.SelectedItem.ToString();
-
-            // Verificar si la experiencia educativa ya existe en la base de datos
             int? idExistente = eeDAO.ObtenerIdExperienciaPorNombre(nombreEE);
             if (idExistente.HasValue)
             {
@@ -158,11 +166,9 @@ namespace Constancias
                 return;
             }
 
-            // Obtener ID para la nueva asignatura
             int nuevoIdAsignatura = (int)(eeDAO.ObtenerUltimoIdExperienciaEducativa() ?? 0) + 1;
             int idProgramaEducativo = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(nombrePrograma);
 
-            // Crear objeto DTO para la nueva experiencia educativa
             ExperienciaEducativaDTO experienciaEducativaDTO = new ExperienciaEducativaDTO
             {
                 IdExperienciaEducativa = nuevoIdAsignatura,
@@ -170,25 +176,121 @@ namespace Constancias
                 Nombre = nombreEE
             };
 
-            // Verificar si la experiencia educativa ya está en la lista temporal
-            if (eeList.Any(exp => exp.Nombre.Equals(nombreEE, StringComparison.OrdinalIgnoreCase)))
-            {
-                MessageBox.Show("La asignatura ya está agregada en la lista temporal.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            // Agregar la nueva experiencia educativa a la lista y la base de datos
             eeList.Add(experienciaEducativaDTO);
             listBoxAsignaturas.ItemsSource = null; // Refrescar el ListBox
             listBoxAsignaturas.ItemsSource = eeList;
 
-            // Guardar la experiencia educativa en la base de datos
             int resultado = eeDAO.AgregarExperiencia(experienciaEducativaDTO);
 
-            // Mostrar mensaje basado en el resultado
             MensajesError mensajesError = new MensajesError();
             mensajesError.ObtenerMensajeErrorExperienciaEducativa(resultado);
         }
+
+        private void RegistrarTrabajo(object sender, RoutedEventArgs e)
+        {
+            string numeroPersonal = textBoxNumeroPersonal.Text;
+            string tipoTrabajo = comboBoxTipoTrabajo.SelectedItem?.ToString();
+            string titulo = textBoxTituloTrabajo.Text;
+            string rolAcademico = comboBoxRolAcademicoTrabajo.SelectedItem?.ToString();
+            string nombreEstudiante = tetxBoxNombreEstudianteTrabajoRecepcional.Text;
+            string fechaPresentacion = datePickerFechaPresentacionTrabajo.SelectedDate?.ToString("yyyy-MM-dd");
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(numeroPersonal, tipoTrabajo, titulo, rolAcademico, nombreEstudiante, fechaPresentacion))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            AcademicoDAO academicoDAO = new AcademicoDAO();
+            TrabajoRecepcionalDAO trabajoRecepcionalDAO = new TrabajoRecepcionalDAO();
+
+            int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
+            if (idAcademico == 0)
+            {
+                MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            TrabajoRecepcionalDTO trabajoRecepcionalDTO = new TrabajoRecepcionalDTO
+            {
+                Titulo = titulo,
+                NombreEstudiante = nombreEstudiante,
+                FechaPublicacion = fechaPresentacion,
+                IdAcademico = idAcademico,
+                RolAcademico = rolAcademico,
+                TipoTrabajo = tipoTrabajo
+            };
+
+            trabajoRecepcionalList.Add(trabajoRecepcionalDTO);
+        }
+
+        private void RegistrarProducto(object sender, RoutedEventArgs e)
+        {
+            string tituloProducto = textBoxTituloProducto.Text;
+            string tipoProducto = comboBoxTipoProducto.SelectedItem?.ToString();
+            string fechaPublicacion = datePickerFechaPublicacion.SelectedDate?.ToString("yyyy-MM-dd");
+            string tipoPublicacion = GetSelectedPublicationType();
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(tituloProducto, tipoProducto, tipoPublicacion))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            ProductoAcademicoDAO productoAcademicoDAO = new ProductoAcademicoDAO();
+
+            ProductoAcademicoDTO productoAcademicoDTO = new ProductoAcademicoDTO
+            {
+                Titulo = tituloProducto,
+                FechaPublicacion = fechaPublicacion,
+                TipoProducto = tipoProducto,
+                TipoPublicacion = tipoPublicacion
+            };
+
+            productoAcademicoList.Add(productoAcademicoDTO);
+        }
+
+        private void RegistrarProyectoCampo(object sender, RoutedEventArgs e)
+        {
+            string nombreProyecto = textBoxNombreProyecto.Text;
+            string rol = comboBoxRolAcademicoProyecto.SelectedItem?.ToString();
+            string lugarRealizacion = textBoxPeriodoRealizacion.Text;
+            string periodo = $"{datePickerPeriodoRealizacionProyecto.SelectedDate?.ToString("yyyy-MM-dd")} - {datePickerOtroPeriodoRealizacion.SelectedDate?.ToString("yyyy-MM-dd")}";
+            string numeroPersonal = textBoxNumeroPersonal.Text;
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(nombreProyecto, rol, lugarRealizacion, periodo, numeroPersonal))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            AcademicoDAO academicoDAO = new AcademicoDAO();
+            ProyectoDeCampoDAO proyectoCampoDAO = new ProyectoDeCampoDAO();
+
+            int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
+            if (idAcademico == 0)
+            {
+                MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            ProyectoDeCampoDTO proyectoDTO = new ProyectoDeCampoDTO
+            {
+                Nombre = nombreProyecto,
+                LugarRealizacion = lugarRealizacion,
+                Periodo = periodo,
+                RolAcademico = rol,
+                IdAcademico = idAcademico
+            };
+
+            proyectoCampoList.Add(proyectoDTO);
+        }
+
+
+        
 
 
         private void AbrirPopupAsignatura(object sender, RoutedEventArgs e)
@@ -265,51 +367,114 @@ namespace Constancias
 
         private void RegistrarActualizacion(Object sender, RoutedEventArgs e)
         {
-            string programaEducativo = comboBoxProgramaEducativoActualizado.SelectedItem.ToString();
+            // Recuperar datos de los controles
+            string programaEducativo = comboBoxProgramaEducativoActualizado.SelectedItem?.ToString();
             string tipoParticipacion = "Actualización";
-            string periodo = actualzacionYearPicker.SelectedDate.ToString() + actualizaciónAnotherYear.SelectedDate.ToString();
+            string periodoInicio = actualzacionYearPicker.SelectedDate?.ToString("yyyy");
+            string periodoFin = actualizaciónAnotherYear.SelectedDate?.ToString("yyyy");
             string numeroPersonal = textBoxNumeroPersonal.Text;
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(programaEducativo, periodoInicio, periodoFin, numeroPersonal))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Instanciar DAOs
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
             AcademicoDAO academicoDAO = new AcademicoDAO();
-            int idPrograma = (int) programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo);
-            int idAcademico = (int)academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal);
             ParticipacionDAO participacionDAO = new ParticipacionDAO();
-            int idParticipacion = (int) participacionDAO.ObtenerUltimoIdParticipacion();
-            ParticipacionDTO participacionDTO = new ParticipacionDTO();
 
-            participacionDTO.IdParticipacion = idParticipacion;
-            participacionDTO.TipoParticipacion = tipoParticipacion;
-            participacionDTO.PeriodoParticipacion = periodo;
-            participacionDTO.IdProgramaEducativo = idPrograma;
-            participacionDTO.IdAcademico = idAcademico;
+            // Obtener IDs relacionados
+            int idPrograma = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo);
+            int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
+            if (idAcademico == 0)
+            {
+                MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            int nuevoIdParticipacion = (int)(participacionDAO.ObtenerUltimoIdParticipacion() ?? 0) + 1;
+
+            // Crear DTO de participación
+            ParticipacionDTO participacionDTO = new ParticipacionDTO
+            {
+                IdParticipacion = nuevoIdParticipacion,
+                TipoParticipacion = tipoParticipacion,
+                PeriodoParticipacion = $"{periodoInicio}-{periodoFin}",
+                IdProgramaEducativo = idPrograma,
+                IdAcademico = idAcademico
+            };
+
+            // Agregar la participación a la lista temporal
             participacionList.Add(participacionDTO);
+
+            // Refrescar el ListBox
+            listBoxActualizaciones.ItemsSource = null;
             listBoxActualizaciones.ItemsSource = participacionList;
+
+            // Guardar la participación en la base de datos
+            int resultado = participacionDAO.AgregarParticipacion(participacionDTO);
+
+            // Mostrar mensaje según el resultado
+            MensajesError mensajesError = new MensajesError();
+            mensajesError.ObtenerMensajeErrorParticipacion(resultado);
         }
+
 
         private void RegistrarCertificacion(object sender, RoutedEventArgs e)
         {
-            string programaEducativo = comboBoxProgramaEducativoCertificado.SelectedItem.ToString();
+            // Recuperar datos de los controles
+            string programaEducativo = comboBoxProgramaEducativoCertificado.SelectedItem?.ToString();
             string tipoParticipacion = "Certificación";
-            string periodo = certificacionYearPicker.SelectedDate.ToString() + certificacionAnotherYear.SelectedDate.ToString();
+            string periodoInicio = certificacionYearPicker.SelectedDate?.ToString("yyyy");
+            string periodoFin = certificacionAnotherYear.SelectedDate?.ToString("yyyy");
             string numeroPersonal = textBoxNumeroPersonal.Text;
+
+            // Validar campos vacíos
+            if (ValidadorCampos.EstanVacios(programaEducativo, periodoInicio, periodoFin, numeroPersonal))
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Instanciar DAOs
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
             AcademicoDAO academicoDAO = new AcademicoDAO();
-            int idPrograma = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo);
-            int idAcademico = (int)academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal);
             ParticipacionDAO participacionDAO = new ParticipacionDAO();
-            int idParticipacion = (int)participacionDAO.ObtenerUltimoIdParticipacion();
-            ParticipacionDTO participacionDTO = new ParticipacionDTO();
 
-            participacionDTO.IdParticipacion = idParticipacion;
-            participacionDTO.TipoParticipacion = tipoParticipacion;
-            participacionDTO.PeriodoParticipacion = periodo;
-            participacionDTO.IdProgramaEducativo = idPrograma;
-            participacionDTO.IdAcademico = idAcademico;
+            // Obtener IDs relacionados
+            int idPrograma = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo);
+            int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
-            
+            if (idAcademico == 0)
+            {
+                MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
+            int nuevoIdParticipacion = (int)(participacionDAO.ObtenerUltimoIdParticipacion() ?? 0) + 1;
+
+            // Crear DTO de participación
+            ParticipacionDTO participacionDTO = new ParticipacionDTO
+            {
+                IdParticipacion = nuevoIdParticipacion,
+                TipoParticipacion = tipoParticipacion,
+                PeriodoParticipacion = $"{periodoInicio}-{periodoFin}",
+                IdProgramaEducativo = idPrograma,
+                IdAcademico = idAcademico
+            };
+
+            // Guardar la participación en la base de datos
+            int resultado = participacionDAO.AgregarParticipacion(participacionDTO);
+
+            // Mostrar mensaje según el resultado
+            MensajesError mensajesError = new MensajesError();
+            mensajesError.ObtenerMensajeErrorParticipacion(resultado);
         }
+
 
 
         private void AsignarParticipacion()
@@ -376,57 +541,8 @@ namespace Constancias
             }
         }
 
-        private void RegistrarTrabajo(object sender, RoutedEventArgs e)
-        {
-            // Recuperar datos desde la interfaz
-            string numeroPersonal = textBoxNumeroPersonal.Text; // Asumiendo que este TextBox existe
-            string tipoTrabajo = comboBoxTipoTrabajo.SelectedItem.ToString();
-            string titulo = textBoxTituloTrabajo.Text;
-            string rolAcademico = comboBoxRolAcademicoTrabajo.SelectedItem.ToString();
-            string nombreEstudiante = tetxBoxNombreEstudianteTrabajoRecepcional.Text;
-            string fechaPresentacion = datePickerFechaPresentacionTrabajo.SelectedDate.HasValue
-                ? datePickerFechaPresentacionTrabajo.SelectedDate.Value.ToString("yyyy-MM-dd")
-                : null;
+        
 
-            // Validar que los campos requeridos no estén vacíos
-            if (string.IsNullOrEmpty(numeroPersonal) || string.IsNullOrEmpty(titulo) || string.IsNullOrEmpty(nombreEstudiante) || fechaPresentacion == null)
-            {
-                Console.WriteLine("Todos los campos deben ser completados.");
-                return;
-            }
-
-            // Instanciar DAOs
-            AcademicoDAO academicoDAO = new AcademicoDAO();
-            
-            TrabajoRecepcionalDAO trabajoRecepcionalDAO = new TrabajoRecepcionalDAO();
-
-            // Obtener IDs relacionados
-            int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
-            if (idAcademico == 0)
-            {
-                Console.WriteLine("No se encontró el académico.");
-                return;
-            }
-
-           
-
-            // Crear el DTO de TrabajoRecepcional
-            TrabajoRecepcionalDTO trabajoRecepcionalDTO = new TrabajoRecepcionalDTO
-            {
-                Titulo = titulo,
-                NombreEstudiante = nombreEstudiante,
-                FechaPublicacion = fechaPresentacion,
-                IdAcademico = idAcademico,
-                RolAcademico = rolAcademico,
-                TipoTrabajo = tipoTrabajo
-            };
-
-            // Agregar el trabajo recepcional
-            trabajoRecepcionalList.Add(trabajoRecepcionalDTO);
-
-            // Manejar el resultado
-          
-        }
 
         private void AsignarTrabajoRecepcional()
         {
@@ -484,40 +600,7 @@ namespace Constancias
             }
         }
 
-        private void RegistrarProducto(object sender, RoutedEventArgs e)
-        {
-            
-                // Recuperar datos del formulario
-                string tituloProducto = textBoxTituloProducto.Text;
-                string tipoProducto = comboBoxTipoProducto.SelectedItem?.ToString();
-                string fechaPublicacion = datePickerFechaPublicacion.SelectedDate?.ToString("yyyy-MM-dd") ?? string.Empty;
-                string tipoPublicacion = GetSelectedPublicationType();
-
-                // Validar que los campos requeridos no estén vacíos
-                if (string.IsNullOrWhiteSpace(tituloProducto) || string.IsNullOrWhiteSpace(tipoProducto) || string.IsNullOrWhiteSpace(tipoPublicacion))
-                {
-                    MessageBox.Show("Por favor complete todos los campos obligatorios.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Crear instancia del DAO
-                ProductoAcademicoDAO productoAcademicoDAO = new ProductoAcademicoDAO();
-
-
-                // Crear el DTO del producto académico
-                ProductoAcademicoDTO productoAcademicoDTO = new ProductoAcademicoDTO
-                {
-                    Titulo = tituloProducto,
-                    FechaPublicacion = fechaPublicacion,
-                    TipoProducto = tipoProducto,
-                    TipoPublicacion = tipoPublicacion
-                };
-
-                productoAcademicoList.Add(productoAcademicoDTO);
-            
-
-                
-        }
+        
 
         private void AsignarProductoAcademico()
         {
@@ -589,47 +672,7 @@ namespace Constancias
         }
 
 
-        private void RegistrarProyectoCampo(object sender, RoutedEventArgs e)
-        {
-            
-                // Recuperar datos desde la interfaz
-                string nombreProyecto = textBoxNombreProyecto.Text;
-                string rol = comboBoxRolAcademicoProyecto.SelectedItem.ToString();
-                string lugarRealizacion = textBoxPeriodoRealizacion.Text;
-
-                // Concatenar las fechas seleccionadas para el período
-                string periodo = $"{datePickerPeriodoRealizacionProyecto.SelectedDate?.ToString("yyyy-MM-dd")} - {datePickerOtroPeriodoRealizacion.SelectedDate?.ToString("yyyy-MM-dd")}";
-
-                string numeroPersonal = textBoxNumeroPersonal.Text;
-
-                // Crear instancias de DAO
-                AcademicoDAO academicoDAO = new AcademicoDAO();
-                ProyectoDeCampoDAO proyectoCampoDAO = new ProyectoDeCampoDAO();
-
-                // Obtener el ID del académico
-                int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
-                if (idAcademico == 0)
-                {
-                    MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                
-
-                // Crear un objeto DTO para el proyecto de campo
-            ProyectoDeCampoDTO proyectoDTO = new ProyectoDeCampoDTO
-            {
-                   Nombre = nombreProyecto,
-                   LugarRealizacion = lugarRealizacion,
-                   Periodo = periodo,
-                   RolAcademico = rol,
-                   IdAcademico = idAcademico
-            };
-
-            proyectoCampoList.Add(proyectoDTO);
-
-                
-        }
+        
 
         private void AsignarProyectoCampo()
         {
