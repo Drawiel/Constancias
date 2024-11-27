@@ -9,15 +9,15 @@
                 <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            
-                <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,10"/>
 
-                <StackPanel Margin="50,100,50,0">
-                    <TextBlock Text="Nombre:" Margin="0,10,0,0"/>
-                    <TextBox x:Name="textBoxNombreAcademico"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,10"/>
 
-                    <TextBlock Text="Tipo de contratación:" Margin="0,10,0,0"/>
-                    <ComboBox x:Name="comboBoxTipoContratacion" SelectedIndex="0">
+            <StackPanel Margin="50,100,50,0">
+                <TextBlock Text="Nombre:" Margin="0,10,0,0"/>
+                <TextBox x:Name="textBoxNombreAcademico"/>
+
+                <TextBlock Text="Tipo de contratación:" Margin="0,10,0,0"/>
+                <ComboBox x:Name="comboBoxTipoContratacion" SelectedIndex="0">
                     <ComboBoxItem>Planta</ComboBoxItem>
                     <ComboBoxItem>Interino por plaza</ComboBoxItem>
                     <ComboBoxItem>Interino por persona</ComboBoxItem>
@@ -37,8 +37,8 @@
                     <ComboBoxItem>Beca profesional</ComboBoxItem>
                 </ComboBox>
 
-                    <TextBlock Text="Número de personal:" Margin="0,10,0,0"/>
-                    <TextBox x:Name="textBoxNumeroPersonal" Text="227698"/>
+                <TextBlock Text="Número de personal:" Margin="0,10,0,0"/>
+                <TextBox x:Name="textBoxNumeroPersonal" Text="227698"/>
 
                 <TextBlock Text="Prorgama educativo:"/>
                 <ComboBox x:Name="comboBoxPrograma" SelectedIndex="0">
@@ -51,54 +51,57 @@
                     <ComboBoxItem Content="Ingeniería en Sistemas y Tecnologías de la Información"/>
                 </ComboBox>
 
-                    
+
                 <TextBlock Text="Área:" Margin="0,10,0,0"/>
-                    <ComboBox x:Name="comboBoxArea" SelectedIndex="0">
+                <ComboBox x:Name="comboBoxArea" SelectedIndex="0">
                     <ComboBoxItem Content="Económico - Administrativa"/>
                 </ComboBox>
 
-                    <TextBlock Text="Fecha de contratación:" Margin="0,10,0,0"/>
-                    <DatePicker x:Name="datePickerFechaContratacion"/>
+                <TextBlock Text="Fecha de contratación:" Margin="0,10,0,0"/>
+                <DatePicker x:Name="datePickerFechaContratacion"/>
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Asignaturas impartidas:" Margin="0,10,0,0"/>
-                    <Button x:Name="buttonAgregarExperiencia" Content="+" Click="AgregarAsignatura"/>
+                    <Button x:Name="buttonAgregarExperiencia" Content="+" Click="AbrirPopUpAsignatura"/>
                 </StackPanel>
-                    
+
                 <ListBox x:Name="listBoxAsignaturas"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                        <Label Content="Programas educativos actualizados" Margin="0,0,5,0"/>
-                        <Button Content="Agregar" Click="ToggleEducationVisibility"/>
-                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Content="Programas educativos actualizados" Margin="0,0,5,0"/>
+                    <Button Content="Agregar" Click="ToggleEducationVisibility"/>
+                </StackPanel>
+                <ListBox x:Name="listBoxActualizaciones"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <Label Content="Certificación de programas de estudios" Margin="0,0,5,0"/>
-                        <Button Content="Agregar" Click="ToggleCertificationVisibility"/>
-                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Certificación de programas de estudios" Margin="0,0,5,0"/>
+                    <Button Content="Agregar" Click="ToggleCertificationVisibility"/>
+                </StackPanel>
+                <ListBox x:Name="listBoxCertificaciones"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <Label Content="Trabajos recepcionales" Margin="0,0,5,0"/>
-                        <Button Content="Agregar" Click="ToggleThesisVisibility"/>
-                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Trabajos recepcionales" Margin="0,0,5,0"/>
+                    <Button Content="Agregar" Click="ToggleThesisVisibility"/>
+                </StackPanel>
+                <ListBox x:Name="listBoxTrabajoRecepcional"/>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <Label Content="Proyecto de campo, gestión académicos y/o artística" Margin="0,0,5,0"/>
-                        <Button Content="Agregar" Click="ToggleProjectVisibility"/>
-                    </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Proyecto de campo, gestión académicos y/o artística" Margin="0,0,5,0"/>
+                    <Button Content="Agregar" Click="ToggleProjectVisibility"/>
+                </StackPanel>
 
 
-                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <Label Content="Generación de Producto académico"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Generación de Producto académico"/>
                     <Button Content="Agregar" Click="ToggleProductVisibility"/>
 
-                </StackPanel>   
+                </StackPanel>
 
                 <Button Content="Registrar" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,0,0" Click="RegistrarAcademico"/>
-                </StackPanel>
-            
-            
-            
+            </StackPanel>
+
+
+
             <!--Programas educativos actualizados-->
             <StackPanel x:Name="stackPannelProgramasEducativosActualizados" Margin="10" Grid.Row="0" Grid.Column="1"  Visibility="Hidden">
                 <Label Content="Programas educativos actualizados" FontWeight="Bold" FontSize="30"/>
@@ -119,12 +122,11 @@
                 <!-- Rol del académico -->
                 <StackPanel Margin="5">
                     <TextBlock Text="Rol del académico:"/>
-                    <ComboBox>
-                        <ComboBoxItem Content="Asesor"/>
-                        <ComboBoxItem Content="Director"/>
-                        <ComboBoxItem Content="CoDirector"/>
+                    <ComboBox x:Name="comboBoxRolAcademico">
+                        <ComboBoxItem Content="Participante"/>
+                        
                     </ComboBox>
-                    <TextBox Text="Participante"/>
+
                 </StackPanel>
 
                 <!-- Periodo de actualización -->
@@ -137,23 +139,33 @@
                 </StackPanel>
 
                 <!-- Botón Aceptar -->
-                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5"/>
+                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5" Click="RegistrarActualizacion"/>
             </StackPanel>
-            
-            
+
+
             <!--Certificación de programas educativos-->
             <StackPanel x:Name="stackPanelCertificacion" Margin="20" Grid.Column="1" Grid.Row="0" Visibility="Hidden">
                 <Label Content="Certificación de programas de estudios" FontWeight="Bold" FontSize="30"/>
                 <!-- Nombre del programa -->
                 <StackPanel Margin="5">
                     <TextBlock Text="Nombre del programa:"/>
-                    <TextBox Text="Ingeniería de Software"/>
+                    <ComboBox x:Name="comboBoxProgramaEducativoCertificado" SelectedIndex="0">
+                        <ComboBoxItem Content="Ingenería de Software"/>
+                        <ComboBoxItem Content="Estadística"/>
+                        <ComboBoxItem Content="Redes y servicios de computo"/>
+                        <ComboBoxItem Content="Tecnologías computacionales"/>
+                        <ComboBoxItem Content="Ingeniería de Ciberseguridad e Infraestructura de Cómputo"/>
+                        <ComboBoxItem Content="Ingeniería en Ciencia de Datos"/>
+                        <ComboBoxItem Content="Ingeniería en Sistemas y Tecnologías de la Información"/>
+                    </ComboBox>
                 </StackPanel>
 
                 <!-- Rol del académico -->
                 <StackPanel Margin="5">
                     <TextBlock Text="Rol del académico:"/>
-                    <TextBox Text="Participante"/>
+                    <ComboBox x:Name="comboBoxRolAcademicoCertificacion">
+                        <ComboBoxItem Content="Participante"/>
+                    </ComboBox>
                 </StackPanel>
 
                 <!-- Periodo de certificación -->
@@ -166,86 +178,132 @@
                 </StackPanel>
 
                 <!-- Botón Aceptar -->
-                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5"/>
+                <Button Content="Aceptar" HorizontalAlignment="Right" Margin="5" Click="RegistrarCertificacion"/>
             </StackPanel>
 
             <!--Generación de productos académicos-->
             <StackPanel x:Name="stackPanelProductoAcademico" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
                 <Label Content="Generación de producto académico" FontWeight="Bold" FontSize="30"/>
                 <TextBlock Text="Título del producto:" Margin="5"/>
-                <TextBox Text="El Impacto de la Inteligencia Artificial en la Revolución Tecnológica del Siglo XXI" Margin="5"/>
+                <TextBox x:Name="textBoxTituloProducto" Margin="5"/>
 
                 <TextBlock Text="Tipo de producto:" Margin="5"/>
-                <ComboBox SelectedIndex="0" Margin="5">
+                <ComboBox x:Name="comboBoxTipoProducto" SelectedIndex="0" Margin="5">
                     <ComboBoxItem Content="Artículo"/>
                     <ComboBoxItem Content="Libro"/>
                     <ComboBoxItem Content="Tesis"/>
                 </ComboBox>
 
                 <TextBlock Text="Fecha de publicación:" Margin="5"/>
-                <DatePicker SelectedDate="2023-09-25" Margin="5"/>
+                <DatePicker x:Name="datePickerFechaPublicacion" Margin="5"/>
 
                 <TextBlock Text="Seleccione el tipo de publicación:" Margin="5"/>
                 <StackPanel Orientation="Horizontal" Margin="5">
-                    <RadioButton GroupName="PublicationType" Content="Revista" IsChecked="True" Margin="0,0,10,0"/>
+                    <RadioButton GroupName="PublicationType" Content="Revista" />
                     <RadioButton GroupName="PublicationType" Content="Editorial"/>
                 </StackPanel>
 
-                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10" Click="RegistrarProducto"/>
             </StackPanel>
 
             <!--Trabajo recepcional-->
             <StackPanel x:Name="stackPanelTrabajoRecepcional" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
                 <Label Content="Trabajo recepcional" FontWeight="Bold" FontSize="30"/>
                 <TextBlock Text="Tipo de trabajo:" Margin="5"/>
-                <ComboBox SelectedIndex="0" Margin="5">
+                <ComboBox x:Name="comboBoxTipoTrabajo" SelectedIndex="0" Margin="5">
                     <ComboBoxItem Content="Tesis"/>
                     <ComboBoxItem Content="Tesina"/>
                     <ComboBoxItem Content="Informe de proyecto"/>
                 </ComboBox>
 
                 <TextBlock Text="Título:" Margin="5"/>
-                <TextBox Text="Desarrollo e Implementación de Soluciones Basadas en Inteligencia Artificial para la Optimización de Procesos en Entornos Tecnológicos" Margin="5"/>
+                <TextBox x:Name="textBoxTituloTrabajo" Margin="5"/>
 
                 <TextBlock Text="Rol del académico:" Margin="5"/>
-                <TextBox Text="Asesor" Margin="5"/>
+                <ComboBox x:Name="comboBoxRolAcademicoTrabajo">
+                    <ComboBoxItem Content="Asesor"/>
+                    <ComboBoxItem Content="Director"/>
+                    <ComboBoxItem Content="CoDirector"/>
+                </ComboBox>
 
                 <TextBlock Text="Nombre del estudiante:" Margin="5"/>
-                <TextBox Text="Mariana García Méndez" Margin="5"/>
+                <TextBox x:Name="tetxBoxNombreEstudianteTrabajoRecepcional" Margin="5"/>
 
                 <TextBlock Text="Fecha de presentación:" Margin="5"/>
-                <DatePicker SelectedDate="2023-07-29" Margin="5"/>
+                <DatePicker x:Name="datePickerFechaPresentacionTrabajo" Margin="5"/>
 
-                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10" Click="RegistrarTrabajo"/>
             </StackPanel>
-            
-            
+
+
 
             <!--Proyecto de campo-->
             <StackPanel x:Name="stackPanelProyectoCampo" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
                 <Label Content="Proyecto de campo y/o gestión académica o artística" FontWeight="Bold" FontSize="30"/>
                 <TextBlock Text="Nombre del proyecto:" Margin="5"/>
-                <TextBox Text="Impacto de la Innovación Tecnológica en la Gestión Académica y Artística: Un Proyecto de Campo para la Modernización de Procesos Educativos y Creativos" Margin="5"/>
+                <TextBox x:Name="textBoxNombreProyecto" Margin="5"/>
 
                 <TextBlock Text="Rol:" Margin="5"/>
-                <ComboBox SelectedIndex="0" Margin="5">
-                    <ComboBoxItem Content="Coordinador"/>
-                    <ComboBoxItem Content="Asesor"/>
-                    <ComboBoxItem Content="Participante"/>
+                <ComboBox x:Name="comboBoxRolAcademicoProyecto" SelectedIndex="0" Margin="5">
+                    <ComboBoxItem Content="Facilitador"/>
+                    <ComboBoxItem Content="Experto"/>
+                    <ComboBoxItem Content="Observador"/>
+                    <ComboBoxItem Content="Entrevistador"/>
+                    <ComboBoxItem Content="Analista de datos"/>
+                    <ComboBoxItem Content="Escritor"/>
+                    <ComboBoxItem Content="Gestor de proyecto"/>
                 </ComboBox>
 
                 <TextBlock Text="Período de realización:" Margin="5"/>
-                <ComboBox SelectedIndex="0" Margin="5">
-                    <ComboBoxItem Content="2022"/>
-                    <ComboBoxItem Content="2023"/>
-                    <ComboBoxItem Content="2024"/>
-                </ComboBox>
+                <DatePicker x:Name="datePickerPeriodoRealizacionProyecto"/>
+                <DatePicker x:Name="datePickerOtroPeriodoRealizacion"/>
+
 
                 <TextBlock Text="Lugar de realización:" Margin="5"/>
-                <TextBox Text="Orizaba" Margin="5"/>
+                <TextBox x:Name="textBoxPeriodoRealizacion" Margin="5"/>
 
-                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10"/>
+                <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10" Click="RegistrarProyectoCampo"/>
             </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="219*"/>
+                <RowDefinition Height="371*"/>
+                <RowDefinition Height="474*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Popup x:Name="PopupIngresarAsignatura" Placement="Center" StaysOpen="False" Grid.Row="1" Grid.Column="1">
+                <Border BorderBrush="Black" BorderThickness="1" Background="White" Padding="10">
+                    <StackPanel>
+                        <!-- Etiqueta -->
+                        <TextBlock Text="Ingresa el nombre de la asignatura:" Margin="0,0,0,10" />
+
+                        <!-- Campo de texto -->
+                        <TextBox x:Name="NombreAsignaturaTextBox" Width="200" />
+                        <ComboBox x:Name="comboBoxProgramaEducativo">
+                            <ComboBoxItem Content="Ingenería de Software"/>
+                            <ComboBoxItem Content="Estadística"/>
+                            <ComboBoxItem Content="Redes y servicios de computo"/>
+                            <ComboBoxItem Content="Tecnologías computacionales"/>
+                            <ComboBoxItem Content="Ingeniería de Ciberseguridad e Infraestructura de Cómputo"/>
+                            <ComboBoxItem Content="Ingeniería en Ciencia de Datos"/>
+                            <ComboBoxItem Content="Ingeniería en Sistemas y Tecnologías de la Información"/>
+                        </ComboBox>
+
+                        <!-- Botón para confirmar -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <Button Content="Aceptar" Width="75" Margin="5" Click="AgregarAsignatura" />
+                            <Button Content="Cancelar" Width="75" Margin="5" Click="Cancelar_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Popup>
+
         </Grid>
     </Grid>
 

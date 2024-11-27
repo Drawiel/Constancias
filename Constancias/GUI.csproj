@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Adicionales\ManejadorDeSesion.cs" />
+    <Compile Include="Adicionales\MensajesError.cs" />
     <Compile Include="Adicionales\ValidadorCampos.cs" />
     <Compile Include="Adicionales\SesionDeUsuario.cs" />
     <Compile Include="ControlUsuarios\CertificacionProgramasControl.xaml.cs">

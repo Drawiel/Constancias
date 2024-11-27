@@ -129,6 +129,7 @@
       <DependentUpon>Constancias.edmx</DependentUpon>
       <LastGenOutput>Constancias.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Constancias.edmx.sql" />
     <Content Include="Constancias.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Constancias.edmx</DependentUpon>
