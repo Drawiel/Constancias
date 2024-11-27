@@ -4,60 +4,60 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ConstanciasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="ConstanciasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="Academico">
           <Key>
             <PropertyRef Name="IdAcademico" />
           </Key>
-          <Property Name="IdAcademico" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="NumeroPersonal" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="FechaContratacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="TipoContratacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="IdPrograma" Type="int" Nullable="false" />
+          <Property Name="IdAcademico" Nullable="false" Type="int" />
+          <Property Name="Nombre" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="NumeroPersonal" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="FechaContratacion" MaxLength="50" Type="nvarchar" />
+          <Property Name="TipoContratacion" MaxLength="50" Type="nvarchar" />
+          <Property Name="IdPrograma" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="AcademicoExperienciaEducativa">
           <Key>
             <PropertyRef Name="IdAcademico" />
             <PropertyRef Name="IdExperienciaEducativa" />
           </Key>
-          <Property Name="IdAcademico" Type="int" Nullable="false" />
-          <Property Name="IdExperienciaEducativa" Type="int" Nullable="false" />
+          <Property Name="IdAcademico" Nullable="false" Type="int" />
+          <Property Name="IdExperienciaEducativa" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="Administrativa">
           <Key>
             <PropertyRef Name="IdAdministrativo" />
           </Key>
-          <Property Name="IdAdministrativo" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ProgramaEducativo" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAdministrativo" Nullable="false" Type="int" />
+          <Property Name="Nombre" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="ProgramaEducativo" MaxLength="100" Type="nvarchar" />
         </EntityType>
         <EntityType Name="Constancia">
           <Key>
             <PropertyRef Name="IdConstancia" />
           </Key>
-          <Property Name="IdConstancia" Type="int" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
-          <Property Name="FechaExpedicion" Type="nvarchar" MaxLength="50" />
-          <Property Name="Solicitante" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdConstancia" Nullable="false" Type="int" />
+          <Property Name="Tipo" MaxLength="50" Type="nvarchar" />
+          <Property Name="FechaExpedicion" MaxLength="50" Type="nvarchar" />
+          <Property Name="Solicitante" MaxLength="100" Type="nvarchar" />
           <Property Name="IdAcademico" Type="int" />
         </EntityType>
         <EntityType Name="ExperienciaEducativa">
           <Key>
             <PropertyRef Name="IdExperienciaEducativa" />
           </Key>
-          <Property Name="IdExperienciaEducativa" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ProgramaEducativo" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdExperienciaEducativa" Nullable="false" Type="int" />
+          <Property Name="Nombre" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="ProgramaEducativo" MaxLength="100" Type="nvarchar" />
           <Property Name="IdPrograma" Type="int" />
         </EntityType>
         <EntityType Name="Participacion">
           <Key>
             <PropertyRef Name="IdParticipacion" />
           </Key>
-          <Property Name="IdParticipacion" Type="int" Nullable="false" />
-          <Property Name="PeriodoParticipacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="TipoParticipacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdParticipacion" Nullable="false" Type="int" />
+          <Property Name="PeriodoParticipacion" MaxLength="50" Type="nvarchar" />
+          <Property Name="TipoParticipacion" MaxLength="50" Type="nvarchar" />
           <Property Name="IdPrograma" Type="int" />
           <Property Name="IdAcademico" Type="int" />
         </EntityType>
@@ -65,55 +65,55 @@
           <Key>
             <PropertyRef Name="IdProducto" />
           </Key>
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
-          <Property Name="TipoPublicacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="FechaPublicacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProducto" Nullable="false" Type="int" />
+          <Property Name="Titulo" Nullable="false" MaxLength="200" Type="nvarchar" />
+          <Property Name="Tipo" MaxLength="50" Type="nvarchar" />
+          <Property Name="TipoPublicacion" MaxLength="50" Type="nvarchar" />
+          <Property Name="FechaPublicacion" MaxLength="50" Type="nvarchar" />
           <Property Name="IdAcademico" Type="int" />
         </EntityType>
         <EntityType Name="ProgramaEducativo">
           <Key>
             <PropertyRef Name="IdPrograma" />
           </Key>
-          <Property Name="IdPrograma" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Año" Type="nvarchar" MaxLength="4" />
-          <Property Name="AreaAcademica" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdPrograma" Nullable="false" Type="int" />
+          <Property Name="Nombre" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="Año" MaxLength="4" Type="nvarchar" />
+          <Property Name="AreaAcademica" MaxLength="100" Type="nvarchar" />
         </EntityType>
         <EntityType Name="ProgramaEducativoExperienciaEducativa">
           <Key>
             <PropertyRef Name="IdPrograma" />
             <PropertyRef Name="IdExperienciaEducativa" />
           </Key>
-          <Property Name="IdPrograma" Type="int" Nullable="false" />
-          <Property Name="IdExperienciaEducativa" Type="int" Nullable="false" />
+          <Property Name="IdPrograma" Nullable="false" Type="int" />
+          <Property Name="IdExperienciaEducativa" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="ProyectoCampo">
           <Key>
             <PropertyRef Name="IdProyectoCampo" />
           </Key>
-          <Property Name="IdProyectoCampo" Type="int" Nullable="false" />
-          <Property Name="NombreProyecto" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="LugarRealizacion" Type="nvarchar" MaxLength="100" />
-          <Property Name="Periodo" Type="nvarchar" MaxLength="50" />
-          <Property Name="RolAcademico" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProyectoCampo" Nullable="false" Type="int" />
+          <Property Name="NombreProyecto" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="LugarRealizacion" MaxLength="100" Type="nvarchar" />
+          <Property Name="Periodo" MaxLength="50" Type="nvarchar" />
+          <Property Name="RolAcademico" MaxLength="50" Type="nvarchar" />
           <Property Name="IdAcademico" Type="int" />
         </EntityType>
         <EntityType Name="TrabajoRecepcional">
           <Key>
             <PropertyRef Name="IdTrabajoRecepcional" />
           </Key>
-          <Property Name="IdTrabajoRecepcional" Type="int" Nullable="false" />
-          <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="NombreEstudiante" Type="nvarchar" MaxLength="100" />
-          <Property Name="FechaPresentacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="TipoTrabajo" Type="nvarchar" MaxLength="50" />
-          <Property Name="IdAcademico" Type="int" Nullable="false" />
+          <Property Name="IdTrabajoRecepcional" Nullable="false" Type="int" />
+          <Property Name="Titulo" Nullable="false" MaxLength="200" Type="nvarchar" />
+          <Property Name="NombreEstudiante" MaxLength="100" Type="nvarchar" />
+          <Property Name="FechaPresentacion" MaxLength="50" Type="nvarchar" />
+          <Property Name="TipoTrabajo" MaxLength="50" Type="nvarchar" />
+          <Property Name="IdAcademico" Nullable="false" Type="int" />
         </EntityType>
         <Association Name="FK__Academico__IdAca__5070F446">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="1" />
-          <End Role="AcademicoExperienciaEducativa" Type="Self.AcademicoExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="1" Role="Academico" />
+          <End Type="Self.AcademicoExperienciaEducativa" Multiplicity="*" Role="AcademicoExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -124,8 +124,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Academico__IdExp__5165187F">
-          <End Role="ExperienciaEducativa" Type="Self.ExperienciaEducativa" Multiplicity="1" />
-          <End Role="AcademicoExperienciaEducativa" Type="Self.AcademicoExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.ExperienciaEducativa" Multiplicity="1" Role="ExperienciaEducativa" />
+          <End Type="Self.AcademicoExperienciaEducativa" Multiplicity="*" Role="AcademicoExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="ExperienciaEducativa">
               <PropertyRef Name="IdExperienciaEducativa" />
@@ -136,10 +136,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Academico__IdPro__398D8EEE">
-          <End Role="ProgramaEducativo" Type="Self.ProgramaEducativo" Multiplicity="1">
+          <End Type="Self.ProgramaEducativo" Multiplicity="1" Role="ProgramaEducativo">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Academico" Type="Self.Academico" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="*" Role="Academico" />
           <ReferentialConstraint>
             <Principal Role="ProgramaEducativo">
               <PropertyRef Name="IdPrograma" />
@@ -150,8 +150,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Constanci__IdAca__3C69FB99">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="0..1" />
-          <End Role="Constancia" Type="Self.Constancia" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="0..1" Role="Academico" />
+          <End Type="Self.Constancia" Multiplicity="*" Role="Constancia" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -162,8 +162,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Experienc__IdPro__47DBAE45">
-          <End Role="ProgramaEducativo" Type="Self.ProgramaEducativo" Multiplicity="0..1" />
-          <End Role="ExperienciaEducativa" Type="Self.ExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.ProgramaEducativo" Multiplicity="0..1" Role="ProgramaEducativo" />
+          <End Type="Self.ExperienciaEducativa" Multiplicity="*" Role="ExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="ProgramaEducativo">
               <PropertyRef Name="IdPrograma" />
@@ -174,8 +174,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Participa__IdAca__4BAC3F29">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="0..1" />
-          <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="0..1" Role="Academico" />
+          <End Type="Self.Participacion" Multiplicity="*" Role="Participacion" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -186,8 +186,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Participa__IdPro__4AB81AF0">
-          <End Role="ProgramaEducativo" Type="Self.ProgramaEducativo" Multiplicity="0..1" />
-          <End Role="Participacion" Type="Self.Participacion" Multiplicity="*" />
+          <End Type="Self.ProgramaEducativo" Multiplicity="0..1" Role="ProgramaEducativo" />
+          <End Type="Self.Participacion" Multiplicity="*" Role="Participacion" />
           <ReferentialConstraint>
             <Principal Role="ProgramaEducativo">
               <PropertyRef Name="IdPrograma" />
@@ -198,8 +198,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProductoA__IdAca__4222D4EF">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="0..1" />
-          <End Role="ProductoAcademico" Type="Self.ProductoAcademico" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="0..1" Role="Academico" />
+          <End Type="Self.ProductoAcademico" Multiplicity="*" Role="ProductoAcademico" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -210,10 +210,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProgramaE__IdExp__5535A963">
-          <End Role="ExperienciaEducativa" Type="Self.ExperienciaEducativa" Multiplicity="1">
+          <End Type="Self.ExperienciaEducativa" Multiplicity="1" Role="ExperienciaEducativa">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ProgramaEducativoExperienciaEducativa" Type="Self.ProgramaEducativoExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.ProgramaEducativoExperienciaEducativa" Multiplicity="*" Role="ProgramaEducativoExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="ExperienciaEducativa">
               <PropertyRef Name="IdExperienciaEducativa" />
@@ -224,10 +224,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProgramaE__IdPro__5441852A">
-          <End Role="ProgramaEducativo" Type="Self.ProgramaEducativo" Multiplicity="1">
+          <End Type="Self.ProgramaEducativo" Multiplicity="1" Role="ProgramaEducativo">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ProgramaEducativoExperienciaEducativa" Type="Self.ProgramaEducativoExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.ProgramaEducativoExperienciaEducativa" Multiplicity="*" Role="ProgramaEducativoExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="ProgramaEducativo">
               <PropertyRef Name="IdPrograma" />
@@ -238,8 +238,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProyectoC__IdAca__3F466844">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="0..1" />
-          <End Role="ProyectoCampo" Type="Self.ProyectoCampo" Multiplicity="*" />
+          <End Type="Self.Academico" Multiplicity="0..1" Role="Academico" />
+          <End Type="Self.ProyectoCampo" Multiplicity="*" Role="ProyectoCampo" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -250,10 +250,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__TrabajoRe__IdAca__44FF419A">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="1">
+          <End Type="Self.Academico" Multiplicity="1" Role="Academico">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="TrabajoRecepcional" Type="Self.TrabajoRecepcional" Multiplicity="*" />
+          <End Type="Self.TrabajoRecepcional" Multiplicity="*" Role="TrabajoRecepcional" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -276,52 +276,52 @@
           <EntitySet Name="ProyectoCampo" EntityType="Self.ProyectoCampo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrabajoRecepcional" EntityType="Self.TrabajoRecepcional" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Academico__IdAca__5070F446" Association="Self.FK__Academico__IdAca__5070F446">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="AcademicoExperienciaEducativa" EntitySet="AcademicoExperienciaEducativa" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="AcademicoExperienciaEducativa" Role="AcademicoExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__Academico__IdExp__5165187F" Association="Self.FK__Academico__IdExp__5165187F">
-            <End Role="ExperienciaEducativa" EntitySet="ExperienciaEducativa" />
-            <End Role="AcademicoExperienciaEducativa" EntitySet="AcademicoExperienciaEducativa" />
+            <End EntitySet="ExperienciaEducativa" Role="ExperienciaEducativa" />
+            <End EntitySet="AcademicoExperienciaEducativa" Role="AcademicoExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__Academico__IdPro__398D8EEE" Association="Self.FK__Academico__IdPro__398D8EEE">
-            <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />
-            <End Role="Academico" EntitySet="Academico" />
+            <End EntitySet="ProgramaEducativo" Role="ProgramaEducativo" />
+            <End EntitySet="Academico" Role="Academico" />
           </AssociationSet>
           <AssociationSet Name="FK__Constanci__IdAca__3C69FB99" Association="Self.FK__Constanci__IdAca__3C69FB99">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="Constancia" EntitySet="Constancia" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="Constancia" Role="Constancia" />
           </AssociationSet>
           <AssociationSet Name="FK__Experienc__IdPro__47DBAE45" Association="Self.FK__Experienc__IdPro__47DBAE45">
-            <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />
-            <End Role="ExperienciaEducativa" EntitySet="ExperienciaEducativa" />
+            <End EntitySet="ProgramaEducativo" Role="ProgramaEducativo" />
+            <End EntitySet="ExperienciaEducativa" Role="ExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__Participa__IdAca__4BAC3F29" Association="Self.FK__Participa__IdAca__4BAC3F29">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="Participacion" EntitySet="Participacion" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="Participacion" Role="Participacion" />
           </AssociationSet>
           <AssociationSet Name="FK__Participa__IdPro__4AB81AF0" Association="Self.FK__Participa__IdPro__4AB81AF0">
-            <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />
-            <End Role="Participacion" EntitySet="Participacion" />
+            <End EntitySet="ProgramaEducativo" Role="ProgramaEducativo" />
+            <End EntitySet="Participacion" Role="Participacion" />
           </AssociationSet>
           <AssociationSet Name="FK__ProductoA__IdAca__4222D4EF" Association="Self.FK__ProductoA__IdAca__4222D4EF">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="ProductoAcademico" EntitySet="ProductoAcademico" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="ProductoAcademico" Role="ProductoAcademico" />
           </AssociationSet>
           <AssociationSet Name="FK__ProgramaE__IdExp__5535A963" Association="Self.FK__ProgramaE__IdExp__5535A963">
-            <End Role="ExperienciaEducativa" EntitySet="ExperienciaEducativa" />
-            <End Role="ProgramaEducativoExperienciaEducativa" EntitySet="ProgramaEducativoExperienciaEducativa" />
+            <End EntitySet="ExperienciaEducativa" Role="ExperienciaEducativa" />
+            <End EntitySet="ProgramaEducativoExperienciaEducativa" Role="ProgramaEducativoExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__ProgramaE__IdPro__5441852A" Association="Self.FK__ProgramaE__IdPro__5441852A">
-            <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />
-            <End Role="ProgramaEducativoExperienciaEducativa" EntitySet="ProgramaEducativoExperienciaEducativa" />
+            <End EntitySet="ProgramaEducativo" Role="ProgramaEducativo" />
+            <End EntitySet="ProgramaEducativoExperienciaEducativa" Role="ProgramaEducativoExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__ProyectoC__IdAca__3F466844" Association="Self.FK__ProyectoC__IdAca__3F466844">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="ProyectoCampo" EntitySet="ProyectoCampo" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="ProyectoCampo" Role="ProyectoCampo" />
           </AssociationSet>
           <AssociationSet Name="FK__TrabajoRe__IdAca__44FF419A" Association="Self.FK__TrabajoRe__IdAca__44FF419A">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="TrabajoRecepcional" EntitySet="TrabajoRecepcional" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="TrabajoRecepcional" Role="TrabajoRecepcional" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -336,8 +336,8 @@
           <Property Name="IdAcademico" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumeroPersonal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="None" />
-          <Property Name="FechaContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TipoContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="TipoContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Name="IdPrograma" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProgramaEducativo" Relationship="Self.FK__Academico__IdPro__398D8EEE" FromRole="Academico" ToRole="ProgramaEducativo" />
           <NavigationProperty Name="Constancia" Relationship="Self.FK__Constanci__IdAca__3C69FB99" FromRole="Academico" ToRole="Constancia" />
@@ -346,7 +346,8 @@
           <NavigationProperty Name="ProyectoCampo" Relationship="Self.FK__ProyectoC__IdAca__3F466844" FromRole="Academico" ToRole="ProyectoCampo" />
           <NavigationProperty Name="TrabajoRecepcional" Relationship="Self.FK__TrabajoRe__IdAca__44FF419A" FromRole="Academico" ToRole="TrabajoRecepcional" />
           <NavigationProperty Name="ExperienciaEducativa" Relationship="Self.AcademicoExperienciaEducativa" FromRole="Academico" ToRole="ExperienciaEducativa" />
-          <Property Name="AreaAcademica" Type="String" Nullable="false" />
+          <Property Name="AreaAcademica" Type="String" Nullable="true" />
+          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="256" />
         </EntityType>
         <EntityType Name="Administrativa">
           <Key>
@@ -375,7 +376,7 @@
           </Key>
           <Property Name="IdExperienciaEducativa" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProgramaEducativo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramaEducativo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Name="IdPrograma" Type="Int32" />
           <NavigationProperty Name="ProgramaEducativo1" Relationship="Self.FK__Experienc__IdPro__47DBAE45" FromRole="ExperienciaEducativa" ToRole="ProgramaEducativo" />
           <NavigationProperty Name="Academico" Relationship="Self.AcademicoExperienciaEducativa" FromRole="ExperienciaEducativa" ToRole="Academico" />
@@ -607,7 +608,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ConstanciasModelStoreContainer" CdmEntityContainer="ConstanciasEntities">
+        <EntityContainerMapping CdmEntityContainer="ConstanciasEntities" StorageEntityContainer="ConstanciasModelStoreContainer">
           <EntitySetMapping Name="Academico">
             <EntityTypeMapping TypeName="ConstanciasModel.Academico">
               <MappingFragment StoreEntitySet="Academico">

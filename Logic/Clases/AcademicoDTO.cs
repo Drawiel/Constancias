@@ -13,6 +13,7 @@ namespace Logic.Clases {
         public string TipoContratacion { get; set; }
         public string AreaAcademica { get; set; }
         public int IdPrograma { get; set; }
+        public string Contrasena {  get; set; }
 
     }
 }

@@ -18,6 +18,8 @@ namespace Pruebas.AcademicoDAOTest
             academicoDTO.FechaContratacion = "22-10-2022";
             academicoDTO.NumeroPersonal = "345676";
             academicoDTO.IdPrograma = 1;
+            int result = academico.AgregarAcademico(academicoDTO);
+            Assert.AreEqual(1, result);
         }
     }
 }

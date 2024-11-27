@@ -32,6 +32,7 @@ namespace DataAccess
         public string TipoContratacion { get; set; }
         public int IdPrograma { get; set; }
         public string AreaAcademica { get; set; }
+        public string Contrasena { get; set; }
     
         public virtual ProgramaEducativo ProgramaEducativo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
