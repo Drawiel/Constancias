@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.DAO {
-    internal class AreaAcademicaDAO {
+    public class AreaAcademicaDAO {
+
     }
 }

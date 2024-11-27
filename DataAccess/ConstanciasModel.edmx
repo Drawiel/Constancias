@@ -1,0 +1,1391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gestionconstanciasModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="gestionconstanciasModelStoreContainer">
+    <EntitySet Name="academicoes" EntityType="gestionconstanciasModel.Store.academicoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="areaacademicas" EntityType="gestionconstanciasModel.Store.areaacademicas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="constancias" EntityType="gestionconstanciasModel.Store.constancias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="experienciaeducativas" EntityType="gestionconstanciasModel.Store.experienciaeducativas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="participacions" EntityType="gestionconstanciasModel.Store.participacions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="periodoes" EntityType="gestionconstanciasModel.Store.periodoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="productoacademicoes" EntityType="gestionconstanciasModel.Store.productoacademicoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="programaeducativoes" EntityType="gestionconstanciasModel.Store.programaeducativoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="proyectocampoes" EntityType="gestionconstanciasModel.Store.proyectocampoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="rolacademicoes" EntityType="gestionconstanciasModel.Store.rolacademicoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="gestionconstanciasModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipoconstancias" EntityType="gestionconstanciasModel.Store.tipoconstancias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipoparticipacions" EntityType="gestionconstanciasModel.Store.tipoparticipacions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipopersonals" EntityType="gestionconstanciasModel.Store.tipopersonals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipoproductoes" EntityType="gestionconstanciasModel.Store.tipoproductoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipopublicacions" EntityType="gestionconstanciasModel.Store.tipopublicacions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipotrabajoes" EntityType="gestionconstanciasModel.Store.tipotrabajoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="trabajorecepcionals" EntityType="gestionconstanciasModel.Store.trabajorecepcionals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_experienciaeducativa_academico" EntityType="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_academico_area" Association="gestionconstanciasModel.Store.FK_academico_area">
+      <End Role="areaacademica" EntitySet="areaacademicas" />
+      <End Role="academico" EntitySet="academicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_academico_tipoPersonal" Association="gestionconstanciasModel.Store.FK_academico_tipoPersonal">
+      <End Role="tipopersonal" EntitySet="tipopersonals" />
+      <End Role="academico" EntitySet="academicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_constancia_academico" Association="gestionconstanciasModel.Store.FK_constancia_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="constancia" EntitySet="constancias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participacion_academico" Association="gestionconstanciasModel.Store.FK_participacion_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="participacion" EntitySet="participacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_academico" Association="gestionconstanciasModel.Store.FK_producto_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="productoacademico" EntitySet="productoacademicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proyectoc_academico" Association="gestionconstanciasModel.Store.FK_proyectoc_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="proyectocampo" EntitySet="proyectocampoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajorecepcional_academico" Association="gestionconstanciasModel.Store.FK_trabajorecepcional_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_programaeducativo_area" Association="gestionconstanciasModel.Store.FK_programaeducativo_area">
+      <End Role="areaacademica" EntitySet="areaacademicas" />
+      <End Role="programaeducativo" EntitySet="programaeducativoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_constancia_tipo" Association="gestionconstanciasModel.Store.FK_constancia_tipo">
+      <End Role="tipoconstancia" EntitySet="tipoconstancias" />
+      <End Role="constancia" EntitySet="constancias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_experienciaeducativa_programaeducativo" Association="gestionconstanciasModel.Store.FK_experienciaeducativa_programaeducativo">
+      <End Role="programaeducativo" EntitySet="programaeducativoes" />
+      <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participacion_periodo" Association="gestionconstanciasModel.Store.FK_participacion_periodo">
+      <End Role="periodo" EntitySet="periodoes" />
+      <End Role="participacion" EntitySet="participacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participacion_programa" Association="gestionconstanciasModel.Store.FK_participacion_programa">
+      <End Role="programaeducativo" EntitySet="programaeducativoes" />
+      <End Role="participacion" EntitySet="participacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_participacion_tipo" Association="gestionconstanciasModel.Store.FK_participacion_tipo">
+      <End Role="tipoparticipacion" EntitySet="tipoparticipacions" />
+      <End Role="participacion" EntitySet="participacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proyectoc_periodo" Association="gestionconstanciasModel.Store.FK_proyectoc_periodo">
+      <End Role="periodo" EntitySet="periodoes" />
+      <End Role="proyectocampo" EntitySet="proyectocampoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_tipoproducto" Association="gestionconstanciasModel.Store.FK_producto_tipoproducto">
+      <End Role="tipoproducto" EntitySet="tipoproductoes" />
+      <End Role="productoacademico" EntitySet="productoacademicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_tipopublicacion" Association="gestionconstanciasModel.Store.FK_producto_tipopublicacion">
+      <End Role="tipopublicacion" EntitySet="tipopublicacions" />
+      <End Role="productoacademico" EntitySet="productoacademicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proyectoc_rol" Association="gestionconstanciasModel.Store.FK_proyectoc_rol">
+      <End Role="rolacademico" EntitySet="rolacademicoes" />
+      <End Role="proyectocampo" EntitySet="proyectocampoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajorecepcional_tipo" Association="gestionconstanciasModel.Store.FK_trabajorecepcional_tipo">
+      <End Role="tipotrabajo" EntitySet="tipotrabajoes" />
+      <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_periodo_productoAcademico" Association="gestionconstanciasModel.Store.FK_periodo_productoAcademico">
+      <End Role="periodo" EntitySet="periodoes" />
+      <End Role="productoacademico" EntitySet="productoacademicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rolacademico_trabajorecepcional" Association="gestionconstanciasModel.Store.FK_rolacademico_trabajorecepcional">
+      <End Role="rolacademico" EntitySet="rolacademicoes" />
+      <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_experienciaeducativa_academico_experienciaeducativa" Association="gestionconstanciasModel.Store.FK_FK_experienciaeducativa_academico_experienciaeducativa">
+      <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+      <End Role="FK_experienciaeducativa_academico" EntitySet="FK_experienciaeducativa_academico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_experienciaeducativa_academico_academico" Association="gestionconstanciasModel.Store.FK_FK_experienciaeducativa_academico_academico">
+      <End Role="academico" EntitySet="academicoes" />
+      <End Role="FK_experienciaeducativa_academico" EntitySet="FK_experienciaeducativa_academico" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="academicoes">
+    <Key>
+      <PropertyRef Name="idAcademico" />
+    </Key>
+    <Property Name="idAcademico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="numeroPersonal" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="fechaContratacion" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="idAreaAcademica" Type="int" Nullable="true" />
+    <Property Name="idTipoPersonal" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="areaacademicas">
+    <Key>
+      <PropertyRef Name="idAreaAcademica" />
+    </Key>
+    <Property Name="idAreaAcademica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="constancias">
+    <Key>
+      <PropertyRef Name="idConstancia" />
+    </Key>
+    <Property Name="idConstancia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaExpedicion" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="idTipoConstancia" Type="int" Nullable="true" />
+    <Property Name="idAcademico" Type="int" Nullable="true" />
+    <Property Name="firmaElectronica" Type="nchar" Nullable="true" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="experienciaeducativas">
+    <Key>
+      <PropertyRef Name="idExperienciaEducativa" />
+    </Key>
+    <Property Name="idExperienciaEducativa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="sec" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="creditos" Type="int" Nullable="true" />
+    <Property Name="horasPracticas" Type="int" Nullable="true" />
+    <Property Name="horasTeoricas" Type="int" Nullable="true" />
+    <Property Name="idProgramaEducativo" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="participacions">
+    <Key>
+      <PropertyRef Name="idProyectoCampo" />
+    </Key>
+    <Property Name="idProyectoCampo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="idPeriodo" Type="int" Nullable="true" />
+    <Property Name="idTipoParticipacion" Type="int" Nullable="true" />
+    <Property Name="idProgramaEducativo" Type="int" Nullable="true" />
+    <Property Name="idAcademico" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="periodoes">
+    <Key>
+      <PropertyRef Name="idPeriodo" />
+    </Key>
+    <Property Name="idPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="22" />
+  </EntityType>
+  <EntityType Name="productoacademicoes">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaPublicacion" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="titulo" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="idTipoProducto" Type="int" Nullable="true" />
+    <Property Name="idTipoPublicacion" Type="int" Nullable="true" />
+    <Property Name="idAcademico" Type="int" Nullable="true" />
+    <Property Name="idPeriodo" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="programaeducativoes">
+    <Key>
+      <PropertyRef Name="idProgramaEducativo" />
+    </Key>
+    <Property Name="idProgramaEducativo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="fecha" Type="varchar" Nullable="true" MaxLength="5" />
+    <Property Name="idAreaAcademica" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="proyectocampoes">
+    <Key>
+      <PropertyRef Name="idProyectoCampo" />
+    </Key>
+    <Property Name="idProyectoCampo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="lugarRealizacion" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="idPeriodo" Type="int" Nullable="true" />
+    <Property Name="idRolAcademico" Type="int" Nullable="true" />
+    <Property Name="idAcademico" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="rolacademicoes">
+    <Key>
+      <PropertyRef Name="idRolAcademico" />
+    </Key>
+    <Property Name="idRolAcademico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tipoconstancias">
+    <Key>
+      <PropertyRef Name="idTipoConstancia" />
+    </Key>
+    <Property Name="idTipoConstancia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tipoparticipacions">
+    <Key>
+      <PropertyRef Name="idTipoParticipacion" />
+    </Key>
+    <Property Name="idTipoParticipacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tipopersonals">
+    <Key>
+      <PropertyRef Name="idTipoPersonal" />
+    </Key>
+    <Property Name="idTipoPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipoproductoes">
+    <Key>
+      <PropertyRef Name="idTipoProducto" />
+    </Key>
+    <Property Name="idTipoProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tipopublicacions">
+    <Key>
+      <PropertyRef Name="idTipoPublicacion" />
+    </Key>
+    <Property Name="idTipoPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tipotrabajoes">
+    <Key>
+      <PropertyRef Name="idTipoTrabajo" />
+    </Key>
+    <Property Name="idTipoTrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="trabajorecepcionals">
+    <Key>
+      <PropertyRef Name="idTrabajoRecepcional" />
+    </Key>
+    <Property Name="idTrabajoRecepcional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreEstudiante" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="titulo" Type="varchar" Nullable="true" MaxLength="25" />
+    <Property Name="infraestructuraOpcional" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="idAcademico" Type="int" Nullable="true" />
+    <Property Name="idTipoTrabajo" Type="int" Nullable="true" />
+    <Property Name="idRolAcademico" Type="int" Nullable="true" />
+    <Property Name="fechaPublicacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_experienciaeducativa_academico">
+    <Key>
+      <PropertyRef Name="experienciaeducativas_idExperienciaEducativa" />
+      <PropertyRef Name="academicoes_idAcademico" />
+    </Key>
+    <Property Name="experienciaeducativas_idExperienciaEducativa" Type="int" Nullable="false" />
+    <Property Name="academicoes_idAcademico" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_academico_area">
+    <End Role="areaacademica" Type="gestionconstanciasModel.Store.areaacademicas" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="areaacademica">
+        <PropertyRef Name="idAreaAcademica" />
+      </Principal>
+      <Dependent Role="academico">
+        <PropertyRef Name="idAreaAcademica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_academico_tipoPersonal">
+    <End Role="tipopersonal" Type="gestionconstanciasModel.Store.tipopersonals" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopersonal">
+        <PropertyRef Name="idTipoPersonal" />
+      </Principal>
+      <Dependent Role="academico">
+        <PropertyRef Name="idTipoPersonal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_constancia_academico">
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="constancia" Type="gestionconstanciasModel.Store.constancias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="constancia">
+        <PropertyRef Name="idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participacion_academico">
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="0..1" />
+    <End Role="participacion" Type="gestionconstanciasModel.Store.participacions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="participacion">
+        <PropertyRef Name="idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_academico">
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productoacademico" Type="gestionconstanciasModel.Store.productoacademicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="productoacademico">
+        <PropertyRef Name="idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proyectoc_academico">
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="proyectocampo" Type="gestionconstanciasModel.Store.proyectocampoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="proyectocampo">
+        <PropertyRef Name="idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajorecepcional_academico">
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajorecepcional" Type="gestionconstanciasModel.Store.trabajorecepcionals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="trabajorecepcional">
+        <PropertyRef Name="idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_programaeducativo_area">
+    <End Role="areaacademica" Type="gestionconstanciasModel.Store.areaacademicas" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="programaeducativo" Type="gestionconstanciasModel.Store.programaeducativoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="areaacademica">
+        <PropertyRef Name="idAreaAcademica" />
+      </Principal>
+      <Dependent Role="programaeducativo">
+        <PropertyRef Name="idAreaAcademica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_constancia_tipo">
+    <End Role="tipoconstancia" Type="gestionconstanciasModel.Store.tipoconstancias" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="constancia" Type="gestionconstanciasModel.Store.constancias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoconstancia">
+        <PropertyRef Name="idTipoConstancia" />
+      </Principal>
+      <Dependent Role="constancia">
+        <PropertyRef Name="idTipoConstancia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_experienciaeducativa_programaeducativo">
+    <End Role="programaeducativo" Type="gestionconstanciasModel.Store.programaeducativoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="experienciaeducativa" Type="gestionconstanciasModel.Store.experienciaeducativas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="programaeducativo">
+        <PropertyRef Name="idProgramaEducativo" />
+      </Principal>
+      <Dependent Role="experienciaeducativa">
+        <PropertyRef Name="idProgramaEducativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participacion_periodo">
+    <End Role="periodo" Type="gestionconstanciasModel.Store.periodoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="participacion" Type="gestionconstanciasModel.Store.participacions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodo">
+        <PropertyRef Name="idPeriodo" />
+      </Principal>
+      <Dependent Role="participacion">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participacion_programa">
+    <End Role="programaeducativo" Type="gestionconstanciasModel.Store.programaeducativoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="participacion" Type="gestionconstanciasModel.Store.participacions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="programaeducativo">
+        <PropertyRef Name="idProgramaEducativo" />
+      </Principal>
+      <Dependent Role="participacion">
+        <PropertyRef Name="idProgramaEducativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_participacion_tipo">
+    <End Role="tipoparticipacion" Type="gestionconstanciasModel.Store.tipoparticipacions" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="participacion" Type="gestionconstanciasModel.Store.participacions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoparticipacion">
+        <PropertyRef Name="idTipoParticipacion" />
+      </Principal>
+      <Dependent Role="participacion">
+        <PropertyRef Name="idTipoParticipacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proyectoc_periodo">
+    <End Role="periodo" Type="gestionconstanciasModel.Store.periodoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="proyectocampo" Type="gestionconstanciasModel.Store.proyectocampoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodo">
+        <PropertyRef Name="idPeriodo" />
+      </Principal>
+      <Dependent Role="proyectocampo">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_tipoproducto">
+    <End Role="tipoproducto" Type="gestionconstanciasModel.Store.tipoproductoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productoacademico" Type="gestionconstanciasModel.Store.productoacademicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoproducto">
+        <PropertyRef Name="idTipoProducto" />
+      </Principal>
+      <Dependent Role="productoacademico">
+        <PropertyRef Name="idTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_tipopublicacion">
+    <End Role="tipopublicacion" Type="gestionconstanciasModel.Store.tipopublicacions" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productoacademico" Type="gestionconstanciasModel.Store.productoacademicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopublicacion">
+        <PropertyRef Name="idTipoPublicacion" />
+      </Principal>
+      <Dependent Role="productoacademico">
+        <PropertyRef Name="idTipoPublicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proyectoc_rol">
+    <End Role="rolacademico" Type="gestionconstanciasModel.Store.rolacademicoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="proyectocampo" Type="gestionconstanciasModel.Store.proyectocampoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolacademico">
+        <PropertyRef Name="idRolAcademico" />
+      </Principal>
+      <Dependent Role="proyectocampo">
+        <PropertyRef Name="idRolAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trabajorecepcional_tipo">
+    <End Role="tipotrabajo" Type="gestionconstanciasModel.Store.tipotrabajoes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajorecepcional" Type="gestionconstanciasModel.Store.trabajorecepcionals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipotrabajo">
+        <PropertyRef Name="idTipoTrabajo" />
+      </Principal>
+      <Dependent Role="trabajorecepcional">
+        <PropertyRef Name="idTipoTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_periodo_productoAcademico">
+    <End Role="periodo" Type="gestionconstanciasModel.Store.periodoes" Multiplicity="0..1" />
+    <End Role="productoacademico" Type="gestionconstanciasModel.Store.productoacademicoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodo">
+        <PropertyRef Name="idPeriodo" />
+      </Principal>
+      <Dependent Role="productoacademico">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rolacademico_trabajorecepcional">
+    <End Role="rolacademico" Type="gestionconstanciasModel.Store.rolacademicoes" Multiplicity="0..1" />
+    <End Role="trabajorecepcional" Type="gestionconstanciasModel.Store.trabajorecepcionals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolacademico">
+        <PropertyRef Name="idRolAcademico" />
+      </Principal>
+      <Dependent Role="trabajorecepcional">
+        <PropertyRef Name="idRolAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_experienciaeducativa_academico_experienciaeducativa">
+    <End Role="experienciaeducativa" Type="gestionconstanciasModel.Store.experienciaeducativas" Multiplicity="1" />
+    <End Role="FK_experienciaeducativa_academico" Type="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="experienciaeducativa">
+        <PropertyRef Name="idExperienciaEducativa" />
+      </Principal>
+      <Dependent Role="FK_experienciaeducativa_academico">
+        <PropertyRef Name="experienciaeducativas_idExperienciaEducativa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_experienciaeducativa_academico_academico">
+    <End Role="FK_experienciaeducativa_academico" Type="gestionconstanciasModel.Store.FK_experienciaeducativa_academico" Multiplicity="*" />
+    <End Role="academico" Type="gestionconstanciasModel.Store.academicoes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="academico">
+        <PropertyRef Name="idAcademico" />
+      </Principal>
+      <Dependent Role="FK_experienciaeducativa_academico">
+        <PropertyRef Name="academicoes_idAcademico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gestionconstanciasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="academico">
+          <Key>
+            <PropertyRef Name="idAcademico" />
+          </Key>
+          <Property Name="idAcademico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numeroPersonal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fechaContratacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idAreaAcademica" Type="Int32" />
+          <Property Name="idTipoPersonal" Type="Int32" />
+          <NavigationProperty Name="areaacademica" Relationship="Self.FK_academico_area" FromRole="academico" ToRole="areaacademica" />
+          <NavigationProperty Name="tipopersonal" Relationship="Self.FK_academico_tipoPersonal" FromRole="academico" ToRole="tipopersonal" />
+          <NavigationProperty Name="constancias" Relationship="Self.FK_constancia_academico" FromRole="academico" ToRole="constancia" />
+          <NavigationProperty Name="participacions" Relationship="Self.FK_participacion_academico" FromRole="academico" ToRole="participacion" />
+          <NavigationProperty Name="productoacademicoes" Relationship="Self.FK_producto_academico" FromRole="academico" ToRole="productoacademico" />
+          <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_academico" FromRole="academico" ToRole="proyectocampo" />
+          <NavigationProperty Name="trabajorecepcionals" Relationship="Self.FK_trabajorecepcional_academico" FromRole="academico" ToRole="trabajorecepcional" />
+          <NavigationProperty Name="experienciaeducativas" Relationship="gestionconstanciasModel.FK_experienciaeducativa_academico" FromRole="academico" ToRole="experienciaeducativa" />
+        </EntityType>
+        <EntityType Name="areaacademica">
+          <Key>
+            <PropertyRef Name="idAreaAcademica" />
+          </Key>
+          <Property Name="idAreaAcademica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="academicoes" Relationship="Self.FK_academico_area" FromRole="areaacademica" ToRole="academico" />
+          <NavigationProperty Name="programaeducativoes" Relationship="Self.FK_programaeducativo_area" FromRole="areaacademica" ToRole="programaeducativo" />
+        </EntityType>
+        <EntityType Name="constancia">
+          <Key>
+            <PropertyRef Name="idConstancia" />
+          </Key>
+          <Property Name="idConstancia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaExpedicion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idTipoConstancia" Type="Int32" />
+          <Property Name="idAcademico" Type="Int32" />
+          <Property Name="firmaElectronica" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="academico" Relationship="Self.FK_constancia_academico" FromRole="constancia" ToRole="academico" />
+          <NavigationProperty Name="tipoconstancia" Relationship="Self.FK_constancia_tipo" FromRole="constancia" ToRole="tipoconstancia" />
+        </EntityType>
+        <EntityType Name="experienciaeducativa">
+          <Key>
+            <PropertyRef Name="idExperienciaEducativa" />
+          </Key>
+          <Property Name="idExperienciaEducativa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="creditos" Type="Int32" Nullable="true" />
+          <Property Name="horasPracticas" Type="Int32" Nullable="true" />
+          <Property Name="horasTeoricas" Type="Int32" Nullable="true" />
+          <Property Name="idProgramaEducativo" Type="Int32" />
+          <NavigationProperty Name="programaeducativo" Relationship="Self.FK_experienciaeducativa_programaeducativo" FromRole="experienciaeducativa" ToRole="programaeducativo" />
+          <NavigationProperty Name="academicoes" Relationship="gestionconstanciasModel.FK_experienciaeducativa_academico" FromRole="experienciaeducativa" ToRole="academico" />
+        </EntityType>
+        <EntityType Name="participacion">
+          <Key>
+            <PropertyRef Name="idProyectoCampo" />
+          </Key>
+          <Property Name="idProyectoCampo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="idPeriodo" Type="Int32" />
+          <Property Name="idTipoParticipacion" Type="Int32" />
+          <Property Name="idProgramaEducativo" Type="Int32" />
+          <Property Name="idAcademico" Type="Int32" />
+          <NavigationProperty Name="academico" Relationship="Self.FK_participacion_academico" FromRole="participacion" ToRole="academico" />
+          <NavigationProperty Name="periodo" Relationship="Self.FK_participacion_periodo" FromRole="participacion" ToRole="periodo" />
+          <NavigationProperty Name="programaeducativo" Relationship="Self.FK_participacion_programa" FromRole="participacion" ToRole="programaeducativo" />
+          <NavigationProperty Name="tipoparticipacion" Relationship="Self.FK_participacion_tipo" FromRole="participacion" ToRole="tipoparticipacion" />
+        </EntityType>
+        <EntityType Name="periodo">
+          <Key>
+            <PropertyRef Name="idPeriodo" />
+          </Key>
+          <Property Name="idPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="participacions" Relationship="Self.FK_participacion_periodo" FromRole="periodo" ToRole="participacion" />
+          <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_periodo" FromRole="periodo" ToRole="proyectocampo" />
+          <NavigationProperty Name="productoacademicoes" Relationship="gestionconstanciasModel.FK_periodo_productoAcademico" FromRole="periodo" ToRole="productoacademico" />
+        </EntityType>
+        <EntityType Name="productoacademico">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaPublicacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="idTipoProducto" Type="Int32" />
+          <Property Name="idTipoPublicacion" Type="Int32" />
+          <Property Name="idAcademico" Type="Int32" />
+          <NavigationProperty Name="academico" Relationship="Self.FK_producto_academico" FromRole="productoacademico" ToRole="academico" />
+          <NavigationProperty Name="tipoproducto" Relationship="Self.FK_producto_tipoproducto" FromRole="productoacademico" ToRole="tipoproducto" />
+          <NavigationProperty Name="tipopublicacion" Relationship="Self.FK_producto_tipopublicacion" FromRole="productoacademico" ToRole="tipopublicacion" />
+          <NavigationProperty Name="periodo" Relationship="gestionconstanciasModel.FK_periodo_productoAcademico" FromRole="productoacademico" ToRole="periodo" />
+          <Property Name="idPeriodo" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="programaeducativo">
+          <Key>
+            <PropertyRef Name="idProgramaEducativo" />
+          </Key>
+          <Property Name="idProgramaEducativo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="idAreaAcademica" Type="Int32" />
+          <NavigationProperty Name="areaacademica" Relationship="Self.FK_programaeducativo_area" FromRole="programaeducativo" ToRole="areaacademica" />
+          <NavigationProperty Name="experienciaeducativas" Relationship="Self.FK_experienciaeducativa_programaeducativo" FromRole="programaeducativo" ToRole="experienciaeducativa" />
+          <NavigationProperty Name="participacions" Relationship="Self.FK_participacion_programa" FromRole="programaeducativo" ToRole="participacion" />
+        </EntityType>
+        <EntityType Name="proyectocampo">
+          <Key>
+            <PropertyRef Name="idProyectoCampo" />
+          </Key>
+          <Property Name="idProyectoCampo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="lugarRealizacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idPeriodo" Type="Int32" />
+          <Property Name="idRolAcademico" Type="Int32" />
+          <Property Name="idAcademico" Type="Int32" />
+          <NavigationProperty Name="academico" Relationship="Self.FK_proyectoc_academico" FromRole="proyectocampo" ToRole="academico" />
+          <NavigationProperty Name="periodo" Relationship="Self.FK_proyectoc_periodo" FromRole="proyectocampo" ToRole="periodo" />
+          <NavigationProperty Name="rolacademico" Relationship="Self.FK_proyectoc_rol" FromRole="proyectocampo" ToRole="rolacademico" />
+        </EntityType>
+        <EntityType Name="rolacademico">
+          <Key>
+            <PropertyRef Name="idRolAcademico" />
+          </Key>
+          <Property Name="idRolAcademico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="proyectocampoes" Relationship="Self.FK_proyectoc_rol" FromRole="rolacademico" ToRole="proyectocampo" />
+          <NavigationProperty Name="trabajorecepcionals" Relationship="gestionconstanciasModel.FK_rolacademico_trabajorecepcional" FromRole="rolacademico" ToRole="trabajorecepcional" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tipoconstancia">
+          <Key>
+            <PropertyRef Name="idTipoConstancia" />
+          </Key>
+          <Property Name="idTipoConstancia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="constancias" Relationship="Self.FK_constancia_tipo" FromRole="tipoconstancia" ToRole="constancia" />
+        </EntityType>
+        <EntityType Name="tipoparticipacion">
+          <Key>
+            <PropertyRef Name="idTipoParticipacion" />
+          </Key>
+          <Property Name="idTipoParticipacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="participacions" Relationship="Self.FK_participacion_tipo" FromRole="tipoparticipacion" ToRole="participacion" />
+        </EntityType>
+        <EntityType Name="tipopersonal">
+          <Key>
+            <PropertyRef Name="idTipoPersonal" />
+          </Key>
+          <Property Name="idTipoPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="academicoes" Relationship="Self.FK_academico_tipoPersonal" FromRole="tipopersonal" ToRole="academico" />
+        </EntityType>
+        <EntityType Name="tipoproducto">
+          <Key>
+            <PropertyRef Name="idTipoProducto" />
+          </Key>
+          <Property Name="idTipoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productoacademicoes" Relationship="Self.FK_producto_tipoproducto" FromRole="tipoproducto" ToRole="productoacademico" />
+        </EntityType>
+        <EntityType Name="tipopublicacion">
+          <Key>
+            <PropertyRef Name="idTipoPublicacion" />
+          </Key>
+          <Property Name="idTipoPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productoacademicoes" Relationship="Self.FK_producto_tipopublicacion" FromRole="tipopublicacion" ToRole="productoacademico" />
+        </EntityType>
+        <EntityType Name="tipotrabajo">
+          <Key>
+            <PropertyRef Name="idTipoTrabajo" />
+          </Key>
+          <Property Name="idTipoTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="trabajorecepcionals" Relationship="Self.FK_trabajorecepcional_tipo" FromRole="tipotrabajo" ToRole="trabajorecepcional" />
+        </EntityType>
+        <EntityType Name="trabajorecepcional">
+          <Key>
+            <PropertyRef Name="idTrabajoRecepcional" />
+          </Key>
+          <Property Name="idTrabajoRecepcional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEstudiante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="infraestructuraOpcional" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="idAcademico" Type="Int32" />
+          <Property Name="idTipoTrabajo" Type="Int32" />
+          <NavigationProperty Name="academico" Relationship="Self.FK_trabajorecepcional_academico" FromRole="trabajorecepcional" ToRole="academico" />
+          <NavigationProperty Name="tipotrabajo" Relationship="Self.FK_trabajorecepcional_tipo" FromRole="trabajorecepcional" ToRole="tipotrabajo" />
+          <NavigationProperty Name="rolacademico" Relationship="gestionconstanciasModel.FK_rolacademico_trabajorecepcional" FromRole="trabajorecepcional" ToRole="rolacademico" />
+          <Property Name="idRolAcademico" Type="Int32" Nullable="true" />
+          <Property Name="fechaPublicacion" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_academico_area">
+          <End Role="areaacademica" Type="Self.areaacademica" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="academico" Type="Self.academico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areaacademica">
+              <PropertyRef Name="idAreaAcademica" />
+            </Principal>
+            <Dependent Role="academico">
+              <PropertyRef Name="idAreaAcademica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_academico_tipoPersonal">
+          <End Role="tipopersonal" Type="Self.tipopersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="academico" Type="Self.academico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipopersonal">
+              <PropertyRef Name="idTipoPersonal" />
+            </Principal>
+            <Dependent Role="academico">
+              <PropertyRef Name="idTipoPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_constancia_academico">
+          <End Role="academico" Type="Self.academico" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="constancia" Type="Self.constancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="academico">
+              <PropertyRef Name="idAcademico" />
+            </Principal>
+            <Dependent Role="constancia">
+              <PropertyRef Name="idAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participacion_academico">
+          <End Role="academico" Type="Self.academico" Multiplicity="0..1" />
+          <End Role="participacion" Type="Self.participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="academico">
+              <PropertyRef Name="idAcademico" />
+            </Principal>
+            <Dependent Role="participacion">
+              <PropertyRef Name="idAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_academico">
+          <End Role="academico" Type="Self.academico" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productoacademico" Type="Self.productoacademico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="academico">
+              <PropertyRef Name="idAcademico" />
+            </Principal>
+            <Dependent Role="productoacademico">
+              <PropertyRef Name="idAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyectoc_academico">
+          <End Role="academico" Type="Self.academico" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyectocampo" Type="Self.proyectocampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="academico">
+              <PropertyRef Name="idAcademico" />
+            </Principal>
+            <Dependent Role="proyectocampo">
+              <PropertyRef Name="idAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trabajorecepcional_academico">
+          <End Role="academico" Type="Self.academico" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="trabajorecepcional" Type="Self.trabajorecepcional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="academico">
+              <PropertyRef Name="idAcademico" />
+            </Principal>
+            <Dependent Role="trabajorecepcional">
+              <PropertyRef Name="idAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_programaeducativo_area">
+          <End Role="areaacademica" Type="Self.areaacademica" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="programaeducativo" Type="Self.programaeducativo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="areaacademica">
+              <PropertyRef Name="idAreaAcademica" />
+            </Principal>
+            <Dependent Role="programaeducativo">
+              <PropertyRef Name="idAreaAcademica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_constancia_tipo">
+          <End Role="tipoconstancia" Type="Self.tipoconstancia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="constancia" Type="Self.constancia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoconstancia">
+              <PropertyRef Name="idTipoConstancia" />
+            </Principal>
+            <Dependent Role="constancia">
+              <PropertyRef Name="idTipoConstancia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_experienciaeducativa_programaeducativo">
+          <End Role="programaeducativo" Type="Self.programaeducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="experienciaeducativa" Type="Self.experienciaeducativa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programaeducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="experienciaeducativa">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participacion_periodo">
+          <End Role="periodo" Type="Self.periodo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="participacion" Type="Self.participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="participacion">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participacion_programa">
+          <End Role="programaeducativo" Type="Self.programaeducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="participacion" Type="Self.participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="programaeducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="participacion">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_participacion_tipo">
+          <End Role="tipoparticipacion" Type="Self.tipoparticipacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="participacion" Type="Self.participacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoparticipacion">
+              <PropertyRef Name="idTipoParticipacion" />
+            </Principal>
+            <Dependent Role="participacion">
+              <PropertyRef Name="idTipoParticipacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyectoc_periodo">
+          <End Role="periodo" Type="Self.periodo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyectocampo" Type="Self.proyectocampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="proyectocampo">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_tipoproducto">
+          <End Role="tipoproducto" Type="Self.tipoproducto" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productoacademico" Type="Self.productoacademico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoproducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="productoacademico">
+              <PropertyRef Name="idTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_tipopublicacion">
+          <End Role="tipopublicacion" Type="Self.tipopublicacion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="productoacademico" Type="Self.productoacademico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipopublicacion">
+              <PropertyRef Name="idTipoPublicacion" />
+            </Principal>
+            <Dependent Role="productoacademico">
+              <PropertyRef Name="idTipoPublicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_proyectoc_rol">
+          <End Role="rolacademico" Type="Self.rolacademico" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="proyectocampo" Type="Self.proyectocampo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolacademico">
+              <PropertyRef Name="idRolAcademico" />
+            </Principal>
+            <Dependent Role="proyectocampo">
+              <PropertyRef Name="idRolAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trabajorecepcional_tipo">
+          <End Role="tipotrabajo" Type="Self.tipotrabajo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="trabajorecepcional" Type="Self.trabajorecepcional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipotrabajo">
+              <PropertyRef Name="idTipoTrabajo" />
+            </Principal>
+            <Dependent Role="trabajorecepcional">
+              <PropertyRef Name="idTipoTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestionconstanciasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="academicoes" EntityType="Self.academico" />
+          <EntitySet Name="areaacademicas" EntityType="Self.areaacademica" />
+          <EntitySet Name="constancias" EntityType="Self.constancia" />
+          <EntitySet Name="experienciaeducativas" EntityType="Self.experienciaeducativa" />
+          <EntitySet Name="participacions" EntityType="Self.participacion" />
+          <EntitySet Name="periodoes" EntityType="Self.periodo" />
+          <EntitySet Name="productoacademicoes" EntityType="Self.productoacademico" />
+          <EntitySet Name="programaeducativoes" EntityType="Self.programaeducativo" />
+          <EntitySet Name="proyectocampoes" EntityType="Self.proyectocampo" />
+          <EntitySet Name="rolacademicoes" EntityType="Self.rolacademico" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tipoconstancias" EntityType="Self.tipoconstancia" />
+          <EntitySet Name="tipoparticipacions" EntityType="Self.tipoparticipacion" />
+          <EntitySet Name="tipopersonals" EntityType="Self.tipopersonal" />
+          <EntitySet Name="tipoproductoes" EntityType="Self.tipoproducto" />
+          <EntitySet Name="tipopublicacions" EntityType="Self.tipopublicacion" />
+          <EntitySet Name="tipotrabajoes" EntityType="Self.tipotrabajo" />
+          <EntitySet Name="trabajorecepcionals" EntityType="Self.trabajorecepcional" />
+          <AssociationSet Name="FK_academico_area" Association="Self.FK_academico_area">
+            <End Role="areaacademica" EntitySet="areaacademicas" />
+            <End Role="academico" EntitySet="academicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_academico_tipoPersonal" Association="Self.FK_academico_tipoPersonal">
+            <End Role="tipopersonal" EntitySet="tipopersonals" />
+            <End Role="academico" EntitySet="academicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_constancia_academico" Association="Self.FK_constancia_academico">
+            <End Role="academico" EntitySet="academicoes" />
+            <End Role="constancia" EntitySet="constancias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participacion_academico" Association="Self.FK_participacion_academico">
+            <End Role="academico" EntitySet="academicoes" />
+            <End Role="participacion" EntitySet="participacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_academico" Association="Self.FK_producto_academico">
+            <End Role="academico" EntitySet="academicoes" />
+            <End Role="productoacademico" EntitySet="productoacademicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyectoc_academico" Association="Self.FK_proyectoc_academico">
+            <End Role="academico" EntitySet="academicoes" />
+            <End Role="proyectocampo" EntitySet="proyectocampoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trabajorecepcional_academico" Association="Self.FK_trabajorecepcional_academico">
+            <End Role="academico" EntitySet="academicoes" />
+            <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_programaeducativo_area" Association="Self.FK_programaeducativo_area">
+            <End Role="areaacademica" EntitySet="areaacademicas" />
+            <End Role="programaeducativo" EntitySet="programaeducativoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_constancia_tipo" Association="Self.FK_constancia_tipo">
+            <End Role="tipoconstancia" EntitySet="tipoconstancias" />
+            <End Role="constancia" EntitySet="constancias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_experienciaeducativa_programaeducativo" Association="Self.FK_experienciaeducativa_programaeducativo">
+            <End Role="programaeducativo" EntitySet="programaeducativoes" />
+            <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participacion_periodo" Association="Self.FK_participacion_periodo">
+            <End Role="periodo" EntitySet="periodoes" />
+            <End Role="participacion" EntitySet="participacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participacion_programa" Association="Self.FK_participacion_programa">
+            <End Role="programaeducativo" EntitySet="programaeducativoes" />
+            <End Role="participacion" EntitySet="participacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_participacion_tipo" Association="Self.FK_participacion_tipo">
+            <End Role="tipoparticipacion" EntitySet="tipoparticipacions" />
+            <End Role="participacion" EntitySet="participacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyectoc_periodo" Association="Self.FK_proyectoc_periodo">
+            <End Role="periodo" EntitySet="periodoes" />
+            <End Role="proyectocampo" EntitySet="proyectocampoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_tipoproducto" Association="Self.FK_producto_tipoproducto">
+            <End Role="tipoproducto" EntitySet="tipoproductoes" />
+            <End Role="productoacademico" EntitySet="productoacademicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_tipopublicacion" Association="Self.FK_producto_tipopublicacion">
+            <End Role="tipopublicacion" EntitySet="tipopublicacions" />
+            <End Role="productoacademico" EntitySet="productoacademicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_proyectoc_rol" Association="Self.FK_proyectoc_rol">
+            <End Role="rolacademico" EntitySet="rolacademicoes" />
+            <End Role="proyectocampo" EntitySet="proyectocampoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trabajorecepcional_tipo" Association="Self.FK_trabajorecepcional_tipo">
+            <End Role="tipotrabajo" EntitySet="tipotrabajoes" />
+            <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_periodo_productoAcademico" Association="gestionconstanciasModel.FK_periodo_productoAcademico">
+            <End Role="periodo" EntitySet="periodoes" />
+            <End Role="productoacademico" EntitySet="productoacademicoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rolacademico_trabajorecepcional" Association="gestionconstanciasModel.FK_rolacademico_trabajorecepcional">
+            <End Role="rolacademico" EntitySet="rolacademicoes" />
+            <End Role="trabajorecepcional" EntitySet="trabajorecepcionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_experienciaeducativa_academico" Association="gestionconstanciasModel.FK_experienciaeducativa_academico">
+            <End Role="experienciaeducativa" EntitySet="experienciaeducativas" />
+            <End Role="academico" EntitySet="academicoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_periodo_productoAcademico">
+          <End Type="gestionconstanciasModel.periodo" Role="periodo" Multiplicity="0..1" />
+          <End Type="gestionconstanciasModel.productoacademico" Role="productoacademico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="periodo">
+              <PropertyRef Name="idPeriodo" />
+            </Principal>
+            <Dependent Role="productoacademico">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rolacademico_trabajorecepcional">
+          <End Type="gestionconstanciasModel.rolacademico" Role="rolacademico" Multiplicity="0..1" />
+          <End Type="gestionconstanciasModel.trabajorecepcional" Role="trabajorecepcional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rolacademico">
+              <PropertyRef Name="idRolAcademico" />
+            </Principal>
+            <Dependent Role="trabajorecepcional">
+              <PropertyRef Name="idRolAcademico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_experienciaeducativa_academico">
+          <End Type="gestionconstanciasModel.experienciaeducativa" Role="experienciaeducativa" Multiplicity="*" />
+          <End Type="gestionconstanciasModel.academico" Role="academico" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gestionconstanciasModelStoreContainer" CdmEntityContainer="gestionconstanciasEntities">
+    <EntitySetMapping Name="academicoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.academico)">
+        <MappingFragment StoreEntitySet="academicoes">
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="numeroPersonal" ColumnName="numeroPersonal" />
+          <ScalarProperty Name="fechaContratacion" ColumnName="fechaContratacion" />
+          <ScalarProperty Name="idAreaAcademica" ColumnName="idAreaAcademica" />
+          <ScalarProperty Name="idTipoPersonal" ColumnName="idTipoPersonal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areaacademicas">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.areaacademica)">
+        <MappingFragment StoreEntitySet="areaacademicas">
+          <ScalarProperty Name="idAreaAcademica" ColumnName="idAreaAcademica" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="constancias">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.constancia)">
+        <MappingFragment StoreEntitySet="constancias">
+          <ScalarProperty Name="idConstancia" ColumnName="idConstancia" />
+          <ScalarProperty Name="fechaExpedicion" ColumnName="fechaExpedicion" />
+          <ScalarProperty Name="idTipoConstancia" ColumnName="idTipoConstancia" />
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+          <ScalarProperty Name="firmaElectronica" ColumnName="firmaElectronica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="experienciaeducativas">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.experienciaeducativa)">
+        <MappingFragment StoreEntitySet="experienciaeducativas">
+          <ScalarProperty Name="idExperienciaEducativa" ColumnName="idExperienciaEducativa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="sec" ColumnName="sec" />
+          <ScalarProperty Name="creditos" ColumnName="creditos" />
+          <ScalarProperty Name="horasPracticas" ColumnName="horasPracticas" />
+          <ScalarProperty Name="horasTeoricas" ColumnName="horasTeoricas" />
+          <ScalarProperty Name="idProgramaEducativo" ColumnName="idProgramaEducativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="participacions">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.participacion)">
+        <MappingFragment StoreEntitySet="participacions">
+          <ScalarProperty Name="idProyectoCampo" ColumnName="idProyectoCampo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="idTipoParticipacion" ColumnName="idTipoParticipacion" />
+          <ScalarProperty Name="idProgramaEducativo" ColumnName="idProgramaEducativo" />
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="periodoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.periodo)">
+        <MappingFragment StoreEntitySet="periodoes">
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productoacademicoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.productoacademico)">
+        <MappingFragment StoreEntitySet="productoacademicoes">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
+          <ScalarProperty Name="idTipoPublicacion" ColumnName="idTipoPublicacion" />
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="programaeducativoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.programaeducativo)">
+        <MappingFragment StoreEntitySet="programaeducativoes">
+          <ScalarProperty Name="idProgramaEducativo" ColumnName="idProgramaEducativo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idAreaAcademica" ColumnName="idAreaAcademica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proyectocampoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.proyectocampo)">
+        <MappingFragment StoreEntitySet="proyectocampoes">
+          <ScalarProperty Name="idProyectoCampo" ColumnName="idProyectoCampo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="lugarRealizacion" ColumnName="lugarRealizacion" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="idRolAcademico" ColumnName="idRolAcademico" />
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolacademicoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.rolacademico)">
+        <MappingFragment StoreEntitySet="rolacademicoes">
+          <ScalarProperty Name="idRolAcademico" ColumnName="idRolAcademico" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.sysdiagram)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoconstancias">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipoconstancia)">
+        <MappingFragment StoreEntitySet="tipoconstancias">
+          <ScalarProperty Name="idTipoConstancia" ColumnName="idTipoConstancia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoparticipacions">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipoparticipacion)">
+        <MappingFragment StoreEntitySet="tipoparticipacions">
+          <ScalarProperty Name="idTipoParticipacion" ColumnName="idTipoParticipacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipopersonals">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipopersonal)">
+        <MappingFragment StoreEntitySet="tipopersonals">
+          <ScalarProperty Name="idTipoPersonal" ColumnName="idTipoPersonal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoproductoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipoproducto)">
+        <MappingFragment StoreEntitySet="tipoproductoes">
+          <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipopublicacions">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipopublicacion)">
+        <MappingFragment StoreEntitySet="tipopublicacions">
+          <ScalarProperty Name="idTipoPublicacion" ColumnName="idTipoPublicacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipotrabajoes">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.tipotrabajo)">
+        <MappingFragment StoreEntitySet="tipotrabajoes">
+          <ScalarProperty Name="idTipoTrabajo" ColumnName="idTipoTrabajo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabajorecepcionals">
+      <EntityTypeMapping TypeName="IsTypeOf(gestionconstanciasModel.trabajorecepcional)">
+        <MappingFragment StoreEntitySet="trabajorecepcionals">
+          <ScalarProperty Name="idTrabajoRecepcional" ColumnName="idTrabajoRecepcional" />
+          <ScalarProperty Name="nombreEstudiante" ColumnName="nombreEstudiante" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="infraestructuraOpcional" ColumnName="infraestructuraOpcional" />
+          <ScalarProperty Name="idAcademico" ColumnName="idAcademico" />
+          <ScalarProperty Name="idTipoTrabajo" ColumnName="idTipoTrabajo" />
+          <ScalarProperty Name="idRolAcademico" ColumnName="idRolAcademico" />
+          <ScalarProperty Name="fechaPublicacion" ColumnName="fechaPublicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_experienciaeducativa_academico" TypeName="gestionconstanciasModel.FK_experienciaeducativa_academico" StoreEntitySet="FK_experienciaeducativa_academico">
+      <EndProperty Name="experienciaeducativa">
+        <ScalarProperty Name="idExperienciaEducativa" ColumnName="experienciaeducativas_idExperienciaEducativa" />
+      </EndProperty>
+      <EndProperty Name="academico">
+        <ScalarProperty Name="idAcademico" ColumnName="academicoes_idAcademico" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

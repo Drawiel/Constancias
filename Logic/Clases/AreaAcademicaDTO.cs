@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Clases {
-    internal class ProyectoDeCampo {
+    internal class AreaAcademicaDTO {
     }
 }
