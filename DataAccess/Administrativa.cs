@@ -17,5 +17,7 @@ namespace DataAccess
         public int IdAdministrativo { get; set; }
         public string Nombre { get; set; }
         public string ProgramaEducativo { get; set; }
+        public string usuario { get; set; }
+        public string contrasena { get; set; }
     }
 }

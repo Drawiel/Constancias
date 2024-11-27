@@ -19,8 +19,8 @@
         <AssociationConnector Association="ConstanciasModel.FK__Participa__IdAca__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.FK__ProductoA__IdAca__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.FK__ProyectoC__IdAca__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="ConstanciasModel.FK__TrabajoRe__IdAca__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="ConstanciasModel.FK__Experienc__IdPro__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="ConstanciasModel.FK__TrabajoRe__IdAca__44FF419A" />
+        <AssociationConnector ManuallyRouted="false" Association="ConstanciasModel.FK__Experienc__IdPro__47DBAE45" />
         <AssociationConnector Association="ConstanciasModel.FK__Participa__IdPro__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.AcademicoExperienciaEducativa" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.ProgramaEducativoExperienciaEducativa" ManuallyRouted="false" />

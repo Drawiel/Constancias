@@ -335,7 +335,7 @@
           </Key>
           <Property Name="IdAcademico" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NumeroPersonal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumeroPersonal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" ConcurrencyMode="None" />
           <Property Name="FechaContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TipoContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdPrograma" Type="Int32" Nullable="false" />
@@ -355,6 +355,8 @@
           <Property Name="IdAdministrativo" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProgramaEducativo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" Nullable="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Constancia">
           <Key>
@@ -504,10 +506,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__TrabajoRe__IdAca__44FF419A">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="1">
+          <End Type="Self.Academico" Multiplicity="1" Role="Academico">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="TrabajoRecepcional" Type="Self.TrabajoRecepcional" Multiplicity="*" />
+          <End Type="Self.TrabajoRecepcional" Multiplicity="*" Role="TrabajoRecepcional" />
           <ReferentialConstraint>
             <Principal Role="Academico">
               <PropertyRef Name="IdAcademico" />
@@ -518,8 +520,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Experienc__IdPro__47DBAE45">
-          <End Role="ProgramaEducativo" Type="Self.ProgramaEducativo" Multiplicity="0..1" />
-          <End Role="ExperienciaEducativa" Type="Self.ExperienciaEducativa" Multiplicity="*" />
+          <End Type="Self.ProgramaEducativo" Multiplicity="0..1" Role="ProgramaEducativo" />
+          <End Type="Self.ExperienciaEducativa" Multiplicity="*" Role="ExperienciaEducativa" />
           <ReferentialConstraint>
             <Principal Role="ProgramaEducativo">
               <PropertyRef Name="IdPrograma" />
@@ -580,12 +582,12 @@
             <End Role="ProyectoCampo" EntitySet="ProyectoCampo" />
           </AssociationSet>
           <AssociationSet Name="FK__TrabajoRe__IdAca__44FF419A" Association="Self.FK__TrabajoRe__IdAca__44FF419A">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="TrabajoRecepcional" EntitySet="TrabajoRecepcional" />
+            <End EntitySet="Academico" Role="Academico" />
+            <End EntitySet="TrabajoRecepcional" Role="TrabajoRecepcional" />
           </AssociationSet>
           <AssociationSet Name="FK__Experienc__IdPro__47DBAE45" Association="Self.FK__Experienc__IdPro__47DBAE45">
-            <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />
-            <End Role="ExperienciaEducativa" EntitySet="ExperienciaEducativa" />
+            <End EntitySet="ProgramaEducativo" Role="ProgramaEducativo" />
+            <End EntitySet="ExperienciaEducativa" Role="ExperienciaEducativa" />
           </AssociationSet>
           <AssociationSet Name="FK__Participa__IdPro__4AB81AF0" Association="Self.FK__Participa__IdPro__4AB81AF0">
             <End Role="ProgramaEducativo" EntitySet="ProgramaEducativo" />

@@ -110,33 +110,43 @@ namespace Constancias
 
         private void RegistrarAcademico(object sender, RoutedEventArgs e)
         {
+            AcademicoDAO academicoDAO = new AcademicoDAO();
             string nombreAcademico = textBoxNombreAcademico.Text;
             string tipoContratacion = comboBoxTipoContratacion.SelectedItem.ToString();
             string areaAcademica = comboBoxArea.SelectedItem.ToString();
             string fechaContratacion = datePickerFechaContratacion.SelectedDate.ToString();
-            
-            if(!ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion))
+
+            if (!ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion))
             {
-                DataContext = this;
+                int idAcademico = (int)academicoDAO.ObtenerUltimoIdAcademico() + 1;
                 AcademicoDTO academicoDTO = new AcademicoDTO();
+                academicoDTO.IdAcademico = idAcademico;
                 academicoDTO.AreaAcademica = areaAcademica;
-                academicoDTO.Nombre = nombreAcademico;  
+                academicoDTO.Nombre = nombreAcademico;
                 academicoDTO.TipoContratacion = tipoContratacion;
 
                 ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
                 var idProgramaEducativo = programaEducativoDAO.ObtenerIdProgramaPorNombre(comboBoxPrograma.SelectedItem.ToString());
 
-                academicoDTO.IdPrograma = idProgramaEducativo;
-                AcademicoDAO academicoDAO = new AcademicoDAO();
+                academicoDTO.IdPrograma = (int)idProgramaEducativo;
+                int resultado = academicoDAO.AgregarAcademico(academicoDTO);
+            }
+        }
 
+
+            private void AgregarAsignatura(object sender,  RoutedEventArgs e)
+            {
+                ExperienciaEducativaDAO eeDAO = new ExperienciaEducativaDAO();
+                
+                ExperienciaEducativaDTO ee = new ExperienciaEducativaDTO();
+                
                 
 
-            }
+            } 
 
 
 
-
-        }
+        
 
 
         }
