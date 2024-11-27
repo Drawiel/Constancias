@@ -10,17 +10,13 @@
 namespace DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ProductoAcademico
+    public partial class sp_helpdiagrams_Result
     {
-        public int IdProducto { get; set; }
-        public string Titulo { get; set; }
-        public string Tipo { get; set; }
-        public string TipoPublicacion { get; set; }
-        public string FechaPublicacion { get; set; }
-        public Nullable<int> IdAcademico { get; set; }
-    
-        public virtual Academico Academico { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

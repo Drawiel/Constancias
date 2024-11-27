@@ -62,7 +62,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Asignaturas impartidas:" Margin="0,10,0,0"/>
-                    <Button x:Name="buttonAgregarExperiencia" Content="+" Click="AbrirPopUpAsignatura"/>
+                    <!--<Button x:Name="buttonAgregarExperiencia" Content="+" Click="AbrirPopUpAsignatura"/> -->
                 </StackPanel>
 
                 <ListBox x:Name="listBoxAsignaturas"/>
@@ -298,7 +298,7 @@
                         <!-- Botón para confirmar -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                             <Button Content="Aceptar" Width="75" Margin="5" Click="AgregarAsignatura" />
-                            <Button Content="Cancelar" Width="75" Margin="5" Click="Cancelar_Click" />
+                            <!--<Button Content="Cancelar" Width="75" Margin="5" Click="Cancelar_Click" />-->
                         </StackPanel>
                     </StackPanel>
                 </Border>

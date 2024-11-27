@@ -66,6 +66,19 @@ namespace Logic.DAO {
             }
         }
 
+        public List<string> ObtenerTrabajosRecepcionalesDeAcademico(int idAcademico) {
+            try {
+                var listaTrabajos = _context.TrabajoRecepcional.Where(t => (t.IdAcademico == idAcademico)).Select(t => t.Titulo).ToList();
+
+                return listaTrabajos;
+            } catch (SqlException ex) {
+                Console.WriteLine("Error de SQL al obtener los productos academicos del academico");
+                return new List<string>();
+            } catch (Exception ex) {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return new List<string>();
+            }
+        }
 
 
 
