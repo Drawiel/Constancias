@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IdAcademico" />
           </Key>
-          <Property Name="IdAcademico" Type="int" Nullable="false" />
+          <Property Name="IdAcademico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NumeroPersonal" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="FechaContratacion" Type="nvarchar" MaxLength="50" />
@@ -40,7 +40,7 @@
           <Key>
             <PropertyRef Name="IdConstancia" />
           </Key>
-          <Property Name="IdConstancia" Type="int" Nullable="false" />
+          <Property Name="IdConstancia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="FechaExpedicion" Type="nvarchar" MaxLength="50" />
           <Property Name="Solicitante" Type="nvarchar" MaxLength="100" />
@@ -50,7 +50,7 @@
           <Key>
             <PropertyRef Name="IdExperienciaEducativa" />
           </Key>
-          <Property Name="IdExperienciaEducativa" Type="int" Nullable="false" />
+          <Property Name="IdExperienciaEducativa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ProgramaEducativo" Type="nvarchar" MaxLength="100" />
           <Property Name="IdPrograma" Type="int" />
@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="IdParticipacion" />
           </Key>
-          <Property Name="IdParticipacion" Type="int" Nullable="false" />
+          <Property Name="IdParticipacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PeriodoParticipacion" Type="nvarchar" MaxLength="50" />
           <Property Name="TipoParticipacion" Type="nvarchar" MaxLength="50" />
           <Property Name="IdPrograma" Type="int" />
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="IdProducto" />
           </Key>
-          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="TipoPublicacion" Type="nvarchar" MaxLength="50" />
@@ -80,7 +80,7 @@
           <Key>
             <PropertyRef Name="IdPrograma" />
           </Key>
-          <Property Name="IdPrograma" Type="int" Nullable="false" />
+          <Property Name="IdPrograma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Año" Type="nvarchar" MaxLength="4" />
           <Property Name="AreaAcademica" Type="nvarchar" MaxLength="100" />
@@ -97,7 +97,7 @@
           <Key>
             <PropertyRef Name="IdProyectoCampo" />
           </Key>
-          <Property Name="IdProyectoCampo" Type="int" Nullable="false" />
+          <Property Name="IdProyectoCampo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreProyecto" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="LugarRealizacion" Type="nvarchar" MaxLength="100" />
           <Property Name="Periodo" Type="nvarchar" MaxLength="50" />
@@ -108,7 +108,7 @@
           <Key>
             <PropertyRef Name="IdTrabajoRecepcional" />
           </Key>
-          <Property Name="IdTrabajoRecepcional" Type="int" Nullable="false" />
+          <Property Name="IdTrabajoRecepcional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titulo" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="NombreEstudiante" Type="nvarchar" MaxLength="100" />
           <Property Name="FechaPresentacion" Type="nvarchar" MaxLength="50" />

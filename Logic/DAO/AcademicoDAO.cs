@@ -243,6 +243,19 @@ namespace Logic.DAO {
             }
         }
 
+        public int? ObtenerIdProgramaDeAcademicoPorIdAcademico(int idAcademico) {
+            try {
+                var idPrograma = _context.Academico.Where(p => (p.IdAcademico == idAcademico)).Select(p => p.IdAcademico).FirstOrDefault();
+                return idPrograma;
+            } catch (SqlException ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
 
 
 

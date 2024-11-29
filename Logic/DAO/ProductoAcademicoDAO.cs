@@ -73,6 +73,7 @@ namespace Logic.DAO {
                 return listaProductos;
             } catch (SqlException ex) {
                 Console.WriteLine("Error de SQL al obtener los productos academicos del academico");
+                Console.WriteLine(ex.Message);
                 return new List<string>();
             } catch (Exception ex) {
                 Console.WriteLine($"Error general: {ex.Message}");

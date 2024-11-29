@@ -155,6 +155,21 @@ namespace Logic.DAO {
             }
         }*/
 
+        public List<string> ObtenerNombreExperienciaEducativaPorIdPrograma(int idPrograma) {
+            try {
+                var listaExperienciasEnPrograma = _context.ExperienciaEducativa.Where(p => (p.IdPrograma == idPrograma)).Select(p => p.Nombre).ToList();
+
+                return listaExperienciasEnPrograma;
+            } catch (SqlException ex) {
+                Console.WriteLine("Error de SQL al obtener los productos academicos del academico");
+                Console.WriteLine(ex.Message);
+                return new List<string>();
+            } catch (Exception ex) {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return new List<string>();
+            }
+        }
+
 
 
 

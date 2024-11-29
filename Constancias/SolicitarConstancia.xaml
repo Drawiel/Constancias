@@ -23,6 +23,7 @@
                     <ComboBoxItem Content="Constancia de participación en procesos de certificación de programas de estudio"/>
                     <ComboBoxItem Content="Constancia de participación en trabajos recepcionales"/>
                     <ComboBoxItem Content="Constancia de participación en proyecto de campo y/o gestión académica o artística"/>
+                    <ComboBoxItem Content="Constancia de experiencia docente"/>
                 </ComboBox>
 
                 <TextBlock Text="Opciones de participación:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>

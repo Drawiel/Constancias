@@ -76,6 +76,36 @@ namespace Logic.DAO {
                            .ToList();
         }
 
+        public List<int?> ObtenerIdParticipacionesActualizacionPorAcademico(int idAcademico) {
+            try {
+                var participacionesActualizacion = _context.Participacion.Where(p => (p.IdAcademico == idAcademico) && (p.TipoParticipacion == "Actualización")).Select(p => p.IdPrograma).ToList();
+
+                return participacionesActualizacion;
+            } catch (SqlException ex) {
+                Console.WriteLine("Error de SQL al obtener los productos academicos del academico");
+                Console.WriteLine(ex.Message);
+                return new List<int?>();
+            } catch (Exception ex) {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return new List<int?>();
+            }
+        }
+
+        public List<int?> ObtenerIdParticipacionesCertificacionPorAcademico(int idAcademico) {
+            try {
+                var participacionesActualizacion = _context.Participacion.Where(p => (p.IdAcademico == idAcademico) && (p.TipoParticipacion == "Certificación")).Select(p => p.IdPrograma).ToList();
+
+                return participacionesActualizacion;
+            } catch (SqlException ex) {
+                Console.WriteLine("Error de SQL al obtener los productos academicos del academico");
+                Console.WriteLine(ex.Message);
+                return new List<int?>();
+            } catch (Exception ex) {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return new List<int?>();
+            }
+        }
+
 
 
 

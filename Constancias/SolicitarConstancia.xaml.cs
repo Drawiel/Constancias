@@ -39,19 +39,26 @@ namespace Constancias {
         }
 
         private void ClickSolicitar(object sender, RoutedEventArgs e) {
-            AcademicoDAO academicoDAO = new AcademicoDAO();
-            int idAcademico = (int)academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numPersonal);
-            ConstanciaDTO constanciaDTO = new ConstanciaDTO {
-                FechaExpedicion = "NO EXPEDIDA",
-                IdAcademico = idAcademico,
-                TipoConstancia = comboBoxConstancias.SelectedItem.ToString(),
-                Solicitante = nombreAcademico,
-
-            };
+            if (!String.IsNullOrEmpty(comboBoxOpcionesParticipacion.Text)) {
+                AcademicoDAO academicoDAO = new AcademicoDAO();
+                int idAcademico = (int)academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numPersonal);
+                ConstanciaDTO constanciaDTO = new ConstanciaDTO {
+                    FechaExpedicion = "NO EXPEDIDA",
+                    IdAcademico = idAcademico,
+                    TipoConstancia = comboBoxConstancias.SelectedItem.ToString(),
+                    Solicitante = nombreAcademico,
+                };
+                ConstanciaDAO constanciaDAO = new ConstanciaDAO();
+                constanciaDAO.SolicitarConstancia(constanciaDTO);
+            } else {
+                MessageBox.Show("No ha elegido una opción de participación valida");
+            }
         }
 
         private void SetComboBoxOpciones(object sender, SelectionChangedEventArgs e) {
             AcademicoDAO academicoDAO = new AcademicoDAO();
+            ParticipacionDAO participacionDAO = new ParticipacionDAO();
+
             int idAcademico = (int)academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numPersonal);
             switch (comboBoxConstancias.SelectedIndex) {
                 case 0: //Generacion producto académico
@@ -67,15 +74,22 @@ namespace Constancias {
                     break;
                 case 1: //Participación proceso de actualización de programas de estudio
                     comboBoxOpcionesParticipacion.Items.Clear();
-                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para actualización programa de estudio");
-                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 2 para actualización programa de estudio");
-                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 3 para actualización programa de estudio");
+                    ProgramaEducativoDAO programaEducativoActualizacionDAO = new ProgramaEducativoDAO();
+                    var listaParticipaciones = participacionDAO.ObtenerIdParticipacionesActualizacionPorAcademico(idAcademico);
+                    foreach (var participacion in listaParticipaciones) {
+                        string opcion = programaEducativoActualizacionDAO.ObtenerNombreProgramaPorIdPrograma((int)participacion);
+                        comboBoxOpcionesParticipacion.Items.Add(opcion);
+                    }
 
                     break;
                 case 2: //Participación en procesos de certificación de programas de estudio
                     comboBoxOpcionesParticipacion.Items.Clear();
-                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 1 para certificación programa de estudio");
-                    comboBoxOpcionesParticipacion.Items.Add("Opcion participación 2 para certificación programa de estudio");
+                    ProgramaEducativoDAO programaEducativoCertificacionDAO = new ProgramaEducativoDAO();
+                    var listaCertificaciones = participacionDAO.ObtenerIdParticipacionesCertificacionPorAcademico(idAcademico);
+                    foreach (var participacion in listaCertificaciones) {
+                        string opcion = programaEducativoCertificacionDAO.ObtenerNombreProgramaPorIdPrograma((int)participacion);
+                        comboBoxOpcionesParticipacion.Items.Add(opcion);
+                    }
 
                     break;
                 case 3: //Participación trabajos recepcionales
@@ -99,6 +113,18 @@ namespace Constancias {
                         comboBoxOpcionesParticipacion.Items.Add(proyectosDeCampo);
                     }
 
+                    break;
+
+                case 5: //Experiencia docente   
+                    comboBoxOpcionesParticipacion.Items.Clear();
+
+                    ExperienciaEducativaDAO experienciaEducativaDAO = new ExperienciaEducativaDAO();
+                    var idPrograma = academicoDAO.ObtenerIdProgramaDeAcademicoPorIdAcademico(idAcademico);
+                    var listaExperienciasEducativas = experienciaEducativaDAO.ObtenerNombreExperienciaEducativaPorIdPrograma((int)idPrograma);
+
+                    foreach (var experienciaEducativa in listaExperienciasEducativas) {
+                        comboBoxOpcionesParticipacion.Items.Add(experienciaEducativa);
+                    }
                     break;
             }
             

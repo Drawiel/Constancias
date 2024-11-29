@@ -59,6 +59,19 @@ namespace Logic.DAO {
             return listaIds;
         }
 
+        public string ObtenerNombreProgramaPorIdPrograma(int idPrograma) {
+            try {
+                var nombrePrograma = _context.ProgramaEducativo.Where(p => (p.IdPrograma == idPrograma)).Select(p => p.Nombre).FirstOrDefault();
+                return nombrePrograma;
+            } catch (SqlException ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
 
     }
 }
