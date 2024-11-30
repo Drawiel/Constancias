@@ -26,26 +26,24 @@ namespace Logic.DAO {
                 var trabajoRecepcionalDB = EntityFactory.CrearTrabajoRecepcional(trabajo);
                 _context.TrabajoRecepcional.Add(trabajoRecepcionalDB);
 
-                // Guardar cambios en la base de datos
                 int registrosAfectados = _context.SaveChanges();
 
-                // Retornar 1 si se registra correctamente
                 return registrosAfectados > 0 ? 1 : 0;
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
+                return -3; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al agregar el trabajo recepcional: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
@@ -57,17 +55,17 @@ namespace Logic.DAO {
                                             .OrderByDescending(t => t.IdTrabajoRecepcional)
                                             .FirstOrDefault();
 
-                return ultimoTrabajo?.IdTrabajoRecepcional; // Devuelve null si no hay registros
+                return ultimoTrabajo?.IdTrabajoRecepcional; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el último ID de trabajo recepcional: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 

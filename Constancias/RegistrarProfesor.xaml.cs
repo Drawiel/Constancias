@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -61,17 +62,14 @@ namespace Constancias
             ToggleVisibility(stackPanelTrabajoRecepcional);
         }
 
-        // Helper method to toggle visibility and collapse others
         private void ToggleVisibility(StackPanel panel)
         {
-            // Collapse all panels first
             stackPannelProgramasEducativosActualizados.Visibility = Visibility.Collapsed;
             stackPanelCertificacion.Visibility = Visibility.Collapsed;
             stackPanelProductoAcademico.Visibility = Visibility.Collapsed;
             stackPanelProyectoCampo.Visibility = Visibility.Collapsed;
             stackPanelTrabajoRecepcional.Visibility = Visibility.Collapsed;
 
-            // Toggle visibility of the selected panel
             panel.Visibility = panel.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
 
@@ -89,7 +87,6 @@ namespace Constancias
             var programaEducativoSeleccionado = comboBoxPrograma.SelectedItem as ComboBoxItem;
             string programaEducativo = programaEducativoSeleccionado.Content.ToString();
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(nombreAcademico, tipoContratacion, areaAcademica, fechaContratacion, programaEducativo))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -97,7 +94,6 @@ namespace Constancias
             }
             AcademicoDAO academico = new AcademicoDAO();
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
-            //int idAcademico = (int) academico.ObtenerUltimoIdAcademico();
 
             AcademicoDTO academicoDTO = new AcademicoDTO
             {
@@ -123,7 +119,6 @@ namespace Constancias
             var nombreProgramaSeleccionado = comboBoxProgramaEducativo.SelectedItem as ComboBoxItem;
             string nombrePrograma = nombreProgramaSeleccionado?.Content.ToString();
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(nombreEE, nombrePrograma))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -145,7 +140,6 @@ namespace Constancias
 
             int resultado = eeDAO.ObtenerORegistrarExperiencia(experienciaEducativaDTO);
 
-            // Manejo de los diferentes resultados según el valor retornado
             if (resultado == 1)
             {
                 MessageBox.Show("Experiencia educativa registrada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -173,14 +167,12 @@ namespace Constancias
             string nombreEstudiante = tetxBoxNombreEstudianteTrabajoRecepcional.Text;
             string fechaPresentacion = datePickerFechaPresentacionTrabajo.SelectedDate?.ToString("yyyy-MM-dd");
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(numeroPersonal, tipoTrabajo, titulo, rolAcademico, nombreEstudiante, fechaPresentacion))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Validación explícita adicional
             if (string.IsNullOrWhiteSpace(titulo) || string.IsNullOrWhiteSpace(nombreEstudiante))
             {
                 MessageBox.Show("El título del trabajo y el nombre del estudiante son obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -190,7 +182,6 @@ namespace Constancias
             AcademicoDAO academicoDAO = new AcademicoDAO();
             TrabajoRecepcionalDAO trabajoRecepcionalDAO = new TrabajoRecepcionalDAO();
 
-            // Crear el objeto DTO
             TrabajoRecepcionalDTO trabajoRecepcionalDTO = new TrabajoRecepcionalDTO
             {
                 Titulo = titulo,
@@ -200,10 +191,8 @@ namespace Constancias
                 TipoTrabajo = tipoTrabajo
             };
 
-            // Depuración para verificar los valores
             Console.WriteLine($"Titulo: {trabajoRecepcionalDTO.Titulo}, NombreEstudiante: {trabajoRecepcionalDTO.NombreEstudiante}, FechaPublicacion: {trabajoRecepcionalDTO.FechaPublicacion}");
 
-            // Guardar en la lista (o base de datos si aplica)
             trabajoRecepcionalList.Add(trabajoRecepcionalDTO);
             stackPanelTrabajoRecepcional.Visibility = Visibility.Hidden;
            
@@ -219,7 +208,6 @@ namespace Constancias
             var tipoPublicacionSeleccionad = comboBoxTipoPublicaiconProducto.SelectedItem as ComboBoxItem;
             string tipoPublicacion = tipoPublicacionSeleccionad.Content.ToString();
             
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(tituloProducto, tipoProducto, fechaPublicacion, tipoPublicacion))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -249,7 +237,6 @@ namespace Constancias
             string periodo = $"{datePickerPeriodoRealizacionProyecto.SelectedDate?.ToString("yyyy-MM-dd")} - {datePickerOtroPeriodoRealizacion.SelectedDate?.ToString("yyyy-MM-dd")}";
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(nombreProyecto, rol, lugarRealizacion, periodo, numeroPersonal))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -279,43 +266,36 @@ namespace Constancias
 
         private void AbrirPopupAsignatura(object sender, RoutedEventArgs e)
         {
-            PopupIngresarAsignatura.IsOpen = true; // Abre el Popup
+            PopupIngresarAsignatura.IsOpen = true; 
         }
 
 
         private void AsignarExperienciaEducativa()
         {
-            // Recuperar el número personal desde la interfaz
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Crear instancias de DAO
             AcademicoDAO academicoDAO = new AcademicoDAO();
             ExperienciaEducativaDAO experienciaEducativaDAO = new ExperienciaEducativaDAO();
 
-            // Obtener el ID del académico a partir del número personal
             int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
             if (idAcademico == 0)
             {
                 Console.WriteLine("No se encontró el académico.");
-                return; // Terminar si el académico no existe
+                return;
             }
 
-            // Lista de nombres de experiencias educativas ingresadas
             List<string> eeNombres = eeList.Select(ee => ee.Nombre).ToList();
 
-            // Obtener IDs de experiencias educativas
             List<int> eeIds = ObtenerIdsExperiencias(eeNombres);
 
             if (eeIds.Any())
             {
                 Console.WriteLine("Asignando experiencias educativas al académico...");
-                // Lógica para asignar las experiencias educativas al académico
                 foreach (var idExperiencia in eeIds)
                 {
                     experienciaEducativaDAO.RegistrarRelacionAcademicoExperiencia(idAcademico, idExperiencia);
                     Console.WriteLine($"Asignando experiencia educativa con ID: {idExperiencia} al académico con ID: {idAcademico}");
-                    // Aquí podrías llamar al método que guarda en la base de datos
                 }
             }
             else
@@ -332,10 +312,8 @@ namespace Constancias
 
             foreach (var nombre in nombresExperiencias)
             {
-                // Obtener el ID por nombre
                 var id = experienciaEducativaDAO.ObtenerIdExperienciaPorNombre(nombre);
 
-                // Si el ID no es null, agregarlo a la lista
                 if (id.HasValue)
                 {
                     listaIds.Add(id.Value);
@@ -351,7 +329,6 @@ namespace Constancias
 
         private void RegistrarActualizacion(Object sender, RoutedEventArgs e)
         {
-            // Recuperar datos de los controles
             var programaEducativoSeleccionado = comboBoxProgramaEducativoActualizado.SelectedItem as ComboBoxItem;
             string programaEducativo = programaEducativoSeleccionado.Content.ToString();
             string tipoParticipacion = "Actualización";
@@ -359,14 +336,12 @@ namespace Constancias
             string periodoFin = actualizaciónAnotherYear.SelectedDate?.ToString("yyyy");
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(programaEducativo, periodoInicio, periodoFin, numeroPersonal))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Instanciar DAOs
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
             AcademicoDAO academicoDAO = new AcademicoDAO();
             ParticipacionDAO participacionDAO = new ParticipacionDAO();
@@ -380,7 +355,6 @@ namespace Constancias
                 IdProgramaEducativo = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo)
             };
 
-            // Agregar la participación a la lista temporal
             participacionList.Add(participacionDTO);
             stackPannelProgramasEducativosActualizados.Visibility = Visibility.Hidden;
 
@@ -393,7 +367,6 @@ namespace Constancias
 
         private void RegistrarCertificacion(object sender, RoutedEventArgs e)
         {
-            // Recuperar datos de los controles
             var programaEducativoSeleccionado = comboBoxProgramaEducativoCertificado.SelectedItem as ComboBoxItem;
             string programaEducativo = programaEducativoSeleccionado.Content.ToString();
             string tipoParticipacion = "Certificación";
@@ -401,25 +374,21 @@ namespace Constancias
             string periodoFin = certificacionAnotherYear.SelectedDate?.ToString("yyyy");
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(programaEducativo, periodoInicio, periodoFin, numeroPersonal))
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            // Instanciar DAOs
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
             AcademicoDAO academicoDAO = new AcademicoDAO();
             ParticipacionDAO participacionDAO = new ParticipacionDAO();
 
-            // Obtener IDs relacionados
             int idPrograma = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(programaEducativo);
             
 
             int nuevoIdParticipacion = (int)(participacionDAO.ObtenerUltimoIdParticipacion() ?? 0) + 1;
 
-            // Crear DTO de participación
             ParticipacionDTO participacionDTO = new ParticipacionDTO
             {
                 IdParticipacion = nuevoIdParticipacion,
@@ -437,36 +406,29 @@ namespace Constancias
 
         private void AsignarParticipacion()
         {
-            // Recuperar el número personal desde la interfaz
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Crear instancias de DAO
             AcademicoDAO academicoDAO = new AcademicoDAO();
             ParticipacionDAO participacionDAO = new ParticipacionDAO();
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
 
-            // Obtener el ID del académico a partir del número personal
             int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
             if (idAcademico == 0)
             {
                 Console.WriteLine("No se encontró el académico.");
-                return; // Terminar si el académico no existe
+                return; 
             }
 
-            // Lista de nombres de programas educativos ingresados
             List<string> programaNombres = participacionList.Select(a => a.Nombre).ToList();
 
-            // Obtener IDs de programas educativos
 
             if (participacionList.Any())
             {
                 Console.WriteLine("Asignando participaciones al académico...");
-                // Lógica para asignar las actualizaciones al académico
                 foreach (var participacion in participacionList)
                 {
                     Console.WriteLine(participacion.TipoParticipacion);
-                    // Crear el DTO de Participacion
                     ParticipacionDTO participacionDTO = new ParticipacionDTO
                     {
                         TipoParticipacion = participacion.TipoParticipacion,
@@ -475,7 +437,6 @@ namespace Constancias
                         IdAcademico = idAcademico
                     };
 
-                    // Registrar la participación en la base de datos
                     int resultado = participacionDAO.AgregarParticipacion(participacionDTO);
 
                     if (resultado == 1)
@@ -503,29 +464,23 @@ namespace Constancias
 
         private void AsignarTrabajoRecepcional()
         {
-            // Recuperar el número personal desde la interfaz
             string numeroPersonal = textBoxNumeroPersonal.Text;
 
-            // Crear instancias de DAO
             AcademicoDAO academicoDAO = new AcademicoDAO();
             TrabajoRecepcionalDAO trabajoRecepcionalDAO = new TrabajoRecepcionalDAO();
 
-            // Obtener el ID del académico a partir del número personal
             int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
             if (idAcademico == 0)
             {
                 Console.WriteLine("No se encontró el académico.");
-                return; // Terminar si el académico no existe
+                return; 
             }
 
-            // Crear una lista para almacenar los trabajos recepcionales
             List<TrabajoRecepcionalDTO> trabajosRecepcionales = new List<TrabajoRecepcionalDTO>();
 
-            // Recorrer los trabajos recepcionales que se van a asignar
             foreach (var trabajo in trabajoRecepcionalList)
             {
-                // Crear el DTO del trabajo recepcional
                 TrabajoRecepcionalDTO trabajoRecepcionalDTO = new TrabajoRecepcionalDTO
                 {
                     Titulo = trabajo.Titulo,
@@ -536,7 +491,6 @@ namespace Constancias
                     RolAcademico = trabajo.RolAcademico
                 };
 
-                // Agregar el trabajo a la base de datos
                 int resultado = trabajoRecepcionalDAO.AgregarTrabajoRecepcional(trabajoRecepcionalDTO);
 
                 MensajesError mensajesError = new MensajesError();
@@ -564,27 +518,23 @@ namespace Constancias
         {
             try
             {
-                // Recuperar el número personal del académico desde la interfaz
                 string numeroPersonal = textBoxNumeroPersonal.Text;
 
-                // Crear instancias de DAO
                 AcademicoDAO academicoDAO = new AcademicoDAO();
                 ProductoAcademicoDAO productoAcademicoDAO = new ProductoAcademicoDAO();
 
-                // Obtener el ID del académico a partir del número personal
                 int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
                 if (idAcademico == 0)
                 {
                     MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return; // Terminar si el académico no existe
+                    return;
                 }
 
                 if (productoAcademicoList.Any())
                 {
                     MessageBox.Show("Asignando productos académicos al académico...", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Recorrer la lista de productos académicos
                     foreach (var producto in productoAcademicoList)
                     {
                         ProductoAcademicoDTO productoAcademico = new ProductoAcademicoDTO()
@@ -623,33 +573,27 @@ namespace Constancias
         {
             try
             {
-                // Recuperar el número personal del académico desde la interfaz
                 string numeroPersonal = textBoxNumeroPersonal.Text;
 
-                // Crear instancias de DAO
                 AcademicoDAO academicoDAO = new AcademicoDAO();
                 ProyectoDeCampoDAO proyectoCampoDAO = new ProyectoDeCampoDAO();
 
-                // Obtener el ID del académico a partir del número personal
                 int idAcademico = academicoDAO.ObtenerIdAcademicoPorNumeroPersonal(numeroPersonal) ?? 0;
 
                 if (idAcademico == 0)
                 {
                     MessageBox.Show("No se encontró el académico.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return; // Terminar si el académico no existe
+                    return; 
                 }
 
                 if (proyectoCampoList.Any())
                 {
                     MessageBox.Show("Asignando proyectos de campo al académico...", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Recorrer la lista de proyectos de campo
                     foreach (var proyecto in proyectoCampoList)
                     {
-                        // Asignar el ID del académico al proyecto
                         proyecto.IdAcademico = idAcademico;
 
-                        // Guardar el proyecto de campo en la base de datos
                         int resultado = proyectoCampoDAO.AgregarProyectoCampo(proyecto);
 
                         MensajesError mensajesError = new MensajesError();
@@ -683,7 +627,16 @@ namespace Constancias
             
         }
 
+        private void Cancelar(object sender, RoutedEventArgs e)
+        {
+            PopupIngresarAsignatura.Visibility = Visibility.Collapsed;
+        }
 
+        private void Salir(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
 
 
 

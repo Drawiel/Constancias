@@ -23,21 +23,18 @@ namespace Logic.DAO {
         {
             try
             {
-                // Validar datos requeridos
                 if (string.IsNullOrEmpty(producto.Titulo) || string.IsNullOrEmpty(producto.TipoProducto))
                 {
                     Console.WriteLine("El título y el tipo de producto son obligatorios.");
-                    return -3; // Código para datos inválidos
+                    return -3; 
                 }
 
                 var productoAcademicoDB = EntityFactory.CrearProductoAcademico(producto);
 
-                // Agregar al contexto
                 _context.ProductoAcademico.Add(productoAcademicoDB);
 
-                // Guardar cambios en la base de datos
                 int registrosAfectados = _context.SaveChanges();
-                return registrosAfectados > 0 ? 1 : 0; // Retorna 1 si se guarda correctamente
+                return registrosAfectados > 0 ? 1 : 0; 
             }
             catch (DbUpdateException ex)
             {
@@ -46,12 +43,12 @@ namespace Logic.DAO {
                 {
                     Console.WriteLine($"Inner Exception: {ex.InnerException.StackTrace}");
                 }
-                return -1; // Código de error general de base de datos
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error general
+                return -2; 
             }
         }
 
@@ -60,22 +57,21 @@ namespace Logic.DAO {
         {
             try
             {
-                // Recupera el último producto académico basado en el orden descendente de IdProducto
                 var ultimoProducto = _context.ProductoAcademico
                                               .OrderByDescending(p => p.IdProducto)
                                               .FirstOrDefault();
 
-                return ultimoProducto?.IdProducto; // Devuelve null si no hay productos académicos registrados
+                return ultimoProducto?.IdProducto; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el último ID de producto académico: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 

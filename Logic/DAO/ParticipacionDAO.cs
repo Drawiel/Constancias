@@ -28,23 +28,23 @@ namespace Logic.DAO {
                 _context.Participacion.Add(participacionDb);
                 int registrosAfectados = _context.SaveChanges();
 
-                // Retornar 1 si se registra correctamente
+              
                 return registrosAfectados > 0 ? 1 : 0;
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
+                return -3; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al agregar la participación: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
@@ -52,22 +52,21 @@ namespace Logic.DAO {
         {
             try
             {
-                // Recupera la última participación basada en el orden descendente de IdParticipacion
                 var ultimaParticipacion = _context.Participacion
                                                   .OrderByDescending(p => p.IdParticipacion)
                                                   .FirstOrDefault();
 
-                return ultimaParticipacion?.IdParticipacion; // Devuelve null si no hay participaciones registradas
+                return ultimaParticipacion?.IdParticipacion; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el último ID de participación: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
