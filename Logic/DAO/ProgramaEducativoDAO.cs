@@ -12,10 +12,7 @@ namespace Logic.DAO {
 
         private readonly ConstanciasEntities _context;
 
-        public ProgramaEducativoDAO()
-        {
-            _context = new ConstanciasEntities();
-        }
+
 
         public int? ObtenerIdProgramaPorNombre(string nombrePrograma)
         {
@@ -24,17 +21,17 @@ namespace Logic.DAO {
                 var programa = _context.ProgramaEducativo
                                        .FirstOrDefault(p => p.Nombre == nombrePrograma);
 
-                return programa?.IdPrograma; 
+                return programa?.IdPrograma; // Devuelve null si no encuentra el programa
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el ID del programa por nombre: {ex.Message}");
-                return -1; 
+                return -1; // Código de error para problemas relacionados con SQL
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general al obtener el ID del programa: {ex.Message}");
-                return -2; 
+                return -2; // Código de error general
             }
         }
 
@@ -45,8 +42,10 @@ namespace Logic.DAO {
 
             foreach (var nombre in nombresProgramas)
             {
+                // Obtener el ID por nombre
                 var id = programaEducativoDAO.ObtenerIdProgramaPorNombre(nombre);
 
+                // Si el ID no es null, agregarlo a la lista
                 if (id.HasValue)
                 {
                     listaIds.Add(id.Value);

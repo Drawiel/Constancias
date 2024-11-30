@@ -15,21 +15,6 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>5</WarningLevel>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,20 +45,9 @@
     <Reference Include="log4net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.3.0.3\lib\net462\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialDesignColors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.3.1.0\lib\net462\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=5.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.5.1.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -81,79 +55,73 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academico.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Administrativa.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Constancia.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="Constancias.cs" />
-    <Compile Include="Contancias.Context.cs">
+    <Compile Include="Constancias.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Contancias.Context.tt</DependentUpon>
+      <DependentUpon>Constancias.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contancias.cs">
+    <Compile Include="Constancias.Designer.cs">
+      <DependentUpon>Constancias.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Contancias.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contancias.Designer.cs">
+    <Compile Include="Constancias1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Contancias.edmx</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="ExperienciaEducativa.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Participacion.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductoAcademico.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgramaEducativo.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProyectoCampo.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="TrabajoRecepcional.cs">
-      <DependentUpon>Contancias.tt</DependentUpon>
+      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Contancias.edmx">
+    <EntityDeploy Include="Constancias.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Contancias.Designer.cs</LastGenOutput>
+      <LastGenOutput>Constancias.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Contancias.edmx.diagram">
-      <DependentUpon>Contancias.edmx</DependentUpon>
+    <None Include="Constancias.edmx.diagram">
+      <DependentUpon>Constancias.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -161,27 +129,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Contancias.Context.tt">
+    <Content Include="Constancias.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Contancias.edmx</DependentUpon>
-      <LastGenOutput>Contancias.Context.cs</LastGenOutput>
+      <DependentUpon>Constancias.edmx</DependentUpon>
+      <LastGenOutput>Constancias.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Contancias.tt">
+    <Content Include="Constancias.edmx.sql" />
+    <Content Include="Constancias.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Contancias.edmx</DependentUpon>
-      <LastGenOutput>Contancias.cs</LastGenOutput>
+      <DependentUpon>Constancias.edmx</DependentUpon>
+      <LastGenOutput>Constancias1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -191,8 +148,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
-    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
-  <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
 </Project>

@@ -71,6 +71,7 @@ namespace Logic.Factories
                 FechaExpedicion = constanciaDto.FechaExpedicion,
                 Tipo = constanciaDto.TipoConstancia,
                 IdAcademico = constanciaDto.IdAcademico,
+                Solicitante = constanciaDto.Solicitante,
             };
         }
 
@@ -104,9 +105,7 @@ namespace Logic.Factories
                 IdAcademico = trabajoRecepcional.IdAcademico,
                 TipoTrabajo = trabajoRecepcional.TipoTrabajo,
                 RolAcademico = trabajoRecepcional.RolAcademico,
-                Titulo = trabajoRecepcional.Titulo,
-                NombreEstudiante = trabajoRecepcional.NombreEstudiante,
-                FechaPresentacion = trabajoRecepcional.FechaPublicacion
+                Titulo = trabajoRecepcional.RolAcademico,
             };
         }
 

@@ -14,17 +14,16 @@ namespace Constancias.Adicionales
             switch (resultado)
             {
                 case 1:
-                    MessageBox.Show("Académico agregado o actualizado correctamente.");
+                    MessageBox.Show("Académico agregado correctamente.");
                     break;
-               
-                case -4:
-                    MessageBox.Show("Error: El número personal ya está registrado con un nombre diferente.");
+                case -3:
+                    MessageBox.Show("Error: Ya existe un académico con el mismo número personal.");
                     break;
                 case -1:
-                    MessageBox.Show("Error en la base de datos al procesar el académico.");
+                    MessageBox.Show("Error en la base de datos al agregar el académico.");
                     break;
                 case -2:
-                    MessageBox.Show("Error general al procesar el académico.");
+                    MessageBox.Show("Error general al agregar el académico.");
                     break;
                 default:
                     MessageBox.Show("No se realizaron cambios en la base de datos.");
@@ -32,32 +31,27 @@ namespace Constancias.Adicionales
             }
         }
 
-
-        public void ObtenerMensajeErrorExperienciaEducativa(int resultado)
+        public void ObtenerMensajeErrorExperienciaEducativa(int resultado) 
         {
             switch (resultado)
             {
                 case 1:
-                    MessageBox.Show("Experiencia educativa registrada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    break;
-                case 2:
-                    MessageBox.Show("La experiencia educativa ya está registrada.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Experiencia educativa agregada correctamente.");
                     break;
                 case -3:
-                    MessageBox.Show("Error: Ya existe una experiencia educativa con ese nombre.", "Error de duplicidad", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error: Ya existe una experiencia educativa con el mismo nombre.");
                     break;
                 case -1:
-                    MessageBox.Show("Error en la base de datos al agregar la experiencia educativa.", "Error de SQL", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error en la base de datos al agregar la experiencia educativa.");
                     break;
                 case -2:
-                    MessageBox.Show("Error general al agregar la experiencia educativa.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error general al agregar la experiencia educativa.");
                     break;
                 default:
-                    MessageBox.Show("No se realizaron cambios en la base de datos.", "Sin cambios", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("No se realizaron cambios en la base de datos.");
                     break;
             }
         }
-
 
         public void ObtenerMensajeErrorParticipacion(int resultado) 
         {

@@ -11,5 +11,6 @@ namespace Logic.Clases {
         public string TipoConstancia { get; set; }
         public int IdAcademico { get; set; }
         public string FirmaElectronica { get; set; }
+        public string Solicitante { get; set; }
     }
 }
