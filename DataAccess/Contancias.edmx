@@ -377,13 +377,13 @@
             <PropertyRef Name="IdAcademico" />
           </Key>
           <Property Name="IdAcademico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Name="NumeroPersonal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FechaContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TipoContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="TipoContratacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Name="IdPrograma" Type="Int32" Nullable="false" />
-          <Property Name="AreaAcademica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Contrasena" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AreaAcademica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="Contrasena" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="true" />
           <NavigationProperty Name="ProgramaEducativo" Relationship="Self.FK__Academico__IdPro__398D8EEE" FromRole="Academico" ToRole="ProgramaEducativo" />
           <NavigationProperty Name="Constancia" Relationship="Self.FK__Constanci__IdAca__3C69FB99" FromRole="Academico" ToRole="Constancia" />
           <NavigationProperty Name="Participacion" Relationship="Self.FK__Participa__IdAca__4BAC3F29" FromRole="Academico" ToRole="Participacion" />

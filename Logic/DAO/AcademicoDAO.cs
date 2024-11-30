@@ -141,7 +141,7 @@ namespace Logic.DAO {
             }
         }
 
-        public int ActualizarContraseñaYNombreAcademico(int idAcademico, string nuevaContraseña, string nuevoNombre)
+        public int ActualizarContraseñaYNombreAcademico(int idAcademico, string nuevaContraseña)
         {
             try
             {
@@ -154,7 +154,8 @@ namespace Logic.DAO {
                 }
 
                 academicoDB.Contrasena = nuevaContraseña;
-                academicoDB.Nombre = nuevoNombre;
+                
+                
 
                 int registrosAfectados = _context.SaveChanges();
                 return registrosAfectados > 0 ? 1 : 0; 
@@ -166,7 +167,71 @@ namespace Logic.DAO {
             }
         }
 
-        public int AgregarAcademicoBasico(string nombre, string numeroPersonal, string contraseña)
+        public bool ValidarContraseña(int idAcademico, string contrasenaIngresada)
+        {
+            try
+            {
+                var academico = _context.Academico
+                                        .FirstOrDefault(a => a.IdAcademico == idAcademico);
+
+                if (academico == null)
+                {
+                    Console.WriteLine("Académico no encontrado.");
+                    return false;
+                }
+
+                if (!string.IsNullOrEmpty(academico.Contrasena))
+                {
+                    if (academico.Contrasena == contrasenaIngresada)
+                    {
+                        return true; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contraseña incorrecta.");
+                        return false; 
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Este académico no tiene contraseña registrada.");
+                    return false; 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al validar la contraseña: {ex.Message}");
+                return false; 
+            }
+        }
+
+        public string ObtenerNombreAcademicoPorNumeroPersonal(string numeroPersonal)
+        {
+            try
+            {
+                var academico = _context.Academico
+                                        .FirstOrDefault(a => a.NumeroPersonal == numeroPersonal);
+
+                if (academico != null)
+                {
+                    return academico.Nombre;
+                }
+                else
+                {
+                    Console.WriteLine("Académico no encontrado.");
+                    return string.Empty; 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener el nombre del académico: {ex.Message}");
+                return string.Empty; 
+            }
+        }
+
+
+
+        public int AgregarAcademicoBasico( string numeroPersonal, string contraseña)
         {
             try
             {
@@ -180,9 +245,10 @@ namespace Logic.DAO {
 
                 Academico nuevoAcademico = new Academico
                 {
-                    Nombre = nombre,
+                    
                     NumeroPersonal = numeroPersonal,
-                    Contrasena = contraseña 
+                    Contrasena = contraseña,
+                    
                 };
 
                 _context.Academico.Add(nuevoAcademico);
@@ -252,18 +318,51 @@ namespace Logic.DAO {
             }
         }
 
-        public int? ObtenerIdProgramaDeAcademicoPorIdAcademico(int idAcademico) {
-            try {
+        public int BuscarAcademicoPorNumeroPersonal(string numeroPersonal)
+        {
+            try
+            {
+                var academico = _context.Academico
+                                        .FirstOrDefault(a => a.NumeroPersonal == numeroPersonal);
+
+                if (academico == null)
+                {
+                    return 0; 
+                }
+
+                if (!string.IsNullOrEmpty(academico.Contrasena))
+                {
+                    return 1; 
+                }
+
+                return 2; 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al buscar al académico: {ex.Message}");
+                return -1; 
+            }
+        }
+
+        public int? ObtenerIdProgramaDeAcademicoPorIdAcademico(int idAcademico)
+        {
+            try
+            {
                 var idPrograma = _context.Academico.Where(p => (p.IdAcademico == idAcademico)).Select(p => p.IdAcademico).FirstOrDefault();
                 return idPrograma;
-            } catch (SqlException ex) {
+            }
+            catch (SqlException ex)
+            {
                 Console.WriteLine(ex.Message);
                 return null;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
                 return null;
             }
         }
+
 
 
     }

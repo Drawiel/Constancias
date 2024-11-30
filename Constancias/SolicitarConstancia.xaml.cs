@@ -128,6 +128,7 @@ namespace Constancias {
                 case 5: //Experiencia docente   
                     comboBoxOpcionesParticipacion.Items.Clear();
 
+
                     ExperienciaEducativaDAO experienciaEducativaDAO = new ExperienciaEducativaDAO();
                     var idPrograma = academicoDAO.ObtenerIdProgramaDeAcademicoPorIdAcademico(idAcademico);
                     var listaExperienciasEducativas = experienciaEducativaDAO.ObtenerNombreExperienciaEducativaPorIdPrograma((int)idPrograma);

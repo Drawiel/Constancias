@@ -45,7 +45,7 @@
 
 
                         <TextBox Margin="20 10" HorizontalAlignment="Center" x:Name="textBoxNumeroPersonal" Width="250" Foreground="White"
-                                    FontSize="15" materialDesign:HintAssist.Hint="Numero de personal"
+                                    FontSize="15" materialDesign:HintAssist.Hint=" Usuario o Numero de personal"
                                     BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
 
                         <PasswordBox Margin="20 10" HorizontalAlignment="Center" x:Name="passwordBoxContrasenia" Width="250" Foreground="White"
