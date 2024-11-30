@@ -49,7 +49,7 @@ namespace Constancias {
 
                 ManejadorDeSesion.GetInstancia().IniciarSesion(sesionDeUsuario);
 
-                var inicioAdministrativo = new GenerarConstancia();
+                var inicioAdministrativo = new RegistrarProfesor();
                 inicioAdministrativo.Show();
                 this.Close();
 

@@ -12,15 +12,12 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class ProyectoCampo
+    public partial class sysdiagrams
     {
-        public int IdProyectoCampo { get; set; }
-        public string NombreProyecto { get; set; }
-        public string LugarRealizacion { get; set; }
-        public string Periodo { get; set; }
-        public string RolAcademico { get; set; }
-        public Nullable<int> IdAcademico { get; set; }
-    
-        public virtual Academico Academico { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

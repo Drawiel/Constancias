@@ -3,6 +3,8 @@ using Logic.Clases;
 using Logic.Factories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -16,11 +18,11 @@ namespace Logic.DAO {
     {
         private readonly ConstanciasEntities _context;
 
-        /*public AcademicoDAO(ConstanciasEntities context)
+        public AcademicoDAO()
         {
-            _context = context;
+            _context = new ConstanciasEntities();
         }
-        */
+
 
 
 
@@ -31,27 +33,42 @@ namespace Logic.DAO {
                 var academicoDB = EntityFactory.CrearAcademico(academico);
 
                 _context.Academico.Add(academicoDB);
-                int registrosAfectados = _context.SaveChanges();
 
-                // Retornar 1 si se registra correctamente
-                return registrosAfectados > 0 ? 1 : 0;
+                _context.SaveChanges();
+
+                return 1; 
             }
-            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            catch (DbEntityValidationException dbEx)
             {
-                Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
+                StringBuilder errorMessage = new StringBuilder();
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        errorMessage.AppendLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+
+                Console.WriteLine(errorMessage.ToString()); 
+                return -2; 
             }
-            catch (SqlException ex)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine($"Error de SQL al agregar el académico: {ex.Message}");
-                return -1; // Código de error general de SQL
+                Console.WriteLine($"Error al actualizar la base de datos: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.StackTrace}");
+                    
+                }
+                return -1;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -1; 
             }
         }
+
 
         public int? ObtenerIdAcademicoPorNumeroPersonal(string numeroPersonal)
         {
@@ -65,12 +82,12 @@ namespace Logic.DAO {
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el ID del académico por número personal: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
@@ -78,22 +95,21 @@ namespace Logic.DAO {
         {
             try
             {
-                // Recupera el último académico basado en el orden descendente de IdAcademico
                 var ultimoAcademico = _context.Academico
                                               .OrderByDescending(a => a.IdAcademico)
                                               .FirstOrDefault();
 
-                return ultimoAcademico?.IdAcademico; // Devuelve null si no hay académicos en la tabla
+                return ultimoAcademico?.IdAcademico; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el último ID del académico: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
@@ -101,15 +117,14 @@ namespace Logic.DAO {
         {
             try
             {
-                var academicoDB = _context.Academico.FirstOrDefault(a => a.IdAcademico == academicoActualizado.IdAcademico);
+                var academicoDB = _context.Academico.FirstOrDefault(a => a.NumeroPersonal == academicoActualizado.NumeroPersonal);
 
                 if (academicoDB == null)
                 {
                     Console.WriteLine("No se encontró al académico.");
-                    return -1; // Código de error para "No encontrado"
+                    return -1; 
                 }
 
-                // Actualizar los campos excepto contraseña y número de personal
                 academicoDB.Nombre = academicoActualizado.Nombre;
                 academicoDB.TipoContratacion = academicoActualizado.TipoContratacion;
                 academicoDB.AreaAcademica = academicoActualizado.AreaAcademica;
@@ -117,12 +132,12 @@ namespace Logic.DAO {
                 academicoDB.IdPrograma = academicoActualizado.IdPrograma;
 
                 int registrosAfectados = _context.SaveChanges();
-                return registrosAfectados > 0 ? 1 : 0; // Retornar 1 si se actualiza correctamente, 0 si no hay cambios
+                return registrosAfectados > 0 ? 1 : 0; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al actualizar el académico: {ex.Message}");
-                return -2; // Código de error general
+                return -2; 
             }
         }
 
@@ -130,27 +145,24 @@ namespace Logic.DAO {
         {
             try
             {
-                // Buscar al académico por su ID
                 var academicoDB = _context.Academico.FirstOrDefault(a => a.IdAcademico == idAcademico);
 
                 if (academicoDB == null)
                 {
                     Console.WriteLine("No se encontró al académico.");
-                    return -1; // Código de error para "No encontrado"
+                    return -1; 
                 }
 
-                // Actualizar la contraseña y el nombre
                 academicoDB.Contrasena = nuevaContraseña;
                 academicoDB.Nombre = nuevoNombre;
 
-                // Guardar los cambios en la base de datos
                 int registrosAfectados = _context.SaveChanges();
-                return registrosAfectados > 0 ? 1 : 0; // Retornar 1 si se actualiza correctamente, 0 si no hay cambios
+                return registrosAfectados > 0 ? 1 : 0; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al actualizar la contraseña y el nombre del académico: {ex.Message}");
-                return -2; // Código de error general
+                return -2; 
             }
         }
 
@@ -158,35 +170,31 @@ namespace Logic.DAO {
         {
             try
             {
-                // Verificar si ya existe un académico con el mismo número de personal
                 var academicoExistente = _context.Academico.FirstOrDefault(a => a.NumeroPersonal == numeroPersonal);
 
                 if (academicoExistente != null)
                 {
                     Console.WriteLine("Ya existe un académico con este número de personal.");
-                    return -3; // Código de error para duplicidad
+                    return -3; 
                 }
 
-                // Crear una nueva instancia del académico
                 Academico nuevoAcademico = new Academico
                 {
                     Nombre = nombre,
                     NumeroPersonal = numeroPersonal,
-                    Contrasena = contraseña // Si usas hashes para contraseñas, realiza el hash aquí
+                    Contrasena = contraseña 
                 };
 
-                // Agregar el académico al contexto
                 _context.Academico.Add(nuevoAcademico);
 
-                // Guardar los cambios en la base de datos
                 int registrosAfectados = _context.SaveChanges();
 
-                return registrosAfectados > 0 ? 1 : 0; // Retornar 1 si se agrega correctamente, 0 si no hay cambios
+                return registrosAfectados > 0 ? 1 : 0; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al agregar el académico: {ex.Message}");
-                return -2; // Código de error general
+                return -2; 
             }
         }
 
@@ -194,50 +202,51 @@ namespace Logic.DAO {
         {
             try
             {
-                // Verificar si el número personal ya está registrado
-                int? idAcademicoExistente = ObtenerIdAcademicoPorNumeroPersonal(academicoDTO.NumeroPersonal);
+                var academicoExistente = _context.Academico.FirstOrDefault(a => a.NumeroPersonal == academicoDTO.NumeroPersonal);
 
-                if (idAcademicoExistente.HasValue)
+                if (academicoExistente != null)
                 {
-                    // Si ya existe, actualizar el académico
+                    if (!academicoExistente.Nombre.Equals(academicoDTO.Nombre, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("Error: El número personal ya está registrado con un nombre diferente.");
+                        return -4; 
+                    }
+
                     int resultadoActualizacion = ActualizarAcademico(academicoDTO);
                     if (resultadoActualizacion == 1)
                     {
-                        return 1; // Actualización exitosa
+                        return 1; 
                     }
                     else
                     {
-                        return -1; // Error al actualizar
+                        return -1; 
                     }
                 }
                 else
                 {
-                    // Si no existe, registrar un nuevo académico
                     int resultadoRegistro = AgregarAcademico(academicoDTO);
                     if (resultadoRegistro == 1)
                     {
-                        return 1; // Registro exitoso
+                        return 1; 
                     }
                     else
                     {
-                        return -1; // Error al registrar
+                        return -1; 
                     }
                 }
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
-                // Código de error para duplicidad (2627 o 2601)
+                Console.WriteLine($"Error de duplicidad: {ex.Message}");
                 return -3;
             }
             catch (SqlException ex)
             {
-                // Código de error general de SQL
                 Console.WriteLine($"Error de SQL: {ex.Message}");
                 return -1;
             }
             catch (Exception ex)
             {
-                // Código de error general
                 Console.WriteLine($"Error general: {ex.Message}");
                 return -2;
             }
@@ -255,15 +264,6 @@ namespace Logic.DAO {
                 return null;
             }
         }
-
-
-
-
-
-
-
-
-
 
 
     }

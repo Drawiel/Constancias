@@ -8,10 +8,16 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 
 namespace Logic.DAO {
     public class ExperienciaEducativaDAO {
         private readonly ConstanciasEntities _context;
+        
+        public ExperienciaEducativaDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
 
         public int AgregarExperiencia(ExperienciaEducativaDTO experienciaEducativa)
         {
@@ -22,25 +28,25 @@ namespace Logic.DAO {
                 _context.ExperienciaEducativa.Add(experienciaDB);
                 int registrosAfectados = _context.SaveChanges();
 
-                // Retornar 1 si se registra correctamente
                 return registrosAfectados > 0 ? 1 : 0;
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
+                return -3; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al agregar la experiencia educativa: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
+
 
         public int? ObtenerIdExperienciaPorNombre(string nombre)
         {
@@ -54,35 +60,79 @@ namespace Logic.DAO {
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el ID de la experiencia educativa por nombre: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
+
+        public int ObtenerORegistrarExperiencia(ExperienciaEducativaDTO experienciaEducativa)
+        {
+            try
+            {
+                int? idExistente = ObtenerIdExperienciaPorNombre(experienciaEducativa.Nombre);
+
+                if (idExistente.HasValue)
+                {
+                    return 2;
+                }
+
+                int resultado = AgregarExperiencia(experienciaEducativa);
+                return resultado; 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return -2; 
+            }
+        }
+
+
+        public string ObtenerNombrePorId(int idExperiencia)
+        {
+            try
+            {
+                var experienciaEducativa = _context.ExperienciaEducativa
+                                                   .FirstOrDefault(e => e.IdExperienciaEducativa == idExperiencia);
+
+                return experienciaEducativa?.Nombre ?? "ID no encontrado";
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error de SQL al obtener el nombre de la experiencia educativa por ID: {ex.Message}");
+                return "Error de base de datos"; 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return "Error general"; 
+            }
+        }
+
+
 
         public int? ObtenerUltimoIdExperienciaEducativa()
         {
             try
             {
-                // Recupera la última experiencia educativa basada en el orden descendente de IdExperienciaEducativa
                 var ultimaExperiencia = _context.ExperienciaEducativa
                                                 .OrderByDescending(e => e.IdExperienciaEducativa)
                                                 .FirstOrDefault();
 
-                return ultimaExperiencia?.IdExperienciaEducativa; // Devuelve null si no hay experiencias registradas
+                return ultimaExperiencia?.IdExperienciaEducativa; 
             }
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error de SQL al obtener el último ID de experiencia educativa: {ex.Message}");
-                return -1; // Código de error general de SQL
+                return -1; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; 
             }
         }
 
@@ -90,30 +140,26 @@ namespace Logic.DAO {
          {
              try
              {
-                 // Recuperar las entidades
+                 
                  var academico = _context.Academico
                                          .FirstOrDefault(a => a.IdAcademico == idAcademico);
 
                  var experiencia = _context.ExperienciaEducativa
                                            .FirstOrDefault(e => e.IdExperienciaEducativa == idExperienciaEducativa);
 
-                 // Verificar que existan
                  if (academico == null || experiencia == null)
                  {
-                     return -1; // Código de error: uno de los registros no existe
+                     return -1; 
                  }
 
-                 // Agregar la relación
                  academico.ExperienciaEducativa.Add(experiencia);
 
-                 // Guardar los cambios
-                 return _context.SaveChanges(); // Retorna el número de registros afectados
+                 return _context.SaveChanges(); 
              }
              catch (Exception ex)
              {
-                 // Manejo de errores (puedes agregar manejo específico de excepciones)
                  Console.WriteLine($"Error al registrar relación: {ex.Message}");
-                 return -2; // Código de error genérico
+                 return -2; 
              }
          }
 
