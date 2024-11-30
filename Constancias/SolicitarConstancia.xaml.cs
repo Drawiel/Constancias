@@ -1,5 +1,6 @@
 ﻿using Constancias.Adicionales;
-using MaterialDesignColors;
+using Logic.Clases;
+using Logic.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,18 +20,15 @@ namespace Constancias {
     /// Interaction logic for SolicitarConstancia.xaml
     /// </summary>
     public partial class SolicitarConstancia : Window {
+        private string numPersonal;
+        private string nombreAcademico;
         public SolicitarConstancia() {
             InitializeComponent();
-            InitializeMaterialDesign();
             SesionDeUsuario sesionDeUsuario = new SesionDeUsuario();
             sesionDeUsuario = ManejadorDeSesion.GetInstancia().GetUsuario();
+            nombreAcademico = sesionDeUsuario.NombreUsuario.ToString();
+            numPersonal = sesionDeUsuario.NumeroPersonal.ToString();
             textBlockNombreSolicitante.Text = sesionDeUsuario.NombreUsuario.ToString();
-        }
-
-        private void InitializeMaterialDesign()
-        {
-            var card = new MaterialDesignThemes.Wpf.Card();
-            var hue = new Hue("Dummy", Colors.Black, Colors.White);
         }
 
         private void ClickCancelar(object sender, RoutedEventArgs e) {

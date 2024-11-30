@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Constancias.ControlUsuarios"
-         Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#555859">
+         Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -10,7 +10,7 @@
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,10" Click="Salir"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,10"/>
 
             <StackPanel Margin="50,100,50,0">
                 <TextBlock Text="Nombre:" Margin="0,10,0,0"/>
@@ -42,7 +42,7 @@
 
                 <TextBlock Text="Prorgama educativo:"/>
                 <ComboBox x:Name="comboBoxPrograma" SelectedIndex="0">
-                    <ComboBoxItem Content="Ingeniería de Software"/>
+                    <ComboBoxItem Content="Ingenería de Software"/>
                     <ComboBoxItem Content="Estadística"/>
                     <ComboBoxItem Content="Redes y servicios de computo"/>
                     <ComboBoxItem Content="Tecnologías computacionales"/>
@@ -62,7 +62,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Asignaturas impartidas:" Margin="0,10,0,0"/>
-                    <Button x:Name="buttonAgregarExperiencia" Content="+" Click="AbrirPopupAsignatura"/>
+                    <!--<Button x:Name="buttonAgregarExperiencia" Content="+" Click="AbrirPopUpAsignatura"/> -->
                 </StackPanel>
 
                 <ListBox x:Name="listBoxAsignaturas"/>
@@ -109,7 +109,7 @@
                 <StackPanel Margin="5">
                     <TextBlock Text="Nombre del programa:"/>
                     <ComboBox x:Name="comboBoxProgramaEducativoActualizado" SelectedIndex="0">
-                        <ComboBoxItem Content="Ingeniería de Software"/>
+                        <ComboBoxItem Content="Ingenería de Software"/>
                         <ComboBoxItem Content="Estadística"/>
                         <ComboBoxItem Content="Redes y servicios de computo"/>
                         <ComboBoxItem Content="Tecnologías computacionales"/>
@@ -133,8 +133,8 @@
                 <StackPanel Margin="5">
                     <TextBlock Text="Periodo de actualización:"/>
                     <StackPanel Orientation="Horizontal">
-                        <DatePicker x:Name="actualzacionYearPicker" />
-                        <DatePicker x:Name="actualizaciónAnotherYear"/>
+                        <DatePicker x:Name="actualzacionYearPicker" Loaded="DatePicker_Loaded"/>
+                        <DatePicker x:Name="actualizaciónAnotherYear" Loaded="DatePicker_Loaded"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -150,7 +150,7 @@
                 <StackPanel Margin="5">
                     <TextBlock Text="Nombre del programa:"/>
                     <ComboBox x:Name="comboBoxProgramaEducativoCertificado" SelectedIndex="0">
-                        <ComboBoxItem Content="Ingeniería de Software"/>
+                        <ComboBoxItem Content="Ingenería de Software"/>
                         <ComboBoxItem Content="Estadística"/>
                         <ComboBoxItem Content="Redes y servicios de computo"/>
                         <ComboBoxItem Content="Tecnologías computacionales"/>
@@ -172,8 +172,8 @@
                 <StackPanel Margin="5">
                     <TextBlock Text="Período de certificación:"/>
                     <StackPanel Orientation="Horizontal">
-                        <DatePicker x:Name="certificacionYearPicker" />
-                        <DatePicker x:Name="certificacionAnotherYear" />
+                        <DatePicker x:Name="certificacionYearPicker" Loaded="DatePicker_Loaded"/>
+                        <DatePicker x:Name="certificacionAnotherYear" Loaded="DatePicker_Loaded"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -199,10 +199,8 @@
 
                 <TextBlock Text="Seleccione el tipo de publicación:" Margin="5"/>
                 <StackPanel Orientation="Horizontal" Margin="5">
-                    <ComboBox x:Name="comboBoxTipoPublicaiconProducto">
-                        <ComboBoxItem Content="Revista"/>
-                        <ComboBoxItem Content="Editorial"/>
-                    </ComboBox>
+                    <RadioButton GroupName="PublicationType" Content="Revista" />
+                    <RadioButton GroupName="PublicationType" Content="Editorial"/>
                 </StackPanel>
 
                 <Button Content="Aceptar" HorizontalAlignment="Center" Margin="10" Click="RegistrarProducto"/>
@@ -288,7 +286,7 @@
                         <!-- Campo de texto -->
                         <TextBox x:Name="NombreAsignaturaTextBox" Width="200" />
                         <ComboBox x:Name="comboBoxProgramaEducativo">
-                            <ComboBoxItem Content="Ingeniería de Software"/>
+                            <ComboBoxItem Content="Ingenería de Software"/>
                             <ComboBoxItem Content="Estadística"/>
                             <ComboBoxItem Content="Redes y servicios de computo"/>
                             <ComboBoxItem Content="Tecnologías computacionales"/>
@@ -300,7 +298,7 @@
                         <!-- Botón para confirmar -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                             <Button Content="Aceptar" Width="75" Margin="5" Click="AgregarAsignatura" />
-                            <Button Content="Cancelar" Width="75" Margin="5"  Click="Cancelar"/>
+                            <!--<Button Content="Cancelar" Width="75" Margin="5" Click="Cancelar_Click" />-->
                         </StackPanel>
                     </StackPanel>
                 </Border>
