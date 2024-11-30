@@ -11,19 +11,13 @@
     <Viewbox>
         <Grid Margin="150 250" Background="#2a2e2f">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50">
-                <WrapPanel HorizontalAlignment="Stretch">
+                <WrapPanel HorizontalAlignment="Stretch" Margin="0 0 0 40">
                     <materialDesign:PackIcon Kind="AccountCircleOutline" Height="100" Width="100" VerticalAlignment="Center" Foreground="White" Margin="0 0 20 0"/>
                     <TextBlock VerticalAlignment="Center" x:Name="textBlockNombreSolicitante" Text="Nombre de solicitante" FontSize="80" FontWeight="DemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
                 </WrapPanel>
                 
-                <WrapPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Periodo:" Margin="20,10" FontSize="30" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                    <TextBlock Text="####-####" Margin="20,10" FontSize="30" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                </WrapPanel>
-                
                 <TextBlock Text="Tipo de constancia:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                <ComboBox Name="comboBoxConstancias" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White">
-                    <ComboBoxItem Content="Constancia de experiencia docente"/>
+                <ComboBox Name="comboBoxConstancias" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White" SelectionChanged="SetComboBoxOpciones">
                     <ComboBoxItem Content="Constancia de generación de producto académico"/>
                     <ComboBoxItem Content="Constancia de participación en procesos de actualización de programas de estudio"/>
                     <ComboBoxItem Content="Constancia de participación en procesos de certificación de programas de estudio"/>
@@ -32,11 +26,8 @@
                 </ComboBox>
 
                 <TextBlock Text="Opciones de participación:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                <ComboBox Name="comboBoxOpcionesParticipacion" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White">
-                    <ComboBoxItem Content="Certificación programa de estudios"/>
-                    <ComboBoxItem Content="Programas educativos actualizados"/>
-                    <ComboBoxItem Content="Trabajos recepcionales"/>
-                    <ComboBoxItem Content="Proyecto de campo, gestión académicos y/o artística"/>
+                <ComboBox Name="comboBoxOpcionesParticipacion" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White" >
+
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button Content="Solicitar" Width="250" Height="50" FontSize="20" Margin="0,0,10,0" Style="{StaticResource MaterialDesignRaisedButton}" Click="ClickSolicitar"/>
