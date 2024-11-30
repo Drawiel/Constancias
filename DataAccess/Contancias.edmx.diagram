@@ -4,7 +4,6 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< HEAD:DataAccess/Contancias.edmx.diagram
       <Diagram DiagramId="aea5421b0bb34d3885aaedae2847f524" Name="Diagram1">
         <EntityTypeShape EntityType="ConstanciasModel.Academico" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ConstanciasModel.Administrativa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -26,28 +25,6 @@
         <AssociationConnector Association="ConstanciasModel.FK__Participa__IdPro__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.AcademicoExperienciaEducativa" ManuallyRouted="false" />
         <AssociationConnector Association="ConstanciasModel.ProgramaEducativoExperienciaEducativa" ManuallyRouted="false" />
-=======
-      <Diagram DiagramId="ba66b15e6ede4734b4ad075cd70f36b0" Name="Diagram1" ZoomLevel="54">
-        <EntityTypeShape EntityType="ConstanciasModel.Academico" Width="1.5" PointX="0.75" PointY="8.875" />
-        <EntityTypeShape EntityType="ConstanciasModel.Administrativa" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ConstanciasModel.Constancia" Width="1.5" PointX="3" PointY="20.875" />
-        <EntityTypeShape EntityType="ConstanciasModel.ExperienciaEducativa" Width="1.5" PointX="6" PointY="9.625" />
-        <EntityTypeShape EntityType="ConstanciasModel.Participacion" Width="1.5" PointX="6" PointY="5.625" />
-        <EntityTypeShape EntityType="ConstanciasModel.ProductoAcademico" Width="1.5" PointX="3" PointY="17.75" />
-        <EntityTypeShape EntityType="ConstanciasModel.ProgramaEducativo" Width="1.5" PointX="8.25" PointY="9.5" />
-        <EntityTypeShape EntityType="ConstanciasModel.ProyectoCampo" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="ConstanciasModel.TrabajoRecepcional" Width="1.5" PointX="3" PointY="11.375" />
-        <AssociationConnector Association="ConstanciasModel.FK__Academico__IdPro__01142BA1" />
-        <AssociationConnector Association="ConstanciasModel.FK__Constanci__IdAca__03F0984C" />
-        <AssociationConnector Association="ConstanciasModel.FK__Participa__IdAca__1332DBDC" />
-        <AssociationConnector Association="ConstanciasModel.FK__ProductoA__IdAca__09A971A2" />
-        <AssociationConnector Association="ConstanciasModel.FK__ProyectoC__IdAca__06CD04F7" />
-        <AssociationConnector Association="ConstanciasModel.FK__TrabajoRe__IdAca__0C85DE4D" />
-        <AssociationConnector Association="ConstanciasModel.FK__Experienc__IdPro__0F624AF8" />
-        <AssociationConnector Association="ConstanciasModel.FK__Participa__IdPro__123EB7A3" />
-        <AssociationConnector Association="ConstanciasModel.AcademicoExperienciaEducativa" />
-        <AssociationConnector Association="ConstanciasModel.ProgramaEducativoExperienciaEducativa" />
->>>>>>> origin/Daniel:DataAccess/Constancias.edmx.diagram
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

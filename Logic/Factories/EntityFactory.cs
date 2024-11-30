@@ -71,7 +71,6 @@ namespace Logic.Factories
                 FechaExpedicion = constanciaDto.FechaExpedicion,
                 Tipo = constanciaDto.TipoConstancia,
                 IdAcademico = constanciaDto.IdAcademico,
-                Solicitante = constanciaDto.Solicitante,
             };
         }
 

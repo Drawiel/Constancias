@@ -100,13 +100,8 @@
     <Compile Include="Constancia.cs">
       <DependentUpon>Contancias.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Constancias.cs" />
     <Compile Include="Contancias.Context.cs">
-=======
-    <Compile Include="Constancias.Designer.cs">
-      <DependentUpon>Constancias.edmx</DependentUpon>
->>>>>>> origin/Daniel
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Contancias.Context.tt</DependentUpon>
@@ -146,12 +141,6 @@
     </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Contancias.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Constancias.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Constancias.tt</DependentUpon>
     </Compile>
     <Compile Include="TrabajoRecepcional.cs">
       <DependentUpon>Contancias.tt</DependentUpon>
