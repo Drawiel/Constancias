@@ -14,6 +14,11 @@ namespace Logic.DAO {
 
         private readonly ConstanciasEntities _context;
 
+        public TrabajoRecepcionalDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
+
         public int AgregarTrabajoRecepcional(TrabajoRecepcionalDTO trabajo)
         {
             try

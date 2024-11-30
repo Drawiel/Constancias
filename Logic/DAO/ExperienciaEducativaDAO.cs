@@ -12,6 +12,11 @@ using System.Threading.Tasks;
 namespace Logic.DAO {
     public class ExperienciaEducativaDAO {
         private readonly ConstanciasEntities _context;
+        
+        public ExperienciaEducativaDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
 
         public int AgregarExperiencia(ExperienciaEducativaDTO experienciaEducativa)
         {
@@ -62,6 +67,65 @@ namespace Logic.DAO {
                 return -2; // Código de error para excepciones generales
             }
         }
+
+        public int ObtenerORegistrarExperiencia(ExperienciaEducativaDTO experienciaEducativa)
+        {
+            try
+            {
+                // Intentar obtener el ID de la experiencia educativa por nombre
+                int? idExistente = ObtenerIdExperienciaPorNombre(experienciaEducativa.Nombre);
+
+                if (idExistente.HasValue)
+                {
+                    // Si ya existe, devolver el ID encontrado
+                    return idExistente.Value;
+                }
+
+                // Si no existe, intentar registrarla
+                int resultado = AgregarExperiencia(experienciaEducativa);
+
+                if (resultado == 1) // Registro exitoso
+                {
+                    // Obtener nuevamente el ID de la experiencia educativa recién registrada
+                    return ObtenerIdExperienciaPorNombre(experienciaEducativa.Nombre) ?? -1;
+                }
+                else
+                {
+                    Console.WriteLine($"Error al registrar la experiencia educativa: Código {resultado}");
+                    return -1; // Error al registrar
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return -2; // Código de error para excepciones generales
+            }
+        }
+
+        public string ObtenerNombrePorId(int idExperiencia)
+        {
+            try
+            {
+                // Buscar la experiencia educativa por ID
+                var experienciaEducativa = _context.ExperienciaEducativa
+                                                   .FirstOrDefault(e => e.IdExperienciaEducativa == idExperiencia);
+
+                // Devolver el nombre si se encuentra
+                return experienciaEducativa?.Nombre ?? "ID no encontrado";
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error de SQL al obtener el nombre de la experiencia educativa por ID: {ex.Message}");
+                return "Error de base de datos"; // Mensaje de error general
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error general: {ex.Message}");
+                return "Error general"; // Mensaje de error general
+            }
+        }
+
+
 
         public int? ObtenerUltimoIdExperienciaEducativa()
         {

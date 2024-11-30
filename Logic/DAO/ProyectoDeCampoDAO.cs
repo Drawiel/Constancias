@@ -14,6 +14,10 @@ namespace Logic.DAO {
 
         private readonly ConstanciasEntities _context;
 
+        public ProyectoDeCampoDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
 
         public int AgregarProyectoCampo(ProyectoDeCampoDTO nuevoProyecto)
         {

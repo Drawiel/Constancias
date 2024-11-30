@@ -13,6 +13,11 @@ namespace Logic.DAO {
     public class ParticipacionDAO {
         private readonly ConstanciasEntities _context;
 
+        public ParticipacionDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
+
 
 
         public int AgregarParticipacion(ParticipacionDTO nuevaParticipacion)

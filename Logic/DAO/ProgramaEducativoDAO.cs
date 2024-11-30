@@ -12,7 +12,10 @@ namespace Logic.DAO {
 
         private readonly ConstanciasEntities _context;
 
-
+        public ProgramaEducativoDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
 
         public int? ObtenerIdProgramaPorNombre(string nombrePrograma)
         {

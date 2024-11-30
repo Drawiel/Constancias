@@ -3,6 +3,8 @@ using Logic.Clases;
 using Logic.Factories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -16,11 +18,11 @@ namespace Logic.DAO {
     {
         private readonly ConstanciasEntities _context;
 
-        /*public AcademicoDAO(ConstanciasEntities context)
+        public AcademicoDAO()
         {
-            _context = context;
+            _context = new ConstanciasEntities();
         }
-        */
+
 
 
 
@@ -30,28 +32,46 @@ namespace Logic.DAO {
             {
                 var academicoDB = EntityFactory.CrearAcademico(academico);
 
+                // Intentar guardar cambios
                 _context.Academico.Add(academicoDB);
-                int registrosAfectados = _context.SaveChanges();
 
-                // Retornar 1 si se registra correctamente
-                return registrosAfectados > 0 ? 1 : 0;
+                // Intentar guardar los cambios en la base de datos
+                _context.SaveChanges();
+
+                return 1; // Registro exitoso
             }
-            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            catch (DbEntityValidationException dbEx)
             {
-                Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
+                // Si ocurre una validación fallida, capturamos el detalle de los errores
+                StringBuilder errorMessage = new StringBuilder();
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        errorMessage.AppendLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                    }
+                }
+
+                Console.WriteLine(errorMessage.ToString()); // O puedes usar un logger para registrar los errores
+                return -2; // Error de validación
             }
-            catch (SqlException ex)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine($"Error de SQL al agregar el académico: {ex.Message}");
-                return -1; // Código de error general de SQL
+                Console.WriteLine($"Error al actualizar la base de datos: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.StackTrace}");
+                    
+                }
+                return -1;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -1; // Error general
             }
         }
+
 
         public int? ObtenerIdAcademicoPorNumeroPersonal(string numeroPersonal)
         {

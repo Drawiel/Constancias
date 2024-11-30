@@ -3,6 +3,7 @@ using Logic.Clases;
 using Logic.Factories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -13,35 +14,47 @@ namespace Logic.DAO {
     public class ProductoAcademicoDAO {
         private readonly ConstanciasEntities _context;
 
-
+        public ProductoAcademicoDAO()
+        {
+            _context = new ConstanciasEntities();
+        }
 
         public int AgregarProductoAcademico(ProductoAcademicoDTO producto)
         {
             try
             {
-                var productoAcademicoDB = EntityFactory.CrearProductoAcademico(producto);
-                _context.ProductoAcademico.Add(productoAcademicoDB);
-                int registrosAfectados = _context.SaveChanges();
+                // Validar datos requeridos
+                if (string.IsNullOrEmpty(producto.Titulo) || string.IsNullOrEmpty(producto.TipoProducto))
+                {
+                    Console.WriteLine("El título y el tipo de producto son obligatorios.");
+                    return -3; // Código para datos inválidos
+                }
 
-                // Retornar 1 si se registra correctamente
-                return registrosAfectados > 0 ? 1 : 0;
+                var productoAcademicoDB = EntityFactory.CrearProductoAcademico(producto);
+
+                // Agregar al contexto
+                _context.ProductoAcademico.Add(productoAcademicoDB);
+
+                // Guardar cambios en la base de datos
+                int registrosAfectados = _context.SaveChanges();
+                return registrosAfectados > 0 ? 1 : 0; // Retorna 1 si se guarda correctamente
             }
-            catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+            catch (DbUpdateException ex)
             {
-                Console.WriteLine($"Error de duplicidad: {ex.Message}");
-                return -3; // Código de error para duplicidad de valores únicos
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine($"Error de SQL al agregar el producto académico: {ex.Message}");
-                return -1; // Código de error general de SQL
+                Console.WriteLine($"Error en la base de datos: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.StackTrace}");
+                }
+                return -1; // Código de error general de base de datos
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error general: {ex.Message}");
-                return -2; // Código de error para excepciones generales
+                return -2; // Código de error general
             }
         }
+
 
         public int? ObtenerUltimoIdProductoAcademico()
         {
