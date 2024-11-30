@@ -163,44 +163,6 @@ namespace Logic.DAO {
              }
          }
 
-        /*public int RegistrarRelacionesAcademicoExperiencias(int idAcademico, List<int> listaIdsExperiencias)
-        {
-            try
-            {
-                // Recuperar el académico de la base de datos
-                var academico = _context.Academico
-                                        .Include(a => a.ExperienciaEducativa) // Incluir la relación existente
-                                        .FirstOrDefault(a => a.IdAcademico == idAcademico);
-
-                if (academico == null)
-                {
-                    return -1; // Código de error: El académico no existe
-                }
-
-                foreach (var idExperiencia in listaIdsExperiencias)
-                {
-                    // Recuperar cada experiencia educativa
-                    var experiencia = _context.ExperienciaEducativa
-                                              .FirstOrDefault(e => e.IdExperienciaEducativa == idExperiencia);
-
-                    if (experiencia != null && !academico.ExperienciaEducativa.Contains(experiencia))
-                    {
-                        // Agregar la experiencia educativa al académico si no existe
-                        academico.ExperienciaEducativa.Add(experiencia);
-                    }
-                }
-
-                // Guardar los cambios en la base de datos
-                return _context.SaveChanges(); // Retorna el número de registros afectados
-            }
-            catch (Exception ex)
-            {
-                // Manejo de excepciones
-                Console.WriteLine($"Error al registrar relaciones: {ex.Message}");
-                return -2; // Código de error genérico
-            }
-        }*/
-
         public List<string> ObtenerNombreExperienciaEducativaPorIdPrograma(int idPrograma) {
             try {
                 var listaExperienciasEnPrograma = _context.ExperienciaEducativa.Where(p => (p.IdPrograma == idPrograma)).Select(p => p.Nombre).ToList();
@@ -215,16 +177,5 @@ namespace Logic.DAO {
                 return new List<string>();
             }
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }

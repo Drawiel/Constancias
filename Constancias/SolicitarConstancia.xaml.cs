@@ -1,5 +1,7 @@
 ﻿using Constancias.Adicionales;
 using MaterialDesignColors;
+using Logic.Clases;
+using Logic.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +21,16 @@ namespace Constancias {
     /// Interaction logic for SolicitarConstancia.xaml
     /// </summary>
     public partial class SolicitarConstancia : Window {
+        private string numPersonal;
+        private string nombreAcademico;
+
         public SolicitarConstancia() {
             InitializeComponent();
             InitializeMaterialDesign();
             SesionDeUsuario sesionDeUsuario = new SesionDeUsuario();
             sesionDeUsuario = ManejadorDeSesion.GetInstancia().GetUsuario();
+            nombreAcademico = sesionDeUsuario.NombreUsuario.ToString();
+            numPersonal = sesionDeUsuario.NumeroPersonal.ToString();
             textBlockNombreSolicitante.Text = sesionDeUsuario.NombreUsuario.ToString();
         }
 
@@ -52,6 +59,7 @@ namespace Constancias {
                 };
                 ConstanciaDAO constanciaDAO = new ConstanciaDAO();
                 constanciaDAO.SolicitarConstancia(constanciaDTO);
+                MessageBox.Show("Constancia generada exitosamente");
             } else {
                 MessageBox.Show("No ha elegido una opción de participación valida");
             }
