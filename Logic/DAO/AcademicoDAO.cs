@@ -121,7 +121,7 @@ namespace Logic.DAO {
         {
             try
             {
-                var academicoDB = _context.Academico.FirstOrDefault(a => a.IdAcademico == academicoActualizado.IdAcademico);
+                var academicoDB = _context.Academico.FirstOrDefault(a => a.NumeroPersonal == academicoActualizado.NumeroPersonal);
 
                 if (academicoDB == null)
                 {
@@ -215,11 +215,18 @@ namespace Logic.DAO {
             try
             {
                 // Verificar si el número personal ya está registrado
-                int? idAcademicoExistente = ObtenerIdAcademicoPorNumeroPersonal(academicoDTO.NumeroPersonal);
+                var academicoExistente = _context.Academico.FirstOrDefault(a => a.NumeroPersonal == academicoDTO.NumeroPersonal);
 
-                if (idAcademicoExistente.HasValue)
+                if (academicoExistente != null)
                 {
-                    // Si ya existe, actualizar el académico
+                    // Si el nombre es diferente al del académico existente, generar un error
+                    if (!academicoExistente.Nombre.Equals(academicoDTO.Nombre, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("Error: El número personal ya está registrado con un nombre diferente.");
+                        return -4; // Código de error para conflicto de nombre
+                    }
+
+                    // Si el nombre es igual, actualizar el académico
                     int resultadoActualizacion = ActualizarAcademico(academicoDTO);
                     if (resultadoActualizacion == 1)
                     {
@@ -247,6 +254,7 @@ namespace Logic.DAO {
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
                 // Código de error para duplicidad (2627 o 2601)
+                Console.WriteLine($"Error de duplicidad: {ex.Message}");
                 return -3;
             }
             catch (SqlException ex)
@@ -262,6 +270,7 @@ namespace Logic.DAO {
                 return -2;
             }
         }
+
 
 
 

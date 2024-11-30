@@ -209,7 +209,7 @@
             </StackPanel>
 
             <!--Trabajo recepcional-->
-            <StackPanel x:Name="stackPanelTrabajoRecepcional" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Visible">
+            <StackPanel x:Name="stackPanelTrabajoRecepcional" Margin="20" Grid.Row="0" Grid.Column="1" Visibility="Hidden">
                 <Label Content="Trabajo recepcional" FontWeight="Bold" FontSize="30"/>
                 <TextBlock Text="Tipo de trabajo:" Margin="5"/>
                 <ComboBox x:Name="comboBoxTipoTrabajo" SelectedIndex="0" Margin="5">

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 
 namespace Logic.DAO {
     public class ExperienciaEducativaDAO {
@@ -32,20 +33,24 @@ namespace Logic.DAO {
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
+                // Manejo de duplicados en la base de datos
                 Console.WriteLine($"Error de duplicidad: {ex.Message}");
                 return -3; // Código de error para duplicidad de valores únicos
             }
             catch (SqlException ex)
             {
+                // Manejo de errores generales de SQL
                 Console.WriteLine($"Error de SQL al agregar la experiencia educativa: {ex.Message}");
                 return -1; // Código de error general de SQL
             }
             catch (Exception ex)
             {
+                // Manejo de cualquier otro tipo de error
                 Console.WriteLine($"Error general: {ex.Message}");
                 return -2; // Código de error para excepciones generales
             }
         }
+
 
         public int? ObtenerIdExperienciaPorNombre(string nombre)
         {
@@ -77,23 +82,13 @@ namespace Logic.DAO {
 
                 if (idExistente.HasValue)
                 {
-                    // Si ya existe, devolver el ID encontrado
-                    return idExistente.Value;
+                    // Si ya existe, devolver 2 para indicar que ya está registrada
+                    return 2;
                 }
 
                 // Si no existe, intentar registrarla
                 int resultado = AgregarExperiencia(experienciaEducativa);
-
-                if (resultado == 1) // Registro exitoso
-                {
-                    // Obtener nuevamente el ID de la experiencia educativa recién registrada
-                    return ObtenerIdExperienciaPorNombre(experienciaEducativa.Nombre) ?? -1;
-                }
-                else
-                {
-                    Console.WriteLine($"Error al registrar la experiencia educativa: Código {resultado}");
-                    return -1; // Error al registrar
-                }
+                return resultado; // 1 si se registró correctamente, o el código de error correspondiente
             }
             catch (Exception ex)
             {
@@ -101,6 +96,7 @@ namespace Logic.DAO {
                 return -2; // Código de error para excepciones generales
             }
         }
+
 
         public string ObtenerNombrePorId(int idExperiencia)
         {

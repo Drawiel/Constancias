@@ -122,7 +122,6 @@ namespace Constancias
             string nombreEE = NombreAsignaturaTextBox.Text;
             var nombreProgramaSeleccionado = comboBoxProgramaEducativo.SelectedItem as ComboBoxItem;
             string nombrePrograma = nombreProgramaSeleccionado?.Content.ToString();
-            Console.WriteLine(nombrePrograma);
 
             // Validar campos vacíos
             if (ValidadorCampos.EstanVacios(nombreEE, nombrePrograma))
@@ -134,27 +133,34 @@ namespace Constancias
             ExperienciaEducativaDAO eeDAO = new ExperienciaEducativaDAO();
             ProgramaEducativoDAO programaEducativoDAO = new ProgramaEducativoDAO();
 
-            
-
             int idProgramaEducativo = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(nombrePrograma);
-            Console.WriteLine("Id programaL " + idProgramaEducativo);
 
             ExperienciaEducativaDTO experienciaEducativaDTO = new ExperienciaEducativaDTO
             {
-                IdProgramaEducativo = (int)programaEducativoDAO.ObtenerIdProgramaPorNombre(nombrePrograma),
-                Nombre = nombreEE
+                IdProgramaEducativo = idProgramaEducativo,
+                Nombre = nombreEE,
             };
-            
+
             eeList.Add(experienciaEducativaDTO);
-
-            
-
 
             int resultado = eeDAO.ObtenerORegistrarExperiencia(experienciaEducativaDTO);
 
-            MensajesError mensajesError = new MensajesError();
-            mensajesError.ObtenerMensajeErrorExperienciaEducativa(resultado);
+            // Manejo de los diferentes resultados según el valor retornado
+            if (resultado == 1)
+            {
+                MessageBox.Show("Experiencia educativa registrada correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if (resultado == 2)
+            {
+                MessageBox.Show("La experiencia educativa ya está registrada.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                MensajesError mensajesError = new MensajesError();
+                mensajesError.ObtenerMensajeErrorExperienciaEducativa(resultado);
+            }
         }
+
 
         private void RegistrarTrabajo(object sender, RoutedEventArgs e)
         {
