@@ -22,13 +22,16 @@ namespace Constancias {
         }
 
         private void ClickCancelar(object sender, RoutedEventArgs e) {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            InicioAdministrativo inicioAdministrativo = new InicioAdministrativo();
+            inicioAdministrativo.Show();
             this.Close();
         }
 
         private void ClickAceptar(object sender, RoutedEventArgs e) {
             MessageBox.Show("Se ha aceptado la constancia");
+            InicioAdministrativo inicioAdministrativo = new InicioAdministrativo();
+            inicioAdministrativo.Show();
+            this.Close();
         }
     }
 }

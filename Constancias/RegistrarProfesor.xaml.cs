@@ -622,6 +622,9 @@ namespace Constancias
                 AsignarTrabajoRecepcional();
                 AsignarProductoAcademico();
                 AsignarProyectoCampo();
+                InicioAdministrativo inicioAdministrativo = new InicioAdministrativo();
+                inicioAdministrativo.Show();
+                this.Close();
 
             }
             
@@ -634,8 +637,9 @@ namespace Constancias
 
         private void Salir(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
+            InicioAdministrativo inicioAdministrativo = new InicioAdministrativo();
+            inicioAdministrativo.Show();
+            this.Close();
         }
 
 

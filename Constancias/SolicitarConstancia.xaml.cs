@@ -41,9 +41,8 @@ namespace Constancias {
         }
 
         private void ClickCancelar(object sender, RoutedEventArgs e) {
-            ManejadorDeSesion.GetInstancia().SalirDeSesion();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            InicioAcademico inicioAcademico = new InicioAcademico();
+            inicioAcademico.Show();
             this.Close();
         }
 
@@ -139,5 +138,6 @@ namespace Constancias {
             }
             
         }
+
     }
 }

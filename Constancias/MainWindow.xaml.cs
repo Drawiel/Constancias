@@ -36,8 +36,8 @@ namespace Constancias {
 
                 ManejadorDeSesion.GetInstancia().IniciarSesion(sesionDeUsuario);
 
-                var solicitarConstancia = new SolicitarConstancia();
-                solicitarConstancia.Show();
+                var inicioAcademico = new InicioAcademico();
+                inicioAcademico.Show();
                 this.Close();
 
             } else if (EsAdministrativo(numeroPersonal)) {
@@ -49,7 +49,7 @@ namespace Constancias {
 
                 ManejadorDeSesion.GetInstancia().IniciarSesion(sesionDeUsuario);
 
-                var inicioAdministrativo = new RegistrarProfesor();
+                var inicioAdministrativo = new InicioAdministrativo();
                 inicioAdministrativo.Show();
                 this.Close();
 

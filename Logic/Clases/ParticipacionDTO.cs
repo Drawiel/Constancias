@@ -12,5 +12,6 @@ namespace Logic.Clases {
         public string TipoParticipacion { get; set; }
         public int IdProgramaEducativo { get; set; }
         public int IdAcademico { get; set; }
+        public string nombreAcademico { get; set; }
     }
 }

@@ -23,7 +23,7 @@
 
 
                 <TextBlock Text="Tipo de constancia:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                <ComboBox Name="comboBoxConstancias" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White" SelectionChanged="SetComboBoxOpciones">
+                <ComboBox x:Name="comboBoxConstancias" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White" SelectionChanged="SetComboBoxOpciones">
                     <ComboBoxItem Content="Constancia de generación de producto académico"/>
                     <ComboBoxItem Content="Constancia de participación en procesos de actualización de programas de estudio"/>
                     <ComboBoxItem Content="Constancia de participación en procesos de certificación de programas de estudio"/>
@@ -33,7 +33,7 @@
                 </ComboBox>
 
                 <TextBlock Text="Opciones de participación:" Margin="20,10" FontSize="25" FontWeight="SemiBold" Foreground="{DynamicResource MaterialDesign.Brush.Primary.Dark.Foreground}"/>
-                <ComboBox Name="comboBoxOpcionesParticipacion" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White" >
+                <ComboBox x:Name="comboBoxOpcionesParticipacion" Margin="0,0,0,20" FontSize="20" Width="800" Foreground="White">
 
                 </ComboBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
